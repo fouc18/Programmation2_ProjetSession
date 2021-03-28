@@ -28,5 +28,15 @@ hs_err_pid*
 .idea
 =======
 .idea/
+<<<<<<< HEAD
 out/
+>>>>>>> main
+=======
+
+out/
+
+*.classpath
+*.project
+out/
+
 >>>>>>> main
