@@ -2,28 +2,28 @@ package Code;
 
 public class Gps {
 
-	double distanceParcouru;
-	int [] itineraire;
+    double distanceParcouru;
+    int [] itineraire;
 
-	public Gps() {
-	
-	}
-	
+    public Gps() {
 
-	public int[] getItineraire() {
+    }
 
-		return this.itineraire;
-		
-	}
 
-	public double getDistance() {
+    public int[] getItineraire() {
 
-		return this.distanceParcouru;
+        return this.itineraire;
 
-	}
-	
-	public void AjouterDistance(float distance) {
-			
-	}
+    }
+
+    public double getDistance() {
+
+        return this.distanceParcouru;
+
+    }
+
+    public void AjouterDistance(float distance) {
+
+    }
 
 }
