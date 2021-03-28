@@ -1,7 +1,7 @@
 /* Nom: Route
  * Version: 1.0
  * Date: 03/26/2021
- * Auteur: Marc-Antoine Ricard
+ * Auteur: Membres de l'équipe 4
  * Copyright 2021 Équipe 4
  * */
 package Code;
