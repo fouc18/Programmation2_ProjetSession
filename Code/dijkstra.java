@@ -1,148 +1,176 @@
-package Code;// A Java program for Dijkstra's
-// single source shortest path
-// algorithm. The program is for
-// adjacency matrix representation
-// of the graph.
+package Code;
+
+/**
+ * Nom: Dijkstra
+ * Version: 1.0
+ * Date: 03/29/2021
+ * Auteur: Membres de l'équipe 4
+ * Copyright 2021 équipe 4
+ * La classe Dijkstra implémente l'algorithme du
+ * même nom permettant de trouver le chemin le 
+ * plus cours entre deux noeuds dans un graphe.
+ * Ce programme utilise un graphe sous un format
+ * matriciel.
+ */
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 class Dijkstra {
 
-    private static final int NO_PARENT = -1;
+	/**
+	 * Constantes et variables globales
+	 */
+    private static final int AUCUN_PARENT = -1;
+    
+    private static int[] distancesMin;
+    private static int[] parents;
+    private static ArrayList<Integer> route = new ArrayList<Integer>();
+    
+    /**
+     * Présente sous forme d'un tableau d'entiers le chemin le plus court 
+     * entre un noeud de départ et un noeud d'arrivée.
+     * @param grapheMatrice : Une matrice en deux dimensions représentant un graphe
+     * @param noeudDepart : Le noeud d'où commencera le chemin
+     * @param noeudArrivee : Le noeud où finira le chemin
+     * @return un tableau d'entiers contenant le chemin le plus court
+     */
+    public static int [] cheminASuivre(int[][] grapheMatrice, int noeudDepart, int noeudArrivee) {
+    	
+    	dijkstra(grapheMatrice, noeudDepart);
+    	
+    	route = getChemin(noeudArrivee, parents);
+    	
+    	int [] chemin = new int [route.size()];
+    	
+    	for(int i = 0; i < route.size(); i++) {
+    		chemin[i] = route.get(i);
+    	}
+    	
+    	return chemin;
+    }
+    
+    /**
+     * Tire du tableau parent le chemin le plus court
+     * @param noeudActuel : Le noeud évalué
+     * @param parents : Le tableau contenant l'ensemble des chemins
+     * @return un ArrayList contenant le chemin le plus court du noeud
+     * de départ au noeud d'arrivée
+     */
+	private static ArrayList<Integer> getChemin(int noeudActuel, int[] parents) {
+	    	
+	    	// Base case : Source node has
+	        // been processed
+	        if (noeudActuel == AUCUN_PARENT) {
+	            return route;
+	        } else {
+	        	route = getChemin(parents[noeudActuel], parents);
+	            route.add(noeudActuel);
+	        }
+			return route;
+	}
+	
+	/**
+	 * Permet d'accéder à la distance que représente le chemin le
+	 * plus court
+	 * @param grapheMatrice : Une matrice en deux dimensions représentant un graphe
+	 * @param noeudDepart : Le noeud d'où commence le chemin
+	 * @param noeudArrivee : Le noeud où finit le chemin
+	 * @return La distance parcourue sous forme d'un entier
+	 */
+	public static int distanceMin(int[][] grapheMatrice, int noeudDepart, int noeudArrivee) {
+	    	
+	    	dijkstra(grapheMatrice, noeudDepart);
+	    	return distancesMin[noeudArrivee];
+	}
+    
+    /**
+     * Calcule, à partir d'un point de départ, le chemin le plus court vers chacun 
+     * des noeuds du graphe, ainsi que la distance qu'il représente. Stocke ces
+     * résultats dans les variables globales parents et distancesMin respectivement.
+     * @param grapheMatrice : Une matrice en deux dimensions représentant un graphe
+     * @param noeudDepart : Le noeud d'où commencera le calcul des chemins
+     */
+    private static void dijkstra(int[][] grapheMatrice, int noeudDepart) {
+    	
+        int nbNoeuds = grapheMatrice[0].length;
 
-    // Function that implements Dijkstra's
-    // single source shortest path
-    // algorithm for a graph represented
-    // using adjacency matrix
-    // representation
-    private static void dijkstra(int[][] adjacencyMatrix,
-                                 int startVertex)
-    {
-        int nVertices = adjacencyMatrix[0].length;
+        /*
+         * Contiendra les distances les plus courtes de
+         * noeudDepart à chacun des noeuds d'arrivée
+         */
+        distancesMin = new int[nbNoeuds];
 
-        // shortestDistances[i] will hold the
-        // shortest distance from src to i
-        int[] shortestDistances = new int[nVertices];
+        /*
+         * ajoute[i] sera true si le noeud i à été évalué et 
+         * ajouté à l'arbre de chemins possibles
+         */
+        boolean[] ajoute = new boolean[nbNoeuds];
 
-        // added[i] will true if vertex i is
-        // included / in shortest path tree
-        // or shortest distance from src to
-        // i is finalized
-        boolean[] added = new boolean[nVertices];
-
-        // Initialize all distances as
-        // INFINITE and added[] as false
-        for (int vertexIndex = 0; vertexIndex < nVertices;
-             vertexIndex++)
+        /*
+         * Initialise toutes les distances à la plus grande
+         * valeur possible et tout le tableau ajoute à false
+         */
+        for (int noeudIndex = 0; noeudIndex < nbNoeuds; noeudIndex++)
         {
-            shortestDistances[vertexIndex] = Integer.MAX_VALUE;
-            added[vertexIndex] = false;
+            distancesMin[noeudIndex] = Integer.MAX_VALUE;
+            ajoute[noeudIndex] = false;
         }
 
-        // Distance of source vertex from
-        // itself is always 0
-        shortestDistances[startVertex] = 0;
+        /*
+         * La distance entre le noeud de départ et lui-même
+         * est toujours de 0.
+         */
+        distancesMin[noeudDepart] = 0;
 
-        // Parent array to store shortest
-        // path tree
-        int[] parents = new int[nVertices];
+        // Contient l'arbre des plus courts chemins
+        parents = new int[nbNoeuds];
 
-        // The starting vertex does not
-        // have a parent
-        parents[startVertex] = NO_PARENT;
+        // Le noeud de départ n'a pas de parent
+        parents[noeudDepart] = AUCUN_PARENT;
 
-        // Find shortest path for all
-        // vertices
-        for (int i = 1; i < nVertices; i++)
+        // Trouve le plus court chemin pour chaque noeud d'arrivée
+        for (int i = 1; i < nbNoeuds; i++)
         {
 
-            // Pick the minimum distance vertex
-            // from the set of vertices not yet
-            // processed. nearestVertex is
-            // always equal to startNode in
-            // first iteration.
-            int nearestVertex = -1;
-            int shortestDistance = Integer.MAX_VALUE;
-            for (int vertexIndex = 0;
-                 vertexIndex < nVertices;
-                 vertexIndex++)
+        	/*
+        	 * Choisi le noeud le plus près parmi les noeuds
+        	 * qui n'ont pas encore été évalués. noeudVoisin est 
+        	 * toujours le noeud de départ à la première itération.
+        	 */
+            int noeudVoisin = -1;
+            int distanceMin = Integer.MAX_VALUE;
+            for (int noeudIndex = 0; noeudIndex < nbNoeuds; noeudIndex++)
             {
-                if (!added[vertexIndex] &&
-                        shortestDistances[vertexIndex] <
-                                shortestDistance)
+                if (!ajoute[noeudIndex] && distancesMin[noeudIndex] < distanceMin)
                 {
-                    nearestVertex = vertexIndex;
-                    shortestDistance = shortestDistances[vertexIndex];
+                    noeudVoisin = noeudIndex;
+                    distanceMin = distancesMin[noeudIndex];
                 }
             }
 
-            // Mark the picked vertex as
-            // processed
-            added[nearestVertex] = true;
+            // Marque le noeud choisi comme évalué
+            ajoute[noeudVoisin] = true;
 
-            // Update dist value of the
-            // adjacent vertices of the
-            // picked vertex.
-            for (int vertexIndex = 0;
-                 vertexIndex < nVertices;
-                 vertexIndex++)
+            /*
+             * Met à jour la distance des noeuds voisins en
+             * fonction du noeud choisi.
+             */
+            for (int noeudIndex = 0; noeudIndex < nbNoeuds; noeudIndex++)
             {
-                int edgeDistance = adjacencyMatrix[nearestVertex][vertexIndex];
+                int routeLongueur = grapheMatrice[noeudVoisin][noeudIndex];
 
-                if (edgeDistance > 0
-                        && ((shortestDistance + edgeDistance) <
-                        shortestDistances[vertexIndex]))
+                if (routeLongueur > 0 && ((distanceMin + routeLongueur) < distancesMin[noeudIndex]))
                 {
-                    parents[vertexIndex] = nearestVertex;
-                    shortestDistances[vertexIndex] = shortestDistance +
-                            edgeDistance;
+                    parents[noeudIndex] = noeudVoisin;
+                    distancesMin[noeudIndex] = distanceMin + routeLongueur;
                 }
             }
         }
-
-        printSolution(startVertex, shortestDistances, parents);
     }
 
-    // A utility function to print
-    // the constructed distances
-    // array and shortest paths
-    private static void printSolution(int startVertex,
-                                      int[] distances,
-                                      int[] parents)
-    {
-        int nVertices = distances.length;
-        System.out.print("Vertex\t Distance\tPath");
-
-        for (int vertexIndex = 0;
-             vertexIndex < nVertices;
-             vertexIndex++)
-        {
-            if (vertexIndex != startVertex)
-            {
-                System.out.print("\n" + startVertex + " -> ");
-                System.out.print(vertexIndex + " \t\t ");
-                System.out.print(distances[vertexIndex] + "\t\t");
-                printPath(vertexIndex, parents);
-            }
-        }
-    }
-
-    // Function to print shortest path
-    // from source to currentVertex
-    // using parents array
-    private static void printPath(int currentVertex,
-                                  int[] parents)
-    {
-
-        // Base case : Source node has
-        // been processed
-        if (currentVertex == NO_PARENT)
-        {
-            return;
-        }
-        printPath(parents[currentVertex], parents);
-        System.out.print(currentVertex + " ");
-    }
-
-    // Driver Code
+    
+    // Main pour tester
     public static void main(String[] args)
     {
         int[][] adjacencyMatrix = { { 0, 5, 0, 0, 0, 1, 2, 0},
@@ -154,8 +182,12 @@ class Dijkstra {
                 { 2, 3, 0, 0, 0, 1, 0, 10},
                 { 0, 0, 3, 6, 4, 0, 10, 0}};
 
-        dijkstra(adjacencyMatrix, 0);
+        //dijkstra(adjacencyMatrix, 0);
+        int distance0_3 = distanceMin(adjacencyMatrix, 1, 4);
+        System.out.println(distance0_3);
+        int[] chemin0_3 = cheminASuivre(adjacencyMatrix, 1, 4);
+        System.out.println(Arrays.toString(chemin0_3));
     }
 }
 
-// This code is contributed by Harikrishnan Rajan
+// Ce code a été inspiré de Harikrishnan Rajan
