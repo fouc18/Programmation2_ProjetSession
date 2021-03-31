@@ -7,6 +7,7 @@
 package Code;
 
 import java.util.Arrays;
+import java. util.ArrayList;
 
 import Code.Dijkstra;
 
@@ -76,18 +77,34 @@ public class Gps {
 
 
 
-	public int[] getItineraire() {
+	public Arraylist<Route> getCheminRoute() {
 
 		return this.cheminRoute;
 	}
+	
+	
 
 	public void calculeItineraire() {
-		int[] cheminNeud = Dijkstra.cheminASuivre( distNoeud, 0, 3 );
-
 		
+		int[] cheminNoeud = Dijkstra.cheminASuivre( distNoeud, 0, 3 ); //distNoeud, Depart, arrive
+		this.cheminRoute.clear();
+		
+		for (int i =0; i<cheminNoeud.length()-1; i++) {
+			
+			for (int j = 0; j<= listeRoutes.length(), j++) {
+				
+				if(cheminNoeud[i] == listeRoutes[j].getNoeud(0) && cheminNoeud[i+1] == listeRoutes[j].getNoeud(1)) {
+					
+					this.cheminRoute.add(listeRoute[j]);
+					
+				}
+					
+			}
+			
+		}
 		
 
-		/*System.out.println( Arrays.toString( cheminNeud ) );
+		/*System.out.println( Arrays.toString( cheminNoeud ) );
         // int[] route = {-1};
         // int route = -1;
         int[] route = new int[3];
@@ -97,11 +114,11 @@ public class Gps {
         int y = 0;
 
         // Trouver la route
-        for ( int i = 0; i < cheminNeud.length - 1; i++ ) {
+        for ( int i = 0; i < cheminNoeud.length - 1; i++ ) {
 
             for ( int j = 0; j < associeNoeudRoute.length; j++ ) {
-                //System.out.println(cheminNeud[i] + " == " + associeNoeudRoute[j][0]);
-                if ( cheminNeud[i] == associeNoeudRoute[j][0] && cheminNeud[i + 1] == associeNoeudRoute[j][1] ) {
+                //System.out.println(cheminNoeud[i] + " == " + associeNoeudRoute[j][0]);
+                if ( cheminNoeud[i] == associeNoeudRoute[j][0] && cheminNoeud[i + 1] == associeNoeudRoute[j][1] ) {
                     System.out.println(i);
                     route[y] = i;
                     y++;
