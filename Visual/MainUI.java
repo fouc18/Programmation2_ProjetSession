@@ -33,7 +33,7 @@ public class MainUI extends JFrame {
         super("App");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         try {
-            setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("interface.jpg")))));
+            setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("Visual/Images/interface.jpg")))));
 
         } catch (IOException e) {
             e.printStackTrace();

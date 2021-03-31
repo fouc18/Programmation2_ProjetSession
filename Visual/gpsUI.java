@@ -18,7 +18,7 @@ public class gpsUI extends JFrame {
         super("GPS");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         try {
-            setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("interface2.jpg")))));
+            setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("Visual/Images/interface2.jpg")))));
 
         } catch (IOException e) {
             e.printStackTrace();
