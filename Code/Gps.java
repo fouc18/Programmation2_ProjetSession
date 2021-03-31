@@ -24,12 +24,12 @@ public class Gps {
             { 2, 3, 0, 0, 0, 1, 0, 10 },
             { 0, 0, 3, 6, 4, 0, 10, 0 } };
 
-    private static int[][] associeNoeudRoute = {
+    /*private static int[][] associeNoeudRoute = {
             { 1, 0 },
             { 0, 1 },
             {0,6},
             {6,0}
-    };
+    };*/
     
     
     Route[]                listeRoutes;
@@ -37,6 +37,24 @@ public class Gps {
     public Gps() {
 
         listeRoutes = new Route[26]; // Creer les routes
+        listeRoutes[0] = new Route( 10, 10, 0, 1);
+        listeRoutes[1] = new Route( 5, 10, 10, 0, 1);
+        listeRoutes[2] = new Route( 5, 10, 10, 0, 1);
+        listeRoutes[3] = new Route( 5, 10, 10, 0, 1);
+        listeRoutes[4] = new Route( 5, 10, 10, 0, 1);
+        listeRoutes[5] = new Route( 5, 10, 10, 0, 1);
+        listeRoutes[6] = new Route( 5, 10, 10, 0, 1);
+        listeRoutes[7] = new Route( 5, 10, 10, 0, 1);
+        listeRoutes[8] = new Route( 5, 10, 10, 0, 1);
+        listeRoutes[9] = new Route( 5, 10, 10, 0, 1);
+        listeRoutes[10] = new Route( 5, 10, 10, 0, 1);
+        listeRoutes[0] = new Route( 5, 10, 10, 0, 1);
+        listeRoutes[0] = new Route( 5, 10, 10, 0, 1);
+        listeRoutes[0] = new Route( 5, 10, 10, 0, 1);
+        listeRoutes[0] = new Route( 5, 10, 10, 0, 1);
+        listeRoutes[0] = new Route( 5, 10, 10, 0, 1);
+
+
         setDistanceParcouru( 0 );
     }
 
@@ -48,7 +66,8 @@ public class Gps {
     public void calculeItineraire() {
         int[] cheminNeud = Dijkstra.cheminASuivre( distNoeud, 0, 3 );
 
-        System.out.println( Arrays.toString( cheminNeud ) );
+
+        /*System.out.println( Arrays.toString( cheminNeud ) );
         // int[] route = {-1};
         // int route = -1;
         int[] route = new int[3];
@@ -69,7 +88,7 @@ public class Gps {
                 }
             }
         }
-        System.out.println( Arrays.toString( route ) );
+        System.out.println( Arrays.toString( route ) );*/
 
         /*
          * for(int i = 0; i < associeNoeudRoute.length; i++) { if(cheminRoute[0]

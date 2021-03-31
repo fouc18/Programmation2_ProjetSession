@@ -11,29 +11,35 @@ import java.util.Random;
 /* Cette class permet de représenter le comportement d'une route */
 public class Route {
 
-    private static int id = 0;     // Identifiant unique générer pour chaque
+    //private static int id = 0;     // Identifiant unique générer pour chaque
                                    // route
 
-    private int        nom;
+    //private int        nom;
     private int        maxVoiture;
     private int        nbreVoiture;
-    private double     longueur;
+    private int     longueur;
     EtatRoute          etat;
+    int[] noeuds = new int[2];
 
     public Route() {
-        this.nom = genererID();
+        //this.nom = genererID();
+        noeuds[0] = 0;
+        noeuds[1] = 1;
         maxVoiture = 10;
         setTrafic( genererTrafic() );
-        setLongueur( 20.0 );
-        setEtat();
+        setLongueur( 20 );
+        updateEtat();
     }
 
-    public Route( int nbreVoiture, int maxVoiture, double longueur) {
-        this.nom = genererID();
+    public Route(int maxVoiture, int longueur, int noeudDepart, int noeudArrive) {
+        //this.nom = genererID();
+        noeuds[0] = noeudDepart;
+        noeuds[1] = noeudArrive;
+
         setMaxVoiture( maxVoiture );
-        setTrafic( nbreVoiture );
+        setTrafic( genererTrafic() );
         setLongueur( longueur );
-        setEtat();
+        updateEtat();
     }
 
     /*
@@ -41,9 +47,9 @@ public class Route {
      * 
      * @return l'id de la route
      */
-    private int genererID() {
+    /*private int genererID() {
         return id++;
-    }
+    }*/
 
     /*
      * Permet de générer le nombre de voitures sur la route
@@ -64,7 +70,7 @@ public class Route {
         if ( nVoiture <= maxVoiture ) {
             this.nbreVoiture = nVoiture;
 
-            setEtat(); // Mettre a jour l'etat de la route
+            updateEtat(); // Mettre a jour l'etat de la route
         } else {
             this.nbreVoiture = 0;
         }
@@ -82,7 +88,7 @@ public class Route {
      * Permet de changer l'état de la route selon le trafic et les accidents
      * 
      */
-    public void setEtat() {
+    public void updateEtat() {
         if ( Accident.causeAccident() == true ) {
             this.etat = EtatRoute.ACCIDENT;
         } else if ( this.nbreVoiture == this.maxVoiture ) {
@@ -97,9 +103,9 @@ public class Route {
      *
      * @return nom de la route
      */
-    public int getNom() {
+    /*public int getNom() {
         return this.nom;
-    }
+    }*/
 
     /*
      * Permet d'obtenir le nombre de voiture sur la route
@@ -131,7 +137,7 @@ public class Route {
     /*
      * Permet de definir la longueur de la route
      */
-    public void setLongueur( double longueur ) {
+    public void setLongueur( int longueur ) {
         this.longueur = longueur;
     }
 
@@ -143,14 +149,16 @@ public class Route {
     public EtatRoute getEtat() {
         return this.etat;
     }
-
+    public int[] getNoeuds() {
+        return noeuds;
+    }
     /*
      * Permet d'acceder a la description complete de la route
      * 
      * @return La description complete de la route
      */
     public String toString() {
-        return "Nom: " + getNom() + " Nbre de voitures: " + getNbreVoiture() + "/" + getMaxVoiture() + " tailles: "
+        return "Noeuds: " + getNoeuds() + " Nbre de voitures: " + getNbreVoiture() + "/" + getMaxVoiture() + " tailles: "
                 + getLongueur() + " Etat; " + getEtat();
     }
 
