@@ -11,7 +11,8 @@ import java.util.Random;
 /* Cette class permet de représenter le comportement d'une route */
 public class Route {
 
-    private static int id = 0;     // Identifiant unique générer pour chaque route
+    private static int id = 0;     // Identifiant unique générer pour chaque
+                                   // route
 
     private int        nom;
     private int        maxVoiture;
@@ -27,7 +28,7 @@ public class Route {
         setEtat();
     }
 
-    public Route( int nbreVoiture, int maxVoiture, double longueur ) {
+    public Route( int nbreVoiture, int maxVoiture, double longueur) {
         this.nom = genererID();
         setMaxVoiture( maxVoiture );
         setTrafic( nbreVoiture );
@@ -62,7 +63,7 @@ public class Route {
     public void setTrafic( int nVoiture ) {
         if ( nVoiture <= maxVoiture ) {
             this.nbreVoiture = nVoiture;
-            
+
             setEtat(); // Mettre a jour l'etat de la route
         } else {
             this.nbreVoiture = 0;
@@ -143,7 +144,8 @@ public class Route {
         return this.etat;
     }
 
-    /* Permet d'acceder a la description complete de la route
+    /*
+     * Permet d'acceder a la description complete de la route
      * 
      * @return La description complete de la route
      */
