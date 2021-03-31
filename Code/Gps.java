@@ -14,7 +14,7 @@ import Code.Dijkstra;
 /* Permet de repérer la trajectoire de la voiture et l'état des routes sur la carte */
 public class Gps {
 
-	private int[]          cheminRoute;
+	private ArrayList<Route>          cheminRoute;
 	private int            distanceParcouru;
 	private static int[][] distNoeud         = { { 0, 5, 0, 0, 0, 1, 2, 0 },
 			{ 5, 0, 1, 0, 0, 0, 3, 0 },
@@ -77,7 +77,7 @@ public class Gps {
 
 
 
-	public Arraylist<Route> getCheminRoute() {
+	public ArrayList<Route> getCheminRoute() {
 
 		return this.cheminRoute;
 	}
@@ -89,13 +89,13 @@ public class Gps {
 		int[] cheminNoeud = Dijkstra.cheminASuivre( distNoeud, 0, 3 ); //distNoeud, Depart, arrive
 		this.cheminRoute.clear();
 		
-		for (int i =0; i<cheminNoeud.length()-1; i++) {
+		for (int i =0; i<cheminNoeud.length-1; i++) {
 			
-			for (int j = 0; j<= listeRoutes.length(), j++) {
+			for (int j = 0; j<= listeRoutes.length; j++) {
 				
-				if(cheminNoeud[i] == listeRoutes[j].getNoeud(0) && cheminNoeud[i+1] == listeRoutes[j].getNoeud(1)) {
-					
-					this.cheminRoute.add(listeRoute[j]);
+			//	if( (cheminNoeud[i] == listeRoutes[j].getNoeuds(0) ) && (cheminNoeud[i+1] == listeRoutes[j].getNoeuds(1))) {
+				if( (cheminNoeud[i] == listeRoutes[j].getNoeuds(0) ) && (cheminNoeud[i+1] == listeRoutes[j].getNoeuds(1))) {
+					this.cheminRoute.add(listeRoutes[j]);
 					
 				}
 					
