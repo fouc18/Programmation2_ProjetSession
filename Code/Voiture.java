@@ -7,28 +7,38 @@
 package Code;
 
 /* Cette class permet de representer le comportement d'une voiture */
-public class Voiture {
-    private int depart;
-    private int fin;
-    private int positionActuelle;
+public class Voiture extends Gps{
 
-    public Voiture(){
-        this.depart = 'A';
-        this.fin = 'D';
-        this.positionActuelle = this.depart;
-    }
+	private int positionActuelle;
 
-    public Voiture(char depart, char fin) {
-        this.depart = depart;
-        this.fin = fin;
-        this.positionActuelle = depart;
-    }
+	public Voiture(){
+		super();
+		this.positionActuelle = super.getNoeudDepart();
+	}
 
-    public boolean avancer(){
-        //super.getItineraire()
-        int[] chemin = {0,1,2,5};
+	public Voiture(int depart, int fin) {
+	
+		super.setNoeudDepart(depart);
+		
+		super.setNoeudFin(fin);
+		
+		this.positionActuelle = super.getNoeudDepart();
+		
+	}
 
-        return true;
-    }
+	public boolean avancer(){
+		
+		if (super.getCheminRoute().isEmpty() ) {
+			
+			super.calculeItineraire();
+		}
+		
+		Route routePasse = super.getCheminRoute().get(positionActuelle);
+		
+		this.positionActuelle = super.getCheminRoute().indexOf(routePasse)+1;
+		//super.AjouterDistance(routePasse.getLongueur());
+		System.out.println("Position actuelle: "+positionActuelle);
+		return true;
+	}
 
 }

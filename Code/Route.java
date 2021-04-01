@@ -11,10 +11,6 @@ import java.util.Random;
 /* Cette class permet de représenter le comportement d'une route */
 public class Route {
 
-	// private static int id = 0; // Identifiant unique générer pour chaque
-	// route
-
-	// private int nom;
 	private int maxVoiture;
 	private int nbreVoiture;
 	private int longueur;
@@ -22,7 +18,7 @@ public class Route {
 	int[] noeuds = new int[2];
 
 	public Route() {
-		// this.nom = genererID();
+		
 		noeuds[0] = 0;
 		noeuds[1] = 1;
 		maxVoiture = 10;
@@ -32,7 +28,7 @@ public class Route {
 	}
 
 	public Route(int maxVoiture, int longueur, int noeudDepart, int noeudArrive) {
-		// this.nom = genererID();
+		
 		noeuds[0] = noeudDepart;
 		noeuds[1] = noeudArrive;
 
@@ -41,15 +37,6 @@ public class Route {
 		setLongueur(longueur);
 		updateEtat();
 	}
-
-	/*
-	 * Permet de générer un identifiant unique pour la route
-	 * 
-	 * @return l'id de la route
-	 */
-	/*
-	 * private int genererID() { return id++; }
-	 */
 
 	/*
 	 * Permet de générer le nombre de voitures sur la route
@@ -99,15 +86,6 @@ public class Route {
 	}
 
 	/*
-	 * Permet d'obtenir le nom de la route
-	 *
-	 * @return nom de la route
-	 */
-	/*
-	 * public int getNom() { return this.nom; }
-	 */
-
-	/*
 	 * Permet d'obtenir le nombre de voiture sur la route
 	 *
 	 * @return le nombre de voiture sur la route
@@ -130,7 +108,7 @@ public class Route {
 	 *
 	 * @return la distance de la route
 	 */
-	public double getLongueur() {
+	public int getLongueur() {
 		return this.longueur;
 	}
 

@@ -13,7 +13,11 @@ import Code.Dijkstra;
 
 /* Permet de repérer la trajectoire de la voiture et l'état des routes sur la carte */
 public class Gps extends Route {
-
+	
+	
+	private int noeudDepart;
+	private int noeudFin;
+	
 	private ArrayList<Route>          cheminRoute;
 	private int                       distanceParcouru;
 	private static int[][] distNoeud         = { { 0, 5, 0, 0, 0, 1, 2, 0 },
@@ -29,6 +33,10 @@ public class Gps extends Route {
 
 	public Gps() {
 
+		System.out.println("Dans le constructeur par default");
+		this.noeudDepart = 0;
+		this.noeudFin = 3;
+		
 		cheminRoute = new ArrayList<Route>() ;
 
 		listeRoutes = new Route[26]; // Creer les routes
@@ -66,10 +74,30 @@ public class Gps extends Route {
 
 		return this.cheminRoute;
 	}
+	
+	public void setNoeudDepart( int n ) {
+		
+		this.noeudDepart = n;
+	}
+	
+	public void setNoeudFin( int n ) {
+		
+		this.noeudFin = n;
+	}
+	
+	public int getNoeudDepart() {
+		
+		return noeudDepart;
+	} 
+	
+	public int getNoeudFin() {
+		
+		return this.noeudFin ;
+	}
 
 	public void calculeItineraire() {
 
-		int[] cheminNoeud = Dijkstra.cheminASuivre( distNoeud, 3, 0 ); //distNoeud, Depart, arrive
+		int[] cheminNoeud = Dijkstra.cheminASuivre( distNoeud, noeudDepart, noeudFin ); //distNoeud, Depart, arrive
 
 		if (!this.cheminRoute.isEmpty()) {
 
@@ -91,7 +119,6 @@ public class Gps extends Route {
 			}
 
 		}
-		
 
 	}
 
