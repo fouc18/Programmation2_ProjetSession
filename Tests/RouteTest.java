@@ -7,6 +7,7 @@
 
 package Tests;
 
+import Code.Gps;
 import Code.Route;
 /* 
  * Module de test sur le comportement des routes
@@ -19,6 +20,8 @@ public class RouteTest {
         Route r2 = new Route();
         Route r3 = new Route();
         
+        Gps g = new Gps();
+        
         System.out.println("Rapport sur les routes");
         System.out.println(r1);
         System.out.println(r2);
@@ -27,6 +30,10 @@ public class RouteTest {
         
         r1.setTrafic( 10 );
         System.out.println(r1);
+        
+        
+       
+        
         
     }
 

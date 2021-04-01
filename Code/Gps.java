@@ -12,10 +12,10 @@ import java. util.ArrayList;
 import Code.Dijkstra;
 
 /* Permet de repérer la trajectoire de la voiture et l'état des routes sur la carte */
-public class Gps {
+public class Gps extends Route {
 
 	private ArrayList<Route>          cheminRoute;
-	private int            distanceParcouru;
+	private int                       distanceParcouru;
 	private static int[][] distNoeud         = { { 0, 5, 0, 0, 0, 1, 2, 0 },
 			{ 5, 0, 1, 0, 0, 0, 3, 0 },
 			{ 0, 1, 0, 6, 0, 0, 0, 3 },
@@ -24,23 +24,17 @@ public class Gps {
 			{ 1, 0, 0, 0, 3, 0, 1, 0 },
 			{ 2, 3, 0, 0, 0, 1, 0, 10 },
 			{ 0, 0, 3, 6, 4, 0, 10, 0 } };
-
-	/*private static int[][] associeNoeudRoute = {
-            { 1, 0 },
-            { 0, 1 },
-            {0,6},
-            {6,0}
-    };*/
-
-
+	
 	Route[]                listeRoutes;
 
 	public Gps() {
 
+		cheminRoute = new ArrayList<Route>() ;
+
 		listeRoutes = new Route[26]; // Creer les routes
 		listeRoutes[0]  = new Route( 10, 5, 0, 1);  //maxVoiture, longueur, noeudDepart, noeudArrive
-		listeRoutes[1]  = new Route( 4, 2, 0, 6);
-		listeRoutes[2]  = new Route( 2, 1, 0, 5);
+		listeRoutes[1]  = new Route( 4, 2, 0, 6); 
+		listeRoutes[2]  = new Route( 2, 1, 0, 5); 
 		listeRoutes[3]  = new Route( 10, 5, 1, 0);
 		listeRoutes[4]  = new Route( 2, 1, 1, 2);
 		listeRoutes[5]  = new Route( 6, 3, 1, 6);
@@ -67,90 +61,51 @@ public class Gps {
 
 		setDistanceParcouru( 0 );
 	}
-	
-	
-	
-
-
-
-
-
-
 
 	public ArrayList<Route> getCheminRoute() {
 
 		return this.cheminRoute;
 	}
-	
-	
 
 	public void calculeItineraire() {
-		
-		int[] cheminNoeud = Dijkstra.cheminASuivre( distNoeud, 0, 3 ); //distNoeud, Depart, arrive
-		this.cheminRoute.clear();
-		
-		for (int i =0; i<cheminNoeud.length-1; i++) {
-			
-			for (int j = 0; j<= listeRoutes.length; j++) {
-				
-			//	if( (cheminNoeud[i] == listeRoutes[j].getNoeuds(0) ) && (cheminNoeud[i+1] == listeRoutes[j].getNoeuds(1))) {
-				if( (cheminNoeud[i] == listeRoutes[j].getNoeuds(0) ) && (cheminNoeud[i+1] == listeRoutes[j].getNoeuds(1))) {
-					this.cheminRoute.add(listeRoutes[j]);
-					
-				}
-					
-			}
+
+		int[] cheminNoeud = Dijkstra.cheminASuivre( distNoeud, 3, 0 ); //distNoeud, Depart, arrive
+
+		if (!this.cheminRoute.isEmpty()) {
+
+			this.cheminRoute.clear();
 			
 		}
 		
+		for (int i =0; i<cheminNoeud.length-1; i++) {
 
-		/*System.out.println( Arrays.toString( cheminNoeud ) );
-        // int[] route = {-1};
-        // int route = -1;
-        int[] route = new int[3];
-        route[0] = -1;
-        route[1] = -1;
-        route[2] = -1;
-        int y = 0;
+			for (int j = 0; j<= listeRoutes.length-1; j++) {
 
-        // Trouver la route
-        for ( int i = 0; i < cheminNoeud.length - 1; i++ ) {
+				
+				if( (cheminNoeud[i] == listeRoutes[j].getNoeuds(0) ) && (cheminNoeud[i+1] == listeRoutes[j].getNoeuds(1))) {
 
-            for ( int j = 0; j < associeNoeudRoute.length; j++ ) {
-                //System.out.println(cheminNoeud[i] + " == " + associeNoeudRoute[j][0]);
-                if ( cheminNoeud[i] == associeNoeudRoute[j][0] && cheminNoeud[i + 1] == associeNoeudRoute[j][1] ) {
-                    System.out.println(i);
-                    route[y] = i;
-                    y++;
-                }
-            }
-        }
-        System.out.println( Arrays.toString( route ) );*/
+					this.cheminRoute.add(listeRoutes[j]);
 
-		/*
-		 * for(int i = 0; i < associeNoeudRoute.length; i++) { if(cheminRoute[0]
-		 * == associeNoeudRoute[i][0]) {
-		 * 
-		 * for(int j = 0; j < 2; j++) {
-		 * 
-		 * if(cheminRoute[1] == associeNoeudRoute[i][j]) {
-		 * 
-		 * } } }
-		 * 
-		 * }
-		 */
+				}
+
+			}
+
+		}
+		
 
 	}
 
-	public void AjouterDistance( int distance ) {
+	protected void AjouterDistance( int distance ) {
 
+		distanceParcouru += distance;
+		
 	}
 
 	public double getDistance() {
 		return this.distanceParcouru;
 	}
 
-	public void setDistanceParcouru( int distance ) {
+	private void setDistanceParcouru( int distance ) {
 		this.distanceParcouru = distance;
 	}
 
