@@ -6,39 +6,64 @@
  * */
 package Code;
 
+import java.util.Arrays;
+
 /* Cette class permet de representer le comportement d'une voiture */
 public class Voiture extends Gps{
 
-	private int positionActuelle;
+	private int positionFuture;
 
 	public Voiture(){
 		super();
-		this.positionActuelle = super.getNoeudDepart();
+		this.positionFuture = super.getNoeudDepart();
 	}
 
 	public Voiture(int depart, int fin) {
-	
-		super.setNoeudDepart(depart);
-		
-		super.setNoeudFin(fin);
-		
-		this.positionActuelle = super.getNoeudDepart();
-		
-	}
 
+		super.setNoeudDepart(depart);
+
+		super.setNoeudFin(fin);
+
+		this.positionFuture = super.getNoeudDepart();
+
+	}
+	
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean avancer(){
 		
+		
 		if (super.getCheminRoute().isEmpty() ) {
-			
+
 			super.calculeItineraire();
 		}
 		
-		Route routePasse = super.getCheminRoute().get(positionActuelle);
 		
-		this.positionActuelle = super.getCheminRoute().indexOf(routePasse)+1;
-		//super.AjouterDistance(routePasse.getLongueur());
-		System.out.println("Position actuelle: "+positionActuelle);
-		return true;
+		
+		while(positionFuture != super.getNoeudFin()) {
+			
+			super.calculeItineraire();
+			
+			Route routeActuelle = super.getCheminRoute().get(positionFuture);
+
+			this.positionFuture = super.getCheminRoute().indexOf(routeActuelle)+1;
+			
+			System.out.println("Position future: "+positionFuture);
+			
+			System.out.println("Route actuelle " +super.getCheminRoute().indexOf(routeActuelle));
+			
+			System.out.println("Noeud fin "+super.getNoeudFin());
+			
+			return true;
+		}
+		
+		
+		
+		return false;
+		
 	}
 
 }
