@@ -13,14 +13,15 @@ import Code.Dijkstra;
 
 /* Permet de repérer la trajectoire de la voiture et l'état des routes sur la carte */
 public class Gps extends Route {
-	
+
+
 	
 	private int noeudDepart;
 	private int noeudFin;
-	
-	private ArrayList<Route>          cheminRoute;
+
+	protected ArrayList<Route>          cheminRoute;
 	private int                       distanceParcouru;
-	private static int[][] distNoeud         = { { 0, 5, 0, 0, 0, 1, 2, 0 },
+	protected static int[][] distNoeud         = { { 0, 5, 0, 0, 0, 1, 2, 0 },
 			{ 5, 0, 1, 0, 0, 0, 3, 0 },
 			{ 0, 1, 0, 6, 0, 0, 0, 3 },
 			{ 0, 0, 6, 0, 12, 0, 0, 6 },
@@ -28,15 +29,17 @@ public class Gps extends Route {
 			{ 1, 0, 0, 0, 3, 0, 1, 0 },
 			{ 2, 3, 0, 0, 0, 1, 0, 10 },
 			{ 0, 0, 3, 6, 4, 0, 10, 0 } };
+
+	public Route[]                listeRoutes;
 	
-	Route[]                listeRoutes;
+	protected  int[][] copieGraphe = distNoeud.clone();
 
 	public Gps() {
 
 		System.out.println("Dans le constructeur par default");
 		this.noeudDepart = 0;
 		this.noeudFin = 3;
-		
+
 		cheminRoute = new ArrayList<Route>() ;
 
 		listeRoutes = new Route[26]; // Creer les routes
@@ -74,42 +77,42 @@ public class Gps extends Route {
 
 		return this.cheminRoute;
 	}
-	
+
 	public void setNoeudDepart( int n ) {
-		
+
 		this.noeudDepart = n;
 	}
-	
+
 	public void setNoeudFin( int n ) {
-		
+
 		this.noeudFin = n;
 	}
-	
+
 	public int getNoeudDepart() {
-		
+
 		return noeudDepart;
 	} 
-	
+
 	public int getNoeudFin() {
-		
+
 		return this.noeudFin ;
 	}
 
 	public void calculeItineraire() {
 
-		int[] cheminNoeud = Dijkstra.cheminASuivre( distNoeud, noeudDepart, noeudFin ); //distNoeud, Depart, arrive
+		int[] cheminNoeud = Dijkstra.cheminASuivre( copieGraphe, noeudDepart, noeudFin ); //distNoeud, Depart, arrive
 
 		if (!this.cheminRoute.isEmpty()) {
 
 			this.cheminRoute.clear();
-			
+
 		}
-		
+
 		for (int i =0; i<cheminNoeud.length-1; i++) {
 
 			for (int j = 0; j<= listeRoutes.length-1; j++) {
 
-				
+
 				if( (cheminNoeud[i] == listeRoutes[j].getNoeuds(0) ) && (cheminNoeud[i+1] == listeRoutes[j].getNoeuds(1))) {
 
 					this.cheminRoute.add(listeRoutes[j]);
@@ -125,7 +128,7 @@ public class Gps extends Route {
 	protected void AjouterDistance( int distance ) {
 
 		distanceParcouru += distance;
-		
+
 	}
 
 	public double getDistance() {
@@ -133,7 +136,36 @@ public class Gps extends Route {
 	}
 
 	private void setDistanceParcouru( int distance ) {
+
 		this.distanceParcouru = distance;
+
+	}
+
+	private int[][] modifierGraphe(){
+
+		copieGraphe = distNoeud.clone();
+
+		for (int i = 0 ; i< listeRoutes.length; i++) {
+
+			if((listeRoutes[i].getEtat() == EtatRoute.CONGESTION) || ( listeRoutes[i].getEtat() == EtatRoute.ACCIDENT)){
+				
+				copieGraphe[listeRoutes[i].getNoeuds(0) ][listeRoutes[i].getNoeuds(1)] = 0 ;
+			}
+		}
+		
+		return copieGraphe;
+	}
+
+
+	
+	public static void main (String args[]) {
+		
+		Gps g = new Gps();
+		
+		int [][] g2 = g.modifierGraphe();
+		
+		System.out.println(Arrays.deepToString(g2));
+		
 	}
 
 }

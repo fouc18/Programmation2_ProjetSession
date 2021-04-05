@@ -11,6 +11,7 @@ public class VoitureTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		/*
 		Voiture v= new Voiture() ;
 
 		System.out.println(v.avancer());
@@ -23,17 +24,15 @@ public class VoitureTest {
 		v.calculeItineraire();
 		
 		System.out.println(v.getCheminRoute().toString());
+		*/	
+	
 
-		Voiture v2 = new Voiture(2,6);
+		Voiture v2 = new Voiture(0,4);
 
 		System.out.println(v2.avancer());
-
-		System.out.println(v2.getNoeudFin());
-		
-		v2.calculeItineraire();
-		
+	
 		System.out.println(v2.getCheminRoute().toString());
-			
+		
 	}
 
 }
