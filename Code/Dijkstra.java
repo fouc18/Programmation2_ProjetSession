@@ -5,12 +5,13 @@ package Code;
  * Version: 1.0
  * Date: 03/29/2021
  * Auteur: Membres de l'équipe 4
- * Copyright 2021 équipe 4
- * La classe Dijkstra implémente l'algorithme du
- * même nom permettant de trouver le chemin le 
- * plus cours entre deux noeuds dans un graphe.
- * Ce programme utilise un graphe sous un format
- * matriciel.
+ * 
+ * Description :La classe Dijkstra implemente l'algorithme du
+ * même nom permettant de trouver le chemin le plus cours entre
+ * deux noeuds dans un graphe.
+ * Ce programme utilise un graphe sous un format matriciel.
+ * 
+ * Copyright 2021 equipe 4
  */
 
 import java.util.ArrayList;
@@ -28,12 +29,11 @@ class Dijkstra {
     private static ArrayList<Integer> route = new ArrayList<Integer>();
     
     /**
-     * Présente sous forme d'un tableau d'entiers le chemin le plus court 
-     * entre un noeud de départ et un noeud d'arrivée.
-     * @param grapheMatrice : Une matrice en deux dimensions représentant un graphe. Un nombre
-     * négatif indique que la route est fermée et un 0 qu'il n'existe aucune route.
-     * @param noeudDepart : Le noeud d'où commencera le chemin
-     * @param noeudArrivee : Le noeud où finira le chemin
+     * Presente sous forme d'un tableau d'entiers le chemin le plus court 
+     * entre un noeud de depart et un noeud d'arrivee.
+     * @param grapheMatrice : Une matrice en deux dimensions representant un graphe. 
+     * @param noeudDepart : Le noeud d'ou commencera le chemin
+     * @param noeudArrivee : Le noeud ou finira le chemin
      * @return un tableau d'entiers contenant le chemin le plus court
      */
     public static int [] cheminASuivre(int[][] grapheMatrice, int noeudDepart, int noeudArrivee) {
@@ -53,10 +53,10 @@ class Dijkstra {
     
     /**
      * Tire du tableau parent le chemin le plus court
-     * @param noeudActuel : Le noeud évalué
+     * @param noeudActuel : Le noeud evalue
      * @param parents : Le tableau contenant l'ensemble des chemins
      * @return un ArrayList contenant le chemin le plus court du noeud
-     * de départ au noeud d'arrivée
+     * de depart au noeud d'arrivee
      */
 	private static ArrayList<Integer> getChemin(int noeudActuel, int[] parents) {
 	    	
@@ -72,11 +72,11 @@ class Dijkstra {
 	}
 	
 	/**
-	 * Permet d'accéder à la distance que représente le chemin le
+	 * Permet d'acceder à la distance que represente le chemin le
 	 * plus court
-	 * @param grapheMatrice : Une matrice en deux dimensions représentant un graphe
-	 * @param noeudDepart : Le noeud d'où commence le chemin
-	 * @param noeudArrivee : Le noeud où finit le chemin
+	 * @param grapheMatrice : Une matrice en deux dimensions representant un graphe
+	 * @param noeudDepart : Le noeud d'ou commence le chemin
+	 * @param noeudArrivee : Le noeud ou finit le chemin
 	 * @return La distance parcourue sous forme d'un entier
 	 */
 	public static int distanceMin(int[][] grapheMatrice, int noeudDepart, int noeudArrivee) {
@@ -86,11 +86,10 @@ class Dijkstra {
 	}
     
     /**
-     * Calcule, à partir d'un point de départ, le chemin le plus court vers chacun 
-     * des noeuds du graphe, ainsi que la distance qu'il représente. Stocke ces
-     * résultats dans les variables globales parents et distancesMin respectivement.
-     * @param grapheMatrice : Une matrice en deux dimensions représentant un graphe
-     * @param noeudDepart : Le noeud d'où commencera le calcul des chemins
+     * Calcule, a partir d'un point de dée distance qu'il represente. Stocke ces
+     * resultats dans les variables globales parents et distancesMin respectivement.
+     * @param grapheMatrice : Une matrice en deux dimensions representant un graphe
+     * @param noeudDepart : Le noeud d'ou commencera le calcul des chemins
      */
     private static void dijkstra(int[][] grapheMatrice, int noeudDepart) {
     	
@@ -98,19 +97,19 @@ class Dijkstra {
 
         /*
          * Contiendra les distances les plus courtes de
-         * noeudDepart à chacun des noeuds d'arrivée
+         * noeudDepart a chacun des noeuds d'arrivee
          */
         distancesMin = new int[nbNoeuds];
 
         /*
-         * ajoute[i] sera true si le noeud i à été évalué et 
-         * ajouté à l'arbre de chemins possibles
+         * ajoute[i] sera true si le noeud i a ete evalue et 
+         * ajoute a l'arbre de chemins possibles
          */
         boolean[] ajoute = new boolean[nbNoeuds];
 
         /*
-         * Initialise toutes les distances à la plus grande
-         * valeur possible et tout le tableau ajoute à false
+         * Initialise toutes les distances a la plus grande
+         * valeur possible et tout le tableau ajoute a false
          */
         for (int noeudIndex = 0; noeudIndex < nbNoeuds; noeudIndex++)
         {
@@ -119,7 +118,7 @@ class Dijkstra {
         }
 
         /*
-         * La distance entre le noeud de départ et lui-même
+         * La distance entre le noeud de depart et lui-meme
          * est toujours de 0.
          */
         distancesMin[noeudDepart] = 0;
@@ -127,17 +126,17 @@ class Dijkstra {
         // Contient l'arbre des plus courts chemins
         parents = new int[nbNoeuds];
 
-        // Le noeud de départ n'a pas de parent
+        // Le noeud de depart n'a pas de parent
         parents[noeudDepart] = AUCUN_PARENT;
 
-        // Trouve le plus court chemin pour chaque noeud d'arrivée
+        // Trouve le plus court chemin pour chaque noeud d'arrivee
         for (int i = 1; i < nbNoeuds; i++)
         {
 
         	/*
-        	 * Choisi le noeud le plus près parmi les noeuds
-        	 * qui n'ont pas encore été évalués. noeudVoisin est 
-        	 * toujours le noeud de départ à la première itération.
+        	 * Choisi le noeud le plus pres parmi les noeuds
+        	 * qui n'ont pas encore ete evalue. noeudVoisin est 
+        	 * toujours le noeud de depart à la premiere iteration.
         	 */
             int noeudVoisin = -1;
             int distanceMin = Integer.MAX_VALUE;
@@ -150,11 +149,11 @@ class Dijkstra {
                 }
             }
 
-            // Marque le noeud choisi comme évalué
+            // Marque le noeud choisi comme evalue
             ajoute[noeudVoisin] = true;
 
             /*
-             * Met à jour la distance des noeuds voisins en
+             * Met a jour la distance des noeuds voisins en
              * fonction du noeud choisi.
              */
             for (int noeudIndex = 0; noeudIndex < nbNoeuds; noeudIndex++)
@@ -184,11 +183,11 @@ class Dijkstra {
                 { 0, 0, 3, 6, 4, 0, 10, 0}};
 
         //dijkstra(adjacencyMatrix, 0);
-        int distance0_3 = distanceMin(adjacencyMatrix, 0, 3);
+        int distance0_3 = distanceMin(adjacencyMatrix, 0, 7);
         System.out.println(distance0_3);
-        int[] chemin0_3 = cheminASuivre(adjacencyMatrix, 0, 3);
+        int[] chemin0_3 = cheminASuivre(adjacencyMatrix, 0, 7);
         System.out.println(Arrays.toString(chemin0_3));
     }
 }
 
-// Ce code a été inspiré de Harikrishnan Rajan
+// Ce code a ete inspire de Harikrishnan Rajan

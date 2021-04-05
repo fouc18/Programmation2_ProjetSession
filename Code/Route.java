@@ -1,14 +1,14 @@
 /* Nom: Route
  * Version: 1.0
  * Date: 03/26/2021
- * Auteur: Membres de l'équipe 4
- * Copyright 2021 Équipe 4
+ * Auteur: Membres de l'equipe 4
+ * Copyright 2021 equipe 4
  * */
 package Code;
 
 import java.util.Random;
 
-/* Cette class permet de représenter le comportement d'une route */
+/* Cette class permet de representer le comportement d'une route */
 public class Route {
 
 	private int maxVoiture;
@@ -39,7 +39,7 @@ public class Route {
 	}
 
 	/*
-	 * Permet de générer le nombre de voitures sur la route
+	 * Permet de generer le nombre de voitures sur la route
 	 * 
 	 * @return nombre de voitures sur la route
 	 */
@@ -49,7 +49,7 @@ public class Route {
 	}
 
 	/*
-	 * Permet d'insérer un nombre de voitures précis sur la route
+	 * Permet d'inserer un nombre de voitures precis sur la route
 	 * 
 	 * @param nVoiture le nombre de voitures sur la rout
 	 */
@@ -72,7 +72,7 @@ public class Route {
 	}
 
 	/*
-	 * Permet de changer l'état de la route selon le trafic et les accidents
+	 * Permet de changer l'etat de la route selon le trafic et les accidents
 	 * 
 	 */
 	public void updateEtat() {
