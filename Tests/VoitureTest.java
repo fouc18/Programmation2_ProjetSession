@@ -26,12 +26,13 @@ public class VoitureTest {
 		System.out.println(v.getCheminRoute().toString());
 		*/	
 	
-
-		Voiture v2 = new Voiture(0,4);
+		
+		Voiture v2 = new Voiture(0,3);
 
 		System.out.println(v2.avancer());
 	
 		System.out.println(v2.getCheminRoute().toString());
+		
 		
 	}
 
