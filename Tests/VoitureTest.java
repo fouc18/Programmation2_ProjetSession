@@ -29,7 +29,7 @@ public class VoitureTest {
 		
 		Voiture v2 = new Voiture(0,3);
 
-		System.out.println(v2.avancer());
+		v2.avancer();
 	
 		System.out.println(v2.getCheminRoute().toString());
 		
