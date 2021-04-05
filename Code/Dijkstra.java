@@ -30,7 +30,8 @@ class Dijkstra {
     /**
      * Présente sous forme d'un tableau d'entiers le chemin le plus court 
      * entre un noeud de départ et un noeud d'arrivée.
-     * @param grapheMatrice : Une matrice en deux dimensions représentant un graphe
+     * @param grapheMatrice : Une matrice en deux dimensions représentant un graphe. Un nombre
+     * négatif indique que la route est fermée et un 0 qu'il n'existe aucune route.
      * @param noeudDepart : Le noeud d'où commencera le chemin
      * @param noeudArrivee : Le noeud où finira le chemin
      * @return un tableau d'entiers contenant le chemin le plus court
@@ -183,9 +184,9 @@ class Dijkstra {
                 { 0, 0, 3, 6, 4, 0, 10, 0}};
 
         //dijkstra(adjacencyMatrix, 0);
-        int distance0_3 = distanceMin(adjacencyMatrix, 1, 4);
+        int distance0_3 = distanceMin(adjacencyMatrix, 0, 3);
         System.out.println(distance0_3);
-        int[] chemin0_3 = cheminASuivre(adjacencyMatrix, 1, 4);
+        int[] chemin0_3 = cheminASuivre(adjacencyMatrix, 0, 3);
         System.out.println(Arrays.toString(chemin0_3));
     }
 }
