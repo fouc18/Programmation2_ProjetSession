@@ -1,8 +1,8 @@
 /* Nom: RouteTest
  * Version: 1.0
  * Date: 03/26/2021
- * Auteur: Marc-Antoine Ricard
- * Copyright 2021 Équipe 4
+ * Auteur: Membre de l'equipe 4
+ * Copyright 2021 equipe 4
  * */
 
 package Tests;

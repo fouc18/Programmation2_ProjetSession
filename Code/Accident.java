@@ -1,8 +1,8 @@
 /* Nom: Accident
  * Version: 1.0
  * Date: 03/26/2021
- * Auteur: Membres de l'équipe 4
- * Copyright 2021 Équipe 4
+ * Auteur: Membres de l'equipe 4
+ * Copyright 2021 equipe 4
  * */
 package Code;
 
@@ -13,9 +13,9 @@ public class Accident {
     
     private static int probabilite = 5; //Probabilite d'avoir un accident en %
     
-    /* Permet de générer si un accident est causé
+    /* Permet de generer si un accident est cause
      * 
-     * @return  un booléan si un accident a lieu
+     * @return  un boolean si un accident a lieu
      * */
     public static boolean causeAccident() {
         Random random = new Random();

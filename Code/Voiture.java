@@ -1,14 +1,14 @@
 /* Nom: Voiture
  * Version: 1.0
  * Date: 03/28/2021
- * Auteur: Membres de l'équipe 4
- * Copyright 2021 Équipe 4
+ * Auteur: Membres de l'equipe 4
+ * Copyright 2021 equipe 4
  * */
 package Code;
 
 import java.util.Arrays;
 
-/* Cette class permet de representer le comportement d'une voiture */
+/* Cette classe permet de representer le comportement d'une voiture */
 public class Voiture extends Gps{
 
 	private int positionFuture;
@@ -33,7 +33,7 @@ public class Voiture extends Gps{
 	 * 
 	 * @return
 	 */
-	public boolean avancer(){
+	public void avancer(){
 		
 		
 		if (super.getCheminRoute().isEmpty() ) {
@@ -51,19 +51,15 @@ public class Voiture extends Gps{
 
 			this.positionFuture = super.getCheminRoute().indexOf(routeActuelle)+1;
 			
-			System.out.println("Position future: "+positionFuture);
+			//System.out.println("Position future: "+positionFuture);
 			
-			System.out.println("Route actuelle " +super.getCheminRoute().indexOf(routeActuelle));
+			//System.out.println("Route actuelle " +super.getCheminRoute().indexOf(routeActuelle));
 			
-			System.out.println("Noeud fin "+super.getNoeudFin());
+			//System.out.println("Noeud fin "+super.getNoeudFin());
 			
-			return true;
 		}
-		
-		
-		
-		return false;
 		
 	}
 
 }
+
