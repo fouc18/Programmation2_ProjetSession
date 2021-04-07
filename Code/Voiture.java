@@ -20,9 +20,16 @@ public class Voiture extends Gps{
 	private static int compteur;
 
 	public Voiture(){
+		
 		super(0,3);
+		
 		this.positionActuelle = super.getNoeudDepart();
+		
 		this.positionFin = super.getNoeudFin();
+		
+		compteur =0;
+		
+		super.calculeItineraire(positionActuelle);
 	}
 
 	public Voiture(int depart, int fin) {
@@ -32,70 +39,47 @@ public class Voiture extends Gps{
 		compteur =0;
 
 		positionFin = fin;
+		
 		this.positionActuelle = super.getNoeudDepart();
-
-		System.out.println("position actuelle: " +positionActuelle);
+		
+		super.calculeItineraire(positionActuelle);
 	}
 
 
 	/**
 	 * 
-	 * @return
+	 * @return boolean, s'il a reussi a avancer
 	 */
-	public void avancer(){
+	public boolean avancer(){
 
-		if (super.getCheminRoute().isEmpty() ) {
+	/*	if (super.getCheminRoute().isEmpty() ) {
 
 			super.calculeItineraire(positionActuelle);
-			
+
 			compteur = 0;
 		}
-
+	 */
+		
+		
 		//while(this.positionActuelle != super.getNoeudFin()) {
+		
 
-		//super.calculeItineraire(positionActuelle);
+		super.calculeItineraire(positionActuelle);
 
 		if(positionActuelle != super.getNoeudFin()) {
-
-			//if(super.getCheminRoute().indexOf(super.getCheminRoute().get(positionActuelle-1)) < super.getCheminRoute().size()) {
-
-		
 
 			Route routeActuelle = super.getCheminRoute().get(compteur);
 
 			compteur ++;
 
-			//this.positionActuelle = super.getCheminRoute().indexOf(routeActuelle)+1;
 			this.positionActuelle = routeActuelle.getNoeud(1);
-			
+
 			super.ajouterDistance(routeActuelle.getLongueur());
-			
-			//System.out.print("Ceci est getCheminRoute "+getCheminRoute().toString());
-			System.out.println("position actuelle: " +positionActuelle);
-			
-			
-		}else {
-			System.out.println("Pas cappable avansser");
+
+			return true;
 		}
-
-		//System.out.println("Ceci est posDep "+ positionActuelle);
-
-		//System.out.println("Ceci est noeudFin "+ super.getNoeudFin());
-
-		//System.out.println("Deplacement actuel: "+ routeActuelle);
-		//System.out.println("Chemin actuel: " +positionActuelle);
-
-
-		//System.out.println("Position future: "+positionFuture);
-
-		//System.out.println("Route actuelle " +super.getCheminRoute().indexOf(routeActuelle));
-
-		//System.out.println("Noeud fin "+super.getNoeudFin());
-
-		//}
-
+		return false;
 	}
-
 	/**
 	 * 
 	 * @return Position actuelle de la voiture (noeud) 
@@ -103,6 +87,11 @@ public class Voiture extends Gps{
 	public int getPositionActuelle() {
 
 		return this.positionActuelle;
+	}
+	
+	public String toString() {
+		
+		return "Voiture a la position: " + positionActuelle;
 	}
 
 

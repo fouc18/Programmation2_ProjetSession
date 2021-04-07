@@ -144,12 +144,14 @@ public class Gps extends Route {
 	 */
 	public void calculeItineraire(int positionActuelle) {
 
-		int[] cheminNoeud = Dijkstra.cheminASuivre( distNoeud, positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
+		int[] cheminNoeud = Dijkstra.cheminASuivre( modifierGraphe(), positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
+		
+		System.out.println("Ceci est chemin route: " +cheminRoute.toString());
 		
 		if (!this.cheminRoute.isEmpty()) {
 
 			this.cheminRoute.clear();
-			
+			System.out.println("Clear hihi :P" +cheminRoute.toString());
 		}
 		
 		for (int i =0; i<cheminNoeud.length-1; i++) {
@@ -230,6 +232,7 @@ public class Gps extends Route {
 	 * Main pour tester les methodes de Gps
 	 * @param args
 	 */
+	/*
 	public static void main (String args[]) {
 		
 		Gps g = new Gps(2,5);
@@ -248,5 +251,6 @@ public class Gps extends Route {
 		//System.out.println(Arrays.deepToString(g2));
 		
 	}
+	*/
 
 }

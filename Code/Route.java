@@ -22,7 +22,7 @@ public class Route {
 		noeuds[0] = 0;
 		noeuds[1] = 1;
 		maxVoiture = 10;
-		setTrafic(genererTrafic());
+		genererTrafic();
 		setLongueur(20);
 		updateEtat();
 	}
@@ -33,7 +33,7 @@ public class Route {
 		noeuds[1] = noeudArrive;
 
 		setMaxVoiture(maxVoiture);
-		setTrafic(genererTrafic());
+		genererTrafic();
 		setLongueur(longueur);
 		updateEtat();
 	}
@@ -43,9 +43,10 @@ public class Route {
 	 * 
 	 * @return nombre de voitures sur la route
 	 */
-	public int genererTrafic() {
+	public void genererTrafic() {
 		Random random = new Random();
-		return random.nextInt(maxVoiture + 1);
+		setTrafic(random.nextInt(maxVoiture + 1));
+
 	}
 
 	/*
