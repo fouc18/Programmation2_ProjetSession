@@ -145,8 +145,8 @@ public class Route {
 	 * @return La description complete de la route
 	 */
 	public String toString() {
-		return "Noeuds: " + getNoeuds(0) + " => "+ getNoeuds(1) + " Nbre de voitures: " + getNbreVoiture() + "/" + getMaxVoiture()
-		+ " tailles: " + getLongueur() + " Etat; " + getEtat();
+		return " \n"+"Noeuds: " + getNoeuds(0) + " => "+ getNoeuds(1) + " Nbre de voitures: " + getNbreVoiture() + "/" + getMaxVoiture()
+		 +" tailles: " + getLongueur() +  " Etat; " + getEtat() ;
 	}
 
 }

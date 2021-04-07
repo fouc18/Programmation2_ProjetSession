@@ -17,23 +17,36 @@ public class VoitureTest {
 		System.out.println(v.avancer());
 		System.out.println(v.avancer());
 		System.out.println(v.avancer());
-		
+
 
 		System.out.println(v.getNoeudFin());
-		
+
 		v.calculeItineraire();
-		
+
 		System.out.println(v.getCheminRoute().toString());
-		*/	
-	
-		
-		Voiture v2 = new Voiture(0,3);
+		 */	
+
+
+		Voiture v2 = new Voiture(2,6);
+
+
 
 		v2.avancer();
-	
-		System.out.println(v2.getCheminRoute().toString());
+		v2.avancer();
+		v2.avancer();
+		v2.avancer();
+		v2.avancer();
+		v2.avancer();
+		v2.avancer();
 		
 		
+
+
+
+
+
+
+
 	}
 
 }
