@@ -9,9 +9,9 @@ public class GpsTest {
 
     public static void main( String[] args ) {
     	
-        Gps g = new Gps(4,4);
+        Gps g = new Gps(2,4);
         
-        g.calculeItineraire(4);
+        g.calculeItineraire(2);
         
         System.out.println(g.getCheminRoute().toString());
     }

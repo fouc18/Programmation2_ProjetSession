@@ -27,18 +27,18 @@ public class VoitureTest {
 		 */	
 
 
-		Voiture v2 = new Voiture(2,6);
-
-
+		Voiture v2 = new Voiture(2,1);
+		
+		System.out.println("la distance: " +v2.getDistance());
 
 		v2.avancer();
-		v2.avancer();
-		v2.avancer();
+		
 		v2.avancer();
 		v2.avancer();
 		v2.avancer();
 		v2.avancer();
 		
+		System.out.println("la distance: " +v2.getDistance());
 		
 
 

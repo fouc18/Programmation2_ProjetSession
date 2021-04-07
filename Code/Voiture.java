@@ -44,13 +44,12 @@ public class Voiture extends Gps{
 	 */
 	public void avancer(){
 
-
 		if (super.getCheminRoute().isEmpty() ) {
 
 			super.calculeItineraire(positionActuelle);
+			
+			compteur = 0;
 		}
-
-
 
 		//while(this.positionActuelle != super.getNoeudFin()) {
 
@@ -60,20 +59,24 @@ public class Voiture extends Gps{
 
 			//if(super.getCheminRoute().indexOf(super.getCheminRoute().get(positionActuelle-1)) < super.getCheminRoute().size()) {
 
-			System.out.println("dans le if");
+		
 
 			Route routeActuelle = super.getCheminRoute().get(compteur);
 
 			compteur ++;
 
-			this.positionActuelle = super.getCheminRoute().indexOf(routeActuelle)+1;
-
+			//this.positionActuelle = super.getCheminRoute().indexOf(routeActuelle)+1;
+			this.positionActuelle = routeActuelle.getNoeud(1);
+			
+			super.ajouterDistance(routeActuelle.getLongueur());
+			
 			//System.out.print("Ceci est getCheminRoute "+getCheminRoute().toString());
 			System.out.println("position actuelle: " +positionActuelle);
+			
+			
 		}else {
 			System.out.println("Pas cappable avansser");
 		}
-
 
 		//System.out.println("Ceci est posDep "+ positionActuelle);
 

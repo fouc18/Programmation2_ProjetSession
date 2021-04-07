@@ -156,7 +156,7 @@ public class Gps extends Route {
 		
 			for (int j = 0; j<= listeRoutes.length-1; j++) {
 
-				if( (cheminNoeud[i] == listeRoutes[j].getNoeuds(0) ) && (cheminNoeud[i+1] == listeRoutes[j].getNoeuds(1))) {
+				if( (cheminNoeud[i] == listeRoutes[j].getNoeud(0) ) && (cheminNoeud[i+1] == listeRoutes[j].getNoeud(1))) {
 					
 					this.cheminRoute.add(listeRoutes[j]);
 					//si une route est relie par les deux noeuds, l'ajouter 
@@ -218,7 +218,7 @@ public class Gps extends Route {
 
 			if((listeRoutes[i].getEtat() == EtatRoute.CONGESTION) || ( listeRoutes[i].getEtat() == EtatRoute.ACCIDENT)){	// Si une route est fermee
 				
-				copieGraphe[listeRoutes[i].getNoeuds(0) ][listeRoutes[i].getNoeuds(1)] = 0 ;
+				copieGraphe[listeRoutes[i].getNoeud(0) ][listeRoutes[i].getNoeud(1)] = 0 ;
 			}
 		}
 		

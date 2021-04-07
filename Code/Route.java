@@ -128,7 +128,7 @@ public class Route {
 		return this.etat;
 	}
 
-	public int getNoeuds(int n) {
+	public int getNoeud(int n) {
 
 		if ( n<noeuds.length ) {
 
@@ -145,7 +145,7 @@ public class Route {
 	 * @return La description complete de la route
 	 */
 	public String toString() {
-		return " \n"+"Noeuds: " + getNoeuds(0) + " => "+ getNoeuds(1) + " Nbre de voitures: " + getNbreVoiture() + "/" + getMaxVoiture()
+		return " \n"+"Noeuds: " + getNoeud(0) + " => "+ getNoeud(1) + " Nbre de voitures: " + getNbreVoiture() + "/" + getMaxVoiture()
 		 +" tailles: " + getLongueur() +  " Etat; " + getEtat() ;
 	}
 

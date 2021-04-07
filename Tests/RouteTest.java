@@ -20,7 +20,7 @@ public class RouteTest {
         Route r2 = new Route();
         Route r3 = new Route();
         
-        Gps g = new Gps();
+        Gps g = new Gps(2,3);
         
         System.out.println("Rapport sur les routes");
         System.out.println(r1);
