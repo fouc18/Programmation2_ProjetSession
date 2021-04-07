@@ -1,20 +1,18 @@
 package Tests;
 
-
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import Code.Gps;
 
-public class GpsTest extends Gps {
+public class GpsTest {
 
     public static void main( String[] args ) {
-        Gps g = new Gps();
+    	
+        Gps g = new Gps(2,4);
         
-        g.calculeItineraire();
+        g.calculeItineraire(2);
         
-        System.out.print(g.getCheminRoute().toString());
+        System.out.println(g.getCheminRoute().toString());
     }
-
 }

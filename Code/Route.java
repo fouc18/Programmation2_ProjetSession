@@ -22,7 +22,7 @@ public class Route {
 		noeuds[0] = 0;
 		noeuds[1] = 1;
 		maxVoiture = 10;
-		setTrafic(genererTrafic());
+		genererTrafic();
 		setLongueur(20);
 		updateEtat();
 	}
@@ -33,7 +33,7 @@ public class Route {
 		noeuds[1] = noeudArrive;
 
 		setMaxVoiture(maxVoiture);
-		setTrafic(genererTrafic());
+		genererTrafic();
 		setLongueur(longueur);
 		updateEtat();
 	}
@@ -43,9 +43,10 @@ public class Route {
 	 * 
 	 * @return nombre de voitures sur la route
 	 */
-	public int genererTrafic() {
+	public void genererTrafic() {
 		Random random = new Random();
-		return random.nextInt(maxVoiture + 1);
+		setTrafic(random.nextInt(maxVoiture + 1));
+
 	}
 
 	/*
@@ -128,7 +129,7 @@ public class Route {
 		return this.etat;
 	}
 
-	public int getNoeuds(int n) {
+	public int getNoeud(int n) {
 
 		if ( n<noeuds.length ) {
 
@@ -145,8 +146,8 @@ public class Route {
 	 * @return La description complete de la route
 	 */
 	public String toString() {
-		return "Noeuds: " + getNoeuds(0) + " => "+ getNoeuds(1) + " Nbre de voitures: " + getNbreVoiture() + "/" + getMaxVoiture()
-		+ " tailles: " + getLongueur() + " Etat; " + getEtat();
+		return " \n"+"Noeuds: " + getNoeud(0) + " => "+ getNoeud(1) + " Nbre de voitures: " + getNbreVoiture() + "/" + getMaxVoiture()
+		 +" tailles: " + getLongueur() +  " Etat; " + getEtat() ;
 	}
 
 }
