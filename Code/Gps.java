@@ -25,7 +25,7 @@ public class Gps extends Route {
 	protected ArrayList<Route> cheminRoute;
 	private int distanceParcourue;
 	public Route[] listeRoutes;
-	
+
 	// Graphe d'origine sans congestion
 	protected static int[][] distNoeud = { { 0, 5, 0, 0, 0, 1, 2, 0 },
 			{ 5, 0, 1, 0, 0, 0, 3, 0 },
@@ -35,7 +35,7 @@ public class Gps extends Route {
 			{ 1, 0, 0, 0, 3, 0, 1, 0 },
 			{ 2, 3, 0, 0, 0, 1, 0, 10 },
 			{ 0, 0, 3, 6, 4, 0, 10, 0 } };
-	
+
 	protected  int[][] copieGraphe = distNoeud.clone();
 
 	/**
@@ -44,22 +44,22 @@ public class Gps extends Route {
 	public Gps(int noeudDepart, int noeudFin) {
 
 		this.noeudDepart = noeudDepart;
-		
+
 		this.noeudFin = noeudFin;
 
 		cheminRoute = new ArrayList<Route>() ;
-		
+
 		creationRoute();
 
 		setDistanceParcourue( 0 );
 	}
-	
-	
+
+
 	/**
 	 * Creation des routes
 	 */
 	public void creationRoute() {
-		
+
 		listeRoutes = new Route[26]; // Creer les routes
 		listeRoutes[0]  = new Route( 10, 5, 0, 1);  //maxVoiture, longueur, noeudDepart, noeudArrive
 		listeRoutes[1]  = new Route( 4, 2, 0, 6); 
@@ -88,8 +88,8 @@ public class Gps extends Route {
 		listeRoutes[24] = new Route( 8, 4, 7, 4);
 		listeRoutes[25] = new Route( 20, 10, 7, 6);
 
-		
-		
+
+
 	}
 
 	/**
@@ -136,40 +136,49 @@ public class Gps extends Route {
 
 		return this.noeudFin ;
 	}
-	
-	
+
+
 
 	/**
 	 * Transforme le tableau de noeud de dijkstra en tableau de routes.
 	 */
 	public void calculeItineraire(int positionActuelle) {
 
-		int[] cheminNoeud = Dijkstra.cheminASuivre( modifierGraphe(), positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
+
 		
-		System.out.println("Ceci est chemin route: " +cheminRoute.toString());
+		int [] cheminNoeud = Dijkstra.cheminASuivre(modifierGraphe(), positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
+
+		System.out.println("position actuelle "+ positionActuelle);		
 		
+		System.out.println("ceci est chemin noeud " +Arrays.toString(cheminNoeud));
+		//System.out.println("Ceci est chemin route: " +cheminRoute.toString());
+
 		if (!this.cheminRoute.isEmpty()) {
 
 			this.cheminRoute.clear();
 			System.out.println("Clear hihi :P" +cheminRoute.toString());
 		}
-		
+
 		for (int i =0; i<cheminNoeud.length-1; i++) {
-		
+
 			for (int j = 0; j<= listeRoutes.length-1; j++) {
 
-				if( (cheminNoeud[i] == listeRoutes[j].getNoeud(0) ) && (cheminNoeud[i+1] == listeRoutes[j].getNoeud(1))) {
-					
-					this.cheminRoute.add(listeRoutes[j]);
-					//si une route est relie par les deux noeuds, l'ajouter 
+				if( (cheminNoeud[i] == listeRoutes[j].getNoeud(0))) {
 
+					if (cheminNoeud[i+1] == listeRoutes[j].getNoeud(1)) {
+
+						this.cheminRoute.add(listeRoutes[j]);
+						//si une route est relie par les deux noeuds, l'ajouter 
+					}
 				}
 
 			}	
 
 		}
-		//System.out.println("Itineraire: "+cheminRoute);
-			
+		
+		
+		System.out.println("Itineraire: "+cheminRoute);
+
 	}
 
 	/**
@@ -180,13 +189,13 @@ public class Gps extends Route {
 
 		distanceParcourue += distance;
 	}
-	
+
 	/**
 	 * 
 	 * @return liste des routes
 	 */
 	public Route[] getListeRoute() {
-		
+
 		return listeRoutes;
 	}
 
@@ -206,7 +215,7 @@ public class Gps extends Route {
 
 		this.distanceParcourue = distance;
 	}
-	
+
 	/**
 	 * Modifie le graphe en remplacant les routes fermees par des 0 dans 
 	 * la copie du graphe de depart.
@@ -219,11 +228,11 @@ public class Gps extends Route {
 		for (int i = 0 ; i< listeRoutes.length; i++) {
 
 			if((listeRoutes[i].getEtat() == EtatRoute.CONGESTION) || ( listeRoutes[i].getEtat() == EtatRoute.ACCIDENT)){	// Si une route est fermee
-				
+
 				copieGraphe[listeRoutes[i].getNoeud(0) ][listeRoutes[i].getNoeud(1)] = 0 ;
 			}
 		}
-		
+
 		return copieGraphe;
 	}
 
@@ -234,11 +243,11 @@ public class Gps extends Route {
 	 */
 	/*
 	public static void main (String args[]) {
-		
+
 		Gps g = new Gps(2,5);
-		
+
 		int [][] g2 = g.modifierGraphe();
-		
+
 		for(int i = 0; i < g2.length; i++) {
 			System.out.print("[");
 			for(int j = 0; j < g2[i].length; j++) {
@@ -247,10 +256,10 @@ public class Gps extends Route {
 			System.out.print("]");
 			System.out.println();
 		}
-		
+
 		//System.out.println(Arrays.deepToString(g2));
-		
+
 	}
-	*/
+	 */
 
 }

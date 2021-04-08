@@ -14,34 +14,41 @@ public class ControleurTest {
 
 		c.demarrer(0, 3);
 		
-		System.out.println(c.getVoiture().getListeRoute()[0]);
-
-		System.out.println("la distance est: " +c.getVoiture().getDistance());
-
-		System.out.println("La position actuelle est: "+c.getVoiture().getPositionActuelle());
+		//c.getVoiture().getListeRoute()[1].setTrafic(4);
 		
-		System.out.println(c.getVoiture().getCheminRoute());
+		//c.getVoiture().getListeRoute()[2].setTrafic(2);
+		
+		//System.out.println(c.getVoiture().getListeRoute()[0]);
+
+		//System.out.println("la distance est: " +c.getVoiture().getDistance());
+
+		//System.out.println("La position actuelle est: "+c.getVoiture().getPositionActuelle());
+		
+		//System.out.println(c.getVoiture().getCheminRoute());
 		
 		//while(c.deplacement() ) {
 		
 		
 		c.deplacement();
 		
+		//System.out.println("ceci est liste route: " +Arrays.toString(c.getVoiture().getListeRoute()));
+		
+		//c.getVoiture().getListeRoute()[4].setTrafic(2);
 		
 		c.deplacement();
 		
-		System.out.println(c.getVoiture().getCheminRoute());
+	//	System.out.println(c.getVoiture().getCheminRoute());
 	
 		
-			System.out.println("Avance, position actuelle est: "+c.getVoiture().getPositionActuelle());
+	//		System.out.println("Avance, position actuelle est: "+c.getVoiture().getPositionActuelle());
 
 		//}
 
-		System.out.println("la distance est: " +c.getVoiture().getDistance());
+		//System.out.println("la distance est: " +c.getVoiture().getDistance());
 		
-		System.out.println("La position actuelle est: "+c.getVoiture().getPositionActuelle());
+	//	System.out.println("La position actuelle est: "+c.getVoiture().getPositionActuelle());
 		
-		System.out.println(c.getVoiture().getListeRoute()[0]);
+		//System.out.println(c.getVoiture().getListeRoute()[0]);
 		
 
 	}

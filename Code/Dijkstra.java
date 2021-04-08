@@ -38,6 +38,8 @@ class Dijkstra {
      */
     public static int [] cheminASuivre(int[][] grapheMatrice, int noeudDepart, int noeudArrivee) {
     	
+    	route.clear();
+    	
     	dijkstra(grapheMatrice, noeudDepart);
     	
     	route = getChemin(noeudArrivee, parents);
