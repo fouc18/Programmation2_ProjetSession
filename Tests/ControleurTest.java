@@ -5,51 +5,51 @@ import java.util.Arrays;
 
 import Code.Controleur;
 import Code.Gps;
+import exception.NoeudIntrouvableException;
 
 public class ControleurTest {
 
-	public static void main( String[] args ) {
+	public static void main( String[] args ) throws ArrayIndexOutOfBoundsException {
 
 		Controleur c = new Controleur();
 
 		c.demarrer(0, 3);
 		
+		//c.getVoiture().getListeRoute()[0].setTrafic(10);
 		//c.getVoiture().getListeRoute()[1].setTrafic(4);
-		
 		//c.getVoiture().getListeRoute()[2].setTrafic(2);
 		
-		//System.out.println(c.getVoiture().getListeRoute()[0]);
-
-		//System.out.println("la distance est: " +c.getVoiture().getDistance());
-
-		//System.out.println("La position actuelle est: "+c.getVoiture().getPositionActuelle());
-		
-		//System.out.println(c.getVoiture().getCheminRoute());
-		
-		//while(c.deplacement() ) {
-		
-		
-		c.deplacement();
-		
-		//System.out.println("ceci est liste route: " +Arrays.toString(c.getVoiture().getListeRoute()));
-		
-		//c.getVoiture().getListeRoute()[4].setTrafic(2);
-		
-		c.deplacement();
+	//	System.out.println(Arrays.toString(c.getVoiture().getListeRoute()));
 		
 	//	System.out.println(c.getVoiture().getCheminRoute());
+		
+		/*
+		System.out.println("position" +c.getVoiture().getPositionActuelle());		
+		
+
+		
+		c.deplacement();
 	
+		System.out.println("position" +c.getVoiture().getPositionActuelle());	
 		
-	//		System.out.println("Avance, position actuelle est: "+c.getVoiture().getPositionActuelle());
-
-		//}
-
-		//System.out.println("la distance est: " +c.getVoiture().getDistance());
+		System.out.println(c.getVoiture().getCheminRoute());
 		
-	//	System.out.println("La position actuelle est: "+c.getVoiture().getPositionActuelle());
+		c.deplacement();
 		
-		//System.out.println(c.getVoiture().getListeRoute()[0]);
-		
+		System.out.println("FIN");
+	
+		c.deplacement();
+		c.deplacement();
+		c.deplacement();
+		*/
+		System.out.println("position initiale: "+c.getVoiture().getPositionActuelle());
+		while(c.deplacement()!=2) {
+			
+			
+			System.out.println("position: "+c.getVoiture().getPositionActuelle());
+			//System.out.println(c.getVoiture().getCheminRoute());
+			
+		}
 
 	}
 }

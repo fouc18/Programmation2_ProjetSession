@@ -10,6 +10,7 @@ package Code;
 
 import java.util.Arrays;
 
+
 /* Cette classe permet de representer le comportement d'une voiture */
 public class Voiture extends Gps{
 
@@ -20,53 +21,73 @@ public class Voiture extends Gps{
 	private static int compteur;
 
 	public Voiture(){
-		
+
 		super(0,3);
-		
+
 		this.positionActuelle = super.getNoeudDepart();
-		
+
 		this.positionFin = super.getNoeudFin();
-		
+
 		compteur =0;
-		
-		super.calculeItineraire(positionActuelle);
+
+
+		try {
+			super.calculeItineraire(positionActuelle);
+		}catch(IndexOutOfBoundsException e) {
+			super.reinitialiserTraffic();
+		}
+
+
 	}
 
-	public Voiture(int depart, int fin) {
+	public Voiture(int depart, int fin){
 
 		super(depart, fin);
 
 		compteur =0;
 
 		positionFin = fin;
-		
+
 		this.positionActuelle = super.getNoeudDepart();
-		
-		super.calculeItineraire(positionActuelle);
+
+		try {
+			super.calculeItineraire(positionActuelle);
+		}catch(IndexOutOfBoundsException e) {
+			super.reinitialiserTraffic();
+		}
+	}
+
+	public void trouverItineraire() {
+
+		try {
+			super.calculeItineraire(positionActuelle);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Dans le constructeur");
+
+			super.reinitialiserTraffic();
+			trouverItineraire();
+		}
+
 	}
 
 
 	/**
 	 * 
-	 * @return boolean, s'il a reussi a avancer
+	 * @return 0, la voiture a avance
+	 * @return 1, trop de congestion pour la voiture
+	 * @return 2, la voiture a atteint sa destination
 	 */
-	public boolean avancer(){
+	public int avancer(){
 
-	/*	if (super.getCheminRoute().isEmpty() ) {
+		if(positionActuelle == super.getNoeudFin()) {
+			return 2;
+
+		}
+
+		try {
 
 			super.calculeItineraire(positionActuelle);
-
-			compteur = 0;
-		}
-	 */
-		
-		
-		//while(this.positionActuelle != super.getNoeudFin()) {
-		
-
-		super.calculeItineraire(positionActuelle);
-
-		if(positionActuelle != super.getNoeudFin()) {
 
 			Route routeActuelle = super.getCheminRoute().get(compteur);
 
@@ -76,9 +97,22 @@ public class Voiture extends Gps{
 
 			super.ajouterDistance(routeActuelle.getLongueur());
 
-			return true;
+			if(positionActuelle == super.getNoeudFin()) {
+				return 2;
+
+			}
+			return 0;
+
+		} catch(ArrayIndexOutOfBoundsException e) {
+
+			System.out.println("catch: avancer");
+
+			//super.reinitialiserTraffic();
+			
+			return 1;
+
 		}
-		return false;
+
 	}
 	/**
 	 * 
@@ -88,9 +122,9 @@ public class Voiture extends Gps{
 
 		return this.positionActuelle;
 	}
-	
+
 	public String toString() {
-		
+
 		return "Voiture a la position: " + positionActuelle;
 	}
 

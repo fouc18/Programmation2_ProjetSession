@@ -9,10 +9,11 @@
  * */
 package Code;
 
-import java.util.Arrays;
+import java.util.Arrays;	
 import java. util.ArrayList;
 
 import Code.Dijkstra;
+
 
 public class Gps extends Route {
 
@@ -54,16 +55,15 @@ public class Gps extends Route {
 		setDistanceParcourue( 0 );
 	}
 
-
 	/**
 	 * Creation des routes
 	 */
 	public void creationRoute() {
 
 		listeRoutes = new Route[26]; // Creer les routes
-		listeRoutes[0]  = new Route( 10, 5, 0, 1);  //maxVoiture, longueur, noeudDepart, noeudArrive
-		listeRoutes[1]  = new Route( 4, 2, 0, 6); 
-		listeRoutes[2]  = new Route( 2, 1, 0, 5); 
+		listeRoutes[0]  = new Route( 100, 5, 0, 1);  //maxVoiture, longueur, noeudDepart, noeudArrive
+		listeRoutes[1]  = new Route( 400, 2, 0, 6); 
+		listeRoutes[2]  = new Route( 200, 1, 0, 5); 
 		listeRoutes[3]  = new Route( 10, 5, 1, 0);
 		listeRoutes[4]  = new Route( 2, 1, 1, 2);
 		listeRoutes[5]  = new Route( 6, 3, 1, 6);
@@ -87,8 +87,6 @@ public class Gps extends Route {
 		listeRoutes[23] = new Route( 12, 6, 7, 3);
 		listeRoutes[24] = new Route( 8, 4, 7, 4);
 		listeRoutes[25] = new Route( 20, 10, 7, 6);
-
-
 
 	}
 
@@ -141,45 +139,38 @@ public class Gps extends Route {
 
 	/**
 	 * Transforme le tableau de noeud de dijkstra en tableau de routes.
+	 * @throws ArrayIndexOutOfBoundsException 
+	 * @throws ArrayIndexOutOfBoundsException 
 	 */
-	public void calculeItineraire(int positionActuelle) {
+	public void calculeItineraire(int positionActuelle) throws ArrayIndexOutOfBoundsException  {
 
-
+		//System.out.println(Arrays.toString(listeRoutes));
+		
+		
 		
 		int [] cheminNoeud = Dijkstra.cheminASuivre(modifierGraphe(), positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
-
-		System.out.println("position actuelle "+ positionActuelle);		
-		
-		System.out.println("ceci est chemin noeud " +Arrays.toString(cheminNoeud));
-		//System.out.println("Ceci est chemin route: " +cheminRoute.toString());
 
 		if (!this.cheminRoute.isEmpty()) {
 
 			this.cheminRoute.clear();
-			System.out.println("Clear hihi :P" +cheminRoute.toString());
+
 		}
 
 		for (int i =0; i<cheminNoeud.length-1; i++) {
 
 			for (int j = 0; j<= listeRoutes.length-1; j++) {
 
-				if( (cheminNoeud[i] == listeRoutes[j].getNoeud(0))) {
+				if((cheminNoeud[i] == listeRoutes[j].getNoeud(0)) && 
+						(cheminNoeud[i+1] == listeRoutes[j].getNoeud(1))) {
 
-					if (cheminNoeud[i+1] == listeRoutes[j].getNoeud(1)) {
-
-						this.cheminRoute.add(listeRoutes[j]);
-						//si une route est relie par les deux noeuds, l'ajouter 
-					}
+					this.cheminRoute.add(listeRoutes[j]);
+					//si une route est relie par les deux noeuds, l'ajouter 
 				}
-
 			}	
-
 		}
-		
-		
-		System.out.println("Itineraire: "+cheminRoute);
 
 	}
+
 
 	/**
 	 * Ajoute la distance recemment parcourue a la distance totale parcourue.
@@ -197,6 +188,15 @@ public class Gps extends Route {
 	public Route[] getListeRoute() {
 
 		return listeRoutes;
+	}
+
+	public void reinitialiserTraffic() {
+
+		for(int i = 0;  i < listeRoutes.length; i++) {
+
+			listeRoutes[i].genererTrafic();
+		}
+
 	}
 
 	/**
