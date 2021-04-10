@@ -17,7 +17,9 @@ package Code;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-class Dijkstra {
+
+
+public class Dijkstra {
 
 	/**
 	 * Constantes et variables globales
@@ -35,8 +37,12 @@ class Dijkstra {
      * @param noeudDepart : Le noeud d'ou commencera le chemin
      * @param noeudArrivee : Le noeud ou finira le chemin
      * @return un tableau d'entiers contenant le chemin le plus court
+     * @throws ArrayIndexOutOfBoundsException 
+     * 
      */
-    public static int [] cheminASuivre(int[][] grapheMatrice, int noeudDepart, int noeudArrivee) {
+    public static int [] cheminASuivre(int[][] grapheMatrice, int noeudDepart, int noeudArrivee)  {
+    	
+    	route.clear();
     	
     	dijkstra(grapheMatrice, noeudDepart);
     	
@@ -78,8 +84,10 @@ class Dijkstra {
 	 * @param noeudDepart : Le noeud d'ou commence le chemin
 	 * @param noeudArrivee : Le noeud ou finit le chemin
 	 * @return La distance parcourue sous forme d'un entier
+	 * @throws ArrayIndexOutOfBoundsException 
+	 * @throws ArrayIndexOutOfBoundsException 
 	 */
-	public static int distanceMin(int[][] grapheMatrice, int noeudDepart, int noeudArrivee) {
+	public static int distanceMin(int[][] grapheMatrice, int noeudDepart, int noeudArrivee)  {
 	    	
 	    	dijkstra(grapheMatrice, noeudDepart);
 	    	return distancesMin[noeudArrivee];
@@ -90,8 +98,11 @@ class Dijkstra {
      * resultats dans les variables globales parents et distancesMin respectivement.
      * @param grapheMatrice : Une matrice en deux dimensions representant un graphe
      * @param noeudDepart : Le noeud d'ou commencera le calcul des chemins
+     * @throws ArrayIndexOutOfBoundsException 
      */
-    private static void dijkstra(int[][] grapheMatrice, int noeudDepart) {
+    private static void dijkstra(int[][] grapheMatrice, int noeudDepart)   {
+    	
+    	
     	
         int nbNoeuds = grapheMatrice[0].length;
 
@@ -149,9 +160,10 @@ class Dijkstra {
                 }
             }
 
+           
             // Marque le noeud choisi comme evalue
             ajoute[noeudVoisin] = true;
-
+          
             /*
              * Met a jour la distance des noeuds voisins en
              * fonction du noeud choisi.
@@ -167,11 +179,13 @@ class Dijkstra {
                 }
             }
         }
+        
+    	 
     }
 
     
     // Main pour tester
-    public static void main(String[] args)
+    public static void main(String[] args) 
     {
         int[][] adjacencyMatrix = { { 0, 5, 0, 0, 0, 1, 2, 0},
                 { 5, 0, 1, 0, 0, 0, 3, 0},

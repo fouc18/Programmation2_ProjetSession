@@ -28,19 +28,25 @@ public class Controleur {
 	 * 
 	 * @return possibilite d'avancer
 	 */
-	public boolean deplacement() {
+	public int deplacement() {
 		
-		for(int i = 0;  i < voitureActuelle.getListeRoute().length; i++) {
+		/*for(int i = 0;  i < voitureActuelle.getListeRoute().length; i++) {
 			
 			
 			voitureActuelle.getListeRoute()[i].genererTrafic();
 	
 		
-		}
+		} */
 		
-		return voitureActuelle.avancer();
+		voitureActuelle.reinitialiserTraffic();
 		
+		int resultatAvance = voitureActuelle.avancer();
 		
+		//System.out.println("Ceci est la position actuelle: "+voitureActuelle.getPositionActuelle());
+		
+		System.out.println("Ceci est le resultat de avance: " +resultatAvance);
+		
+		return resultatAvance;
 	}
 	
 }

@@ -9,10 +9,11 @@
  * */
 package Code;
 
-import java.util.Arrays;
+import java.util.Arrays;	
 import java. util.ArrayList;
 
 import Code.Dijkstra;
+
 
 public class Gps extends Route {
 
@@ -25,7 +26,7 @@ public class Gps extends Route {
 	protected ArrayList<Route> cheminRoute;
 	private int distanceParcourue;
 	public Route[] listeRoutes;
-	
+
 	// Graphe d'origine sans congestion
 	protected static int[][] distNoeud = { { 0, 5, 0, 0, 0, 1, 2, 0 },
 			{ 5, 0, 1, 0, 0, 0, 3, 0 },
@@ -35,7 +36,7 @@ public class Gps extends Route {
 			{ 1, 0, 0, 0, 3, 0, 1, 0 },
 			{ 2, 3, 0, 0, 0, 1, 0, 10 },
 			{ 0, 0, 3, 6, 4, 0, 10, 0 } };
-	
+
 	protected  int[][] copieGraphe = distNoeud.clone();
 
 	/**
@@ -44,52 +45,49 @@ public class Gps extends Route {
 	public Gps(int noeudDepart, int noeudFin) {
 
 		this.noeudDepart = noeudDepart;
-		
+
 		this.noeudFin = noeudFin;
 
 		cheminRoute = new ArrayList<Route>() ;
-		
+
 		creationRoute();
 
 		setDistanceParcourue( 0 );
 	}
-	
-	
+
 	/**
 	 * Creation des routes
 	 */
 	public void creationRoute() {
-		
+
 		listeRoutes = new Route[26]; // Creer les routes
-		listeRoutes[0]  = new Route( 10, 5, 0, 1);  //maxVoiture, longueur, noeudDepart, noeudArrive
-		listeRoutes[1]  = new Route( 4, 2, 0, 6); 
-		listeRoutes[2]  = new Route( 2, 1, 0, 5); 
-		listeRoutes[3]  = new Route( 10, 5, 1, 0);
-		listeRoutes[4]  = new Route( 2, 1, 1, 2);
-		listeRoutes[5]  = new Route( 6, 3, 1, 6);
-		listeRoutes[6]  = new Route( 2, 1, 2, 1);
-		listeRoutes[7]  = new Route( 6, 3, 2, 7);
+		listeRoutes[0]  = new Route( 100, 5, 0, 1);  //maxVoiture, longueur, noeudDepart, noeudArrive
+		listeRoutes[1]  = new Route( 100, 2, 0, 6); 
+		listeRoutes[2]  = new Route( 20, 1, 0, 5); 
+		listeRoutes[3]  = new Route( 100, 5, 1, 0);
+		listeRoutes[4]  = new Route( 20, 1, 1, 2);
+		listeRoutes[5]  = new Route( 60, 3, 1, 6);
+		listeRoutes[6]  = new Route( 20, 1, 2, 1);
+		listeRoutes[7]  = new Route( 60, 3, 2, 7);
 		listeRoutes[8]  = new Route( 12, 6, 2, 3);
 		listeRoutes[9]  = new Route( 12, 6, 3, 2);
 		listeRoutes[10] = new Route( 12, 6, 3, 7);
 		listeRoutes[11] = new Route( 24, 12, 3, 4);
-		listeRoutes[12] = new Route( 6, 3, 4, 5);
-		listeRoutes[13] = new Route( 8, 4, 4, 7);
+		listeRoutes[12] = new Route( 60, 3, 4, 5);
+		listeRoutes[13] = new Route( 80, 4, 4, 7);
 		listeRoutes[14] = new Route( 24, 12, 4, 3);
-		listeRoutes[15] = new Route( 2, 1, 5, 0);
-		listeRoutes[16] = new Route( 2, 1, 5, 6);
+		listeRoutes[15] = new Route( 20, 1, 5, 0);
+		listeRoutes[16] = new Route( 20, 1, 5, 6);
 		listeRoutes[17] = new Route( 6, 3, 5, 4);
-		listeRoutes[18] = new Route( 4, 2, 6, 0);
-		listeRoutes[19] = new Route( 6, 3, 6, 1);
-		listeRoutes[20] = new Route( 2, 1, 6, 5);
+		listeRoutes[18] = new Route( 40, 2, 6, 0);
+		listeRoutes[19] = new Route( 60, 3, 6, 1);
+		listeRoutes[20] = new Route( 20, 1, 6, 5);
 		listeRoutes[21] = new Route( 20, 10, 6, 7);
-		listeRoutes[22] = new Route( 6, 3, 7, 2);
+		listeRoutes[22] = new Route( 60, 3, 7, 2);
 		listeRoutes[23] = new Route( 12, 6, 7, 3);
-		listeRoutes[24] = new Route( 8, 4, 7, 4);
+		listeRoutes[24] = new Route( 80, 4, 7, 4);
 		listeRoutes[25] = new Route( 20, 10, 7, 6);
 
-		
-		
 	}
 
 	/**
@@ -136,41 +134,64 @@ public class Gps extends Route {
 
 		return this.noeudFin ;
 	}
-	
-	
+
+
 
 	/**
 	 * Transforme le tableau de noeud de dijkstra en tableau de routes.
+	 * @throws ArrayIndexOutOfBoundsException 
+	 * @throws ArrayIndexOutOfBoundsException 
 	 */
-	public void calculeItineraire(int positionActuelle) {
+	public void calculeItineraire(int positionActuelle) throws ArrayIndexOutOfBoundsException  {
 
-		int[] cheminNoeud = Dijkstra.cheminASuivre( modifierGraphe(), positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
-		
-		System.out.println("Ceci est chemin route: " +cheminRoute.toString());
-		
+		//System.out.println(Arrays.toString(listeRoutes));
+
+		copieGraphe = modifierGraphe();
+
+
+		int sommeCongestion = 0;
+
+		do {
+
+			for(int y = 0; y < copieGraphe[positionActuelle].length; y++) {
+
+				sommeCongestion += copieGraphe[positionActuelle][y];
+
+			}
+
+			if (sommeCongestion == 0) {
+
+				reinitialiserTraffic();
+
+				modifierGraphe();
+			}
+		}while(sommeCongestion == 0);
+
+
+		int [] cheminNoeud = Dijkstra.cheminASuivre(copieGraphe, positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
+
+
 		if (!this.cheminRoute.isEmpty()) {
 
 			this.cheminRoute.clear();
-			System.out.println("Clear hihi :P" +cheminRoute.toString());
+
 		}
-		
+
 		for (int i =0; i<cheminNoeud.length-1; i++) {
-		
+
 			for (int j = 0; j<= listeRoutes.length-1; j++) {
 
-				if( (cheminNoeud[i] == listeRoutes[j].getNoeud(0) ) && (cheminNoeud[i+1] == listeRoutes[j].getNoeud(1))) {
-					
+				if((cheminNoeud[i] == listeRoutes[j].getNoeud(0)) && 
+						(cheminNoeud[i+1] == listeRoutes[j].getNoeud(1))) {
+
 					this.cheminRoute.add(listeRoutes[j]);
 					//si une route est relie par les deux noeuds, l'ajouter 
-
 				}
-
 			}	
-
 		}
-		//System.out.println("Itineraire: "+cheminRoute);
-			
+
 	}
+
 
 	/**
 	 * Ajoute la distance recemment parcourue a la distance totale parcourue.
@@ -180,14 +201,23 @@ public class Gps extends Route {
 
 		distanceParcourue += distance;
 	}
-	
+
 	/**
 	 * 
 	 * @return liste des routes
 	 */
 	public Route[] getListeRoute() {
-		
+
 		return listeRoutes;
+	}
+
+	public void reinitialiserTraffic() {
+
+		for(int i = 0;  i < listeRoutes.length; i++) {
+
+			listeRoutes[i].genererTrafic();
+		}
+
 	}
 
 	/**
@@ -206,7 +236,7 @@ public class Gps extends Route {
 
 		this.distanceParcourue = distance;
 	}
-	
+
 	/**
 	 * Modifie le graphe en remplacant les routes fermees par des 0 dans 
 	 * la copie du graphe de depart.
@@ -219,11 +249,15 @@ public class Gps extends Route {
 		for (int i = 0 ; i< listeRoutes.length; i++) {
 
 			if((listeRoutes[i].getEtat() == EtatRoute.CONGESTION) || ( listeRoutes[i].getEtat() == EtatRoute.ACCIDENT)){	// Si une route est fermee
-				
+
 				copieGraphe[listeRoutes[i].getNoeud(0) ][listeRoutes[i].getNoeud(1)] = 0 ;
 			}
 		}
+
 		
+
+
+
 		return copieGraphe;
 	}
 
@@ -234,11 +268,11 @@ public class Gps extends Route {
 	 */
 	/*
 	public static void main (String args[]) {
-		
+
 		Gps g = new Gps(2,5);
-		
+
 		int [][] g2 = g.modifierGraphe();
-		
+
 		for(int i = 0; i < g2.length; i++) {
 			System.out.print("[");
 			for(int j = 0; j < g2[i].length; j++) {
@@ -247,10 +281,10 @@ public class Gps extends Route {
 			System.out.print("]");
 			System.out.println();
 		}
-		
+
 		//System.out.println(Arrays.deepToString(g2));
-		
+
 	}
-	*/
+	 */
 
 }
