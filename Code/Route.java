@@ -79,8 +79,10 @@ public class Route {
 	public void updateEtat() {
 		if (Accident.causeAccident() == true) {
 			this.etat = EtatRoute.ACCIDENT;
+			//this.etat = EtatRoute.FLUIDE;
 		} else if (this.nbreVoiture == this.maxVoiture) {
 			this.etat = EtatRoute.CONGESTION;
+			//this.etat = EtatRoute.FLUIDE;
 		} else {
 			this.etat = EtatRoute.FLUIDE;
 		}

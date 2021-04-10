@@ -15,11 +15,14 @@ public class ControleurTest {
 
 		c.demarrer(0, 3);
 		
+		
+		System.out.println("chemin route " +c.getVoiture().getCheminRoute());
+		
 		//c.getVoiture().getListeRoute()[0].setTrafic(10);
 		//c.getVoiture().getListeRoute()[1].setTrafic(4);
 		//c.getVoiture().getListeRoute()[2].setTrafic(2);
 		
-	//	System.out.println(Arrays.toString(c.getVoiture().getListeRoute()));
+		//System.out.println(Arrays.toString(c.getVoiture().getListeRoute()));
 		
 	//	System.out.println(c.getVoiture().getCheminRoute());
 		
@@ -42,12 +45,14 @@ public class ControleurTest {
 		c.deplacement();
 		c.deplacement();
 		*/
-		System.out.println("position initiale: "+c.getVoiture().getPositionActuelle());
+	//	System.out.println("position initiale: "+c.getVoiture().getPositionActuelle());
+		System.out.println("position: "+c.getVoiture().getPositionActuelle());
+		
 		while(c.deplacement()!=2) {
 			
-			
 			System.out.println("position: "+c.getVoiture().getPositionActuelle());
-			//System.out.println(c.getVoiture().getCheminRoute());
+		
+			
 			
 		}
 

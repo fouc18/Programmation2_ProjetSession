@@ -18,7 +18,7 @@ public class Voiture extends Gps{
 
 	private int positionFin;
 
-	private static int compteur;
+	private int compteur;
 
 	public Voiture(){
 
@@ -30,13 +30,11 @@ public class Voiture extends Gps{
 
 		compteur =0;
 
-
 		try {
 			super.calculeItineraire(positionActuelle);
 		}catch(IndexOutOfBoundsException e) {
 			super.reinitialiserTraffic();
 		}
-
 
 	}
 
@@ -81,37 +79,46 @@ public class Voiture extends Gps{
 	public int avancer(){
 
 		if(positionActuelle == super.getNoeudFin()) {
+			
+			System.out.println("Arrive !" + positionActuelle);
+			
 			return 2;
 
 		}
 
-		try {
+	//	try {
 
 			super.calculeItineraire(positionActuelle);
 
-			Route routeActuelle = super.getCheminRoute().get(compteur);
+			System.out.println("chemin route TEST: " +super.getCheminRoute());
+			
+			Route routeActuelle = super.getCheminRoute().get(0);
+			//Route routeActuelle = super.getCheminRoute().get(positionActuelle);
 
-			compteur ++;
+			//compteur ++;
+			
+		//	System.out.println("compteur " + compteur);
 
 			this.positionActuelle = routeActuelle.getNoeud(1);
 
 			super.ajouterDistance(routeActuelle.getLongueur());
-
-			if(positionActuelle == super.getNoeudFin()) {
-				return 2;
-
-			}
+			
+			//System.out.println("ceci est la position actuelle " +positionActuelle);
+		
+			
 			return 0;
 
-		} catch(ArrayIndexOutOfBoundsException e) {
+	//	} catch(ArrayIndexOutOfBoundsException e) {
 
-			System.out.println("catch: avancer");
-
-			//super.reinitialiserTraffic();
+		//	System.out.println("catch: avancer");
 			
-			return 1;
+		//	System.out.println("ceci est la position actuelle " +positionActuelle);
 
-		}
+		//	super.reinitialiserTraffic();
+			
+		//	return 1;
+
+	//	}
 
 	}
 	/**

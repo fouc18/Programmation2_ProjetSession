@@ -40,7 +40,7 @@ public class Dijkstra {
      * @throws ArrayIndexOutOfBoundsException 
      * 
      */
-    public static int [] cheminASuivre(int[][] grapheMatrice, int noeudDepart, int noeudArrivee) throws ArrayIndexOutOfBoundsException {
+    public static int [] cheminASuivre(int[][] grapheMatrice, int noeudDepart, int noeudArrivee)  {
     	
     	route.clear();
     	
@@ -87,7 +87,7 @@ public class Dijkstra {
 	 * @throws ArrayIndexOutOfBoundsException 
 	 * @throws ArrayIndexOutOfBoundsException 
 	 */
-	public static int distanceMin(int[][] grapheMatrice, int noeudDepart, int noeudArrivee) throws ArrayIndexOutOfBoundsException {
+	public static int distanceMin(int[][] grapheMatrice, int noeudDepart, int noeudArrivee)  {
 	    	
 	    	dijkstra(grapheMatrice, noeudDepart);
 	    	return distancesMin[noeudArrivee];
@@ -100,7 +100,7 @@ public class Dijkstra {
      * @param noeudDepart : Le noeud d'ou commencera le calcul des chemins
      * @throws ArrayIndexOutOfBoundsException 
      */
-    private static void dijkstra(int[][] grapheMatrice, int noeudDepart) throws  ArrayIndexOutOfBoundsException  {
+    private static void dijkstra(int[][] grapheMatrice, int noeudDepart)   {
     	
     	
     	
@@ -185,7 +185,7 @@ public class Dijkstra {
 
     
     // Main pour tester
-    public static void main(String[] args) throws  ArrayIndexOutOfBoundsException
+    public static void main(String[] args) 
     {
         int[][] adjacencyMatrix = { { 0, 5, 0, 0, 0, 1, 2, 0},
                 { 5, 0, 1, 0, 0, 0, 3, 0},

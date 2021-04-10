@@ -62,30 +62,30 @@ public class Gps extends Route {
 
 		listeRoutes = new Route[26]; // Creer les routes
 		listeRoutes[0]  = new Route( 100, 5, 0, 1);  //maxVoiture, longueur, noeudDepart, noeudArrive
-		listeRoutes[1]  = new Route( 400, 2, 0, 6); 
-		listeRoutes[2]  = new Route( 200, 1, 0, 5); 
-		listeRoutes[3]  = new Route( 10, 5, 1, 0);
-		listeRoutes[4]  = new Route( 2, 1, 1, 2);
-		listeRoutes[5]  = new Route( 6, 3, 1, 6);
-		listeRoutes[6]  = new Route( 2, 1, 2, 1);
-		listeRoutes[7]  = new Route( 6, 3, 2, 7);
+		listeRoutes[1]  = new Route( 100, 2, 0, 6); 
+		listeRoutes[2]  = new Route( 20, 1, 0, 5); 
+		listeRoutes[3]  = new Route( 100, 5, 1, 0);
+		listeRoutes[4]  = new Route( 20, 1, 1, 2);
+		listeRoutes[5]  = new Route( 60, 3, 1, 6);
+		listeRoutes[6]  = new Route( 20, 1, 2, 1);
+		listeRoutes[7]  = new Route( 60, 3, 2, 7);
 		listeRoutes[8]  = new Route( 12, 6, 2, 3);
 		listeRoutes[9]  = new Route( 12, 6, 3, 2);
 		listeRoutes[10] = new Route( 12, 6, 3, 7);
 		listeRoutes[11] = new Route( 24, 12, 3, 4);
-		listeRoutes[12] = new Route( 6, 3, 4, 5);
-		listeRoutes[13] = new Route( 8, 4, 4, 7);
+		listeRoutes[12] = new Route( 60, 3, 4, 5);
+		listeRoutes[13] = new Route( 80, 4, 4, 7);
 		listeRoutes[14] = new Route( 24, 12, 4, 3);
-		listeRoutes[15] = new Route( 2, 1, 5, 0);
-		listeRoutes[16] = new Route( 2, 1, 5, 6);
+		listeRoutes[15] = new Route( 20, 1, 5, 0);
+		listeRoutes[16] = new Route( 20, 1, 5, 6);
 		listeRoutes[17] = new Route( 6, 3, 5, 4);
-		listeRoutes[18] = new Route( 4, 2, 6, 0);
-		listeRoutes[19] = new Route( 6, 3, 6, 1);
-		listeRoutes[20] = new Route( 2, 1, 6, 5);
+		listeRoutes[18] = new Route( 40, 2, 6, 0);
+		listeRoutes[19] = new Route( 60, 3, 6, 1);
+		listeRoutes[20] = new Route( 20, 1, 6, 5);
 		listeRoutes[21] = new Route( 20, 10, 6, 7);
-		listeRoutes[22] = new Route( 6, 3, 7, 2);
+		listeRoutes[22] = new Route( 60, 3, 7, 2);
 		listeRoutes[23] = new Route( 12, 6, 7, 3);
-		listeRoutes[24] = new Route( 8, 4, 7, 4);
+		listeRoutes[24] = new Route( 80, 4, 7, 4);
 		listeRoutes[25] = new Route( 20, 10, 7, 6);
 
 	}
@@ -145,10 +145,31 @@ public class Gps extends Route {
 	public void calculeItineraire(int positionActuelle) throws ArrayIndexOutOfBoundsException  {
 
 		//System.out.println(Arrays.toString(listeRoutes));
-		
-		
-		
-		int [] cheminNoeud = Dijkstra.cheminASuivre(modifierGraphe(), positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
+
+		copieGraphe = modifierGraphe();
+
+
+		int sommeCongestion = 0;
+
+		do {
+
+			for(int y = 0; y < copieGraphe[positionActuelle].length; y++) {
+
+				sommeCongestion += copieGraphe[positionActuelle][y];
+
+			}
+
+			if (sommeCongestion == 0) {
+
+				reinitialiserTraffic();
+
+				modifierGraphe();
+			}
+		}while(sommeCongestion == 0);
+
+
+		int [] cheminNoeud = Dijkstra.cheminASuivre(copieGraphe, positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
+
 
 		if (!this.cheminRoute.isEmpty()) {
 
@@ -232,6 +253,10 @@ public class Gps extends Route {
 				copieGraphe[listeRoutes[i].getNoeud(0) ][listeRoutes[i].getNoeud(1)] = 0 ;
 			}
 		}
+
+		
+
+
 
 		return copieGraphe;
 	}
