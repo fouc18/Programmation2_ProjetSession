@@ -12,8 +12,6 @@ public class GpsTest {
     	
         Gps g = new Gps(2,4);
         
-        g.calculeItineraire(2);
-        
-        System.out.println(g.getCheminRoute().toString());
+
     }
 }

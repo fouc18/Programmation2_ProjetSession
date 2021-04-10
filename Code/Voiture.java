@@ -78,7 +78,7 @@ public class Voiture extends Gps{
 	 */
 	public int avancer(){
 
-		if(positionActuelle == super.getNoeudFin()) {
+		if(positionActuelle == super.getNoeudFin() ) {
 			
 			System.out.println("Arrive !" + positionActuelle);
 			
@@ -86,7 +86,7 @@ public class Voiture extends Gps{
 
 		}
 
-	//	try {
+		try {
 
 			super.calculeItineraire(positionActuelle);
 
@@ -108,17 +108,19 @@ public class Voiture extends Gps{
 			
 			return 0;
 
-	//	} catch(ArrayIndexOutOfBoundsException e) {
+		} catch(IndexOutOfBoundsException e) {
 
-		//	System.out.println("catch: avancer");
+			System.out.println("catch: avancer");
 			
-		//	System.out.println("ceci est la position actuelle " +positionActuelle);
+			System.out.println("ceci est la position actuelle " +positionActuelle);
 
-		//	super.reinitialiserTraffic();
+			super.reinitialiserTraffic();
 			
-		//	return 1;
+			super.calculeItineraire(positionActuelle);
+			
+			return 1;
 
-	//	}
+		}
 
 	}
 	/**

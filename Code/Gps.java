@@ -28,7 +28,7 @@ public class Gps extends Route {
 	public Route[] listeRoutes;
 
 	// Graphe d'origine sans congestion
-	protected static int[][] distNoeud = { { 0, 5, 0, 0, 0, 1, 2, 0 },
+	static final int[][] DISTNOEUD = { { 0, 5, 0, 0, 0, 1, 2, 0 },
 			{ 5, 0, 1, 0, 0, 0, 3, 0 },
 			{ 0, 1, 0, 6, 0, 0, 0, 3 },
 			{ 0, 0, 6, 0, 12, 0, 0, 6 },
@@ -37,7 +37,8 @@ public class Gps extends Route {
 			{ 2, 3, 0, 0, 0, 1, 0, 10 },
 			{ 0, 0, 3, 6, 4, 0, 10, 0 } };
 
-	protected  int[][] copieGraphe = distNoeud.clone();
+
+	public  int[][] copieGraphe = new int[8][8];
 
 	/**
 	 * Constructeur sans parametre permettant de creer l'ensemble des routes.
@@ -53,6 +54,21 @@ public class Gps extends Route {
 		creationRoute();
 
 		setDistanceParcourue( 0 );
+		
+		this.copieGraphe = copieGraphe(this.DISTNOEUD);
+
+		/*
+		for (int i = 0 ; i<DISTNOEUD.length; i++) {
+
+			for(int y = 0 ; y <DISTNOEUD[i].length; y++) {
+
+				copieGraphe[i][y] =	DISTNOEUD[i][y] ;
+
+			}
+
+		}
+	
+	*/
 	}
 
 	/**
@@ -142,13 +158,35 @@ public class Gps extends Route {
 	 * @throws ArrayIndexOutOfBoundsException 
 	 * @throws ArrayIndexOutOfBoundsException 
 	 */
-	public void calculeItineraire(int positionActuelle) throws ArrayIndexOutOfBoundsException  {
+	public void calculeItineraire(int positionActuelle)   {
 
 		//System.out.println(Arrays.toString(listeRoutes));
 
 		copieGraphe = modifierGraphe();
 
 
+		int [] cheminNoeud;
+
+
+		try {
+
+			cheminNoeud = Dijkstra.cheminASuivre(copieGraphe, positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
+
+		}catch(ArrayIndexOutOfBoundsException e) {
+
+			System.out.println("dans l'erreur");
+
+			reinitialiserTraffic();
+
+			System.out.println("apres reinitialiser");
+
+
+			cheminNoeud = Dijkstra.cheminASuivre(DISTNOEUD, positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
+
+			System.out.println("Apres chemin noeud");
+		} 
+
+		/*
 		int sommeCongestion = 0;
 
 		do {
@@ -166,10 +204,16 @@ public class Gps extends Route {
 				modifierGraphe();
 			}
 		}while(sommeCongestion == 0);
+		 */
 
+		System.out.println("copie graphe " +Arrays.deepToString(copieGraphe));
+		System.out.println("DISTNOEUD " +Arrays.deepToString(DISTNOEUD));
 
-		int [] cheminNoeud = Dijkstra.cheminASuivre(copieGraphe, positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
+		//	int [] cheminNoeud = Dijkstra.cheminASuivre(copieGraphe, positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
 
+		System.out.println("cheminNoeud: "+Arrays.toString(cheminNoeud));
+
+		//	System.out.println(Arrays.toString(listeRoutes));
 
 		if (!this.cheminRoute.isEmpty()) {
 
@@ -227,6 +271,23 @@ public class Gps extends Route {
 	public double getDistance() {
 		return this.distanceParcourue;
 	}
+	
+	public int[][] copieGraphe(int [][]premierGraphe){
+		
+		int [][] copieGraphe = new int [8][8];
+		
+		for (int i = 0 ; i<DISTNOEUD.length; i++) {
+
+			for(int y = 0 ; y <DISTNOEUD[i].length; y++) {
+
+				copieGraphe[i][y] =	DISTNOEUD[i][y] ;
+
+			}
+
+		}
+		
+		return copieGraphe;
+	}
 
 	/**
 	 * Initialise la distance totale parcourue
@@ -243,9 +304,20 @@ public class Gps extends Route {
 	 * @return la copie du graphe de depart avec les routes fermees
 	 */
 	private int[][] modifierGraphe(){
+		
+		this.copieGraphe = copieGraphe(this.DISTNOEUD);
 
-		copieGraphe = distNoeud.clone();
+		/*
+		for (int i = 0 ; i<DISTNOEUD.length; i++) {
 
+			for(int y = 0 ; y <DISTNOEUD[i].length; y++) {
+
+				copieGraphe[i][y] =	DISTNOEUD[i][y] ;
+
+			}
+
+		}
+	*/
 		for (int i = 0 ; i< listeRoutes.length; i++) {
 
 			if((listeRoutes[i].getEtat() == EtatRoute.CONGESTION) || ( listeRoutes[i].getEtat() == EtatRoute.ACCIDENT)){	// Si une route est fermee
@@ -254,7 +326,7 @@ public class Gps extends Route {
 			}
 		}
 
-		
+
 
 
 

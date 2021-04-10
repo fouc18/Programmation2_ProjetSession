@@ -100,7 +100,7 @@ public class Dijkstra {
      * @param noeudDepart : Le noeud d'ou commencera le calcul des chemins
      * @throws ArrayIndexOutOfBoundsException 
      */
-    private static void dijkstra(int[][] grapheMatrice, int noeudDepart)   {
+    private static void dijkstra(int[][] grapheMatrice, int noeudDepart) throws ArrayIndexOutOfBoundsException    {
     	
     	
     	
@@ -162,7 +162,7 @@ public class Dijkstra {
 
            
             // Marque le noeud choisi comme evalue
-            ajoute[noeudVoisin] = true;
+            ajoute[noeudVoisin] =true ;
           
             /*
              * Met a jour la distance des noeuds voisins en

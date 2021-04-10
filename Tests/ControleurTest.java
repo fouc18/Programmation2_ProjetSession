@@ -13,7 +13,7 @@ public class ControleurTest {
 
 		Controleur c = new Controleur();
 
-		c.demarrer(0, 3);
+		c.demarrer(2, 5);
 		
 		
 		System.out.println("chemin route " +c.getVoiture().getCheminRoute());
