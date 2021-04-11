@@ -66,6 +66,14 @@ public class Controleur {
 	    return voitureActuelle.getCheminRoute();
 	}
 	
+	/** Permet d'obtenir la distance de la voiture
+     * 
+     * @return la distance de la voiture
+     */
+	public double getVoitureDistance() {
+	    return voitureActuelle.getDistance();
+	}
+	
 	/** Permet d'obtenir la position actuelle de la voiture
      * 
      * @return la position actuelle de la voiture
