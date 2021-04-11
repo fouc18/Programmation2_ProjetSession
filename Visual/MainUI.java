@@ -8,7 +8,12 @@ package Visual;
 
 import java.awt.FlowLayout;
 import javax.swing.*;
+
+import Code.Controleur;
+import Code.Route;
+
 import java.io.IOException;
+import java.util.ArrayList;
 import java.io.*;
 import javax.imageio.*;
 
@@ -71,7 +76,7 @@ public class MainUI extends JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Debuter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Debuter.setText("Débuter");
+        Debuter.setText("DÃ©buter");
         Debuter.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Debuter.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Debuter.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -82,7 +87,7 @@ public class MainUI extends JFrame {
         getContentPane().add(Debuter, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 193, 110, 31));
 
         Redemarrer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Redemarrer.setText("Redémarrer");
+        Redemarrer.setText("RedÃ©marrer");
         Redemarrer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Redemarrer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -90,14 +95,16 @@ public class MainUI extends JFrame {
             }
         });
         getContentPane().add(Redemarrer, new org.netbeans.lib.awtextra.AbsoluteConstraints(811, 193, 110, 31));
-
+        
+        
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 130, 36, -1));
-
+        
+        
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -163,25 +170,132 @@ public class MainUI extends JFrame {
         ED.setIcon(new javax.swing.ImageIcon("Visual/Images/ED.png")); // NOI18N
         getContentPane().add(ED, new org.netbeans.lib.awtextra.AbsoluteConstraints(832, 438, 90, -1));
 
+        GH.setVisible(false);
+        HD.setVisible(false);
+        CD.setVisible(false);
+        BC.setVisible(false);
+        BG.setVisible(false);
+        CH.setVisible(false);
+        AG.setVisible(false);
+        AB.setVisible(false);
+        FE.setVisible(false);
+        AF.setVisible(false);
+        GF.setVisible(false);
+        HE.setVisible(false);
+        ED.setVisible(false);
+        
+        control = new Controleur();
         pack();
     }// </editor-fold>                        
-
+    
+    private int conversionNoeudEntier(char c) {
+    	if (c >= 'A' &&  c <= 'H' ) {
+    	return c-65;
+    	}
+		return -1;
+    }
+    
+    private char conversionNoeudCaractere(int b) {
+    	if (b >= 0 &&  b <= 7 ) {
+    	return (char) (b+65);
+    	}
+		return 'Z';
+    }
+    
+    private void dessinerChemin(char debut, char fin) {
+    	
+    	if(debut == 'A'&& fin == 'B' || debut == 'B'&& fin == 'A' ) {
+    		AB.setVisible(true);
+    	}
+    	if(debut == 'A'&& fin == 'G' || debut == 'G'&& fin == 'A' ) {
+    		AG.setVisible(true);
+    	}
+    	if(debut == 'A'&& fin == 'F' || debut == 'F'&& fin == 'A' ) {
+    		AF.setVisible(true);
+    	}
+    	if(debut == 'B'&& fin == 'C' || debut == 'C'&& fin == 'B' ) {
+    		BC.setVisible(true);
+    	}
+    	if(debut == 'G'&& fin == 'H' || debut == 'H'&& fin == 'G' ) {
+    		GH.setVisible(true);
+    	}
+    	if(debut == 'F'&& fin == 'E' || debut == 'E'&& fin == 'F' ) {
+    		FE.setVisible(true);
+    	}
+    	if(debut == 'C'&& fin == 'D' || debut == 'D'&& fin == 'C' ) {
+    		CD.setVisible(true);
+    	}
+    	if(debut == 'H'&& fin == 'D' || debut == 'D'&& fin == 'H' ) {
+    		HD.setVisible(true);
+    	}
+    	if(debut == 'E'&& fin == 'D' || debut == 'D'&& fin == 'E' ) {
+    		ED.setVisible(true);
+    	}
+    	if(debut == 'B'&& fin == 'G' || debut == 'G'&& fin == 'B' ) {
+    		BG.setVisible(true);
+    	}
+    	if(debut == 'G'&& fin == 'F' || debut == 'F'&& fin == 'G' ) {
+    		GF.setVisible(true);
+    	}
+    	if(debut == 'C'&& fin == 'H' || debut == 'H'&& fin == 'C' ) {
+    		CH.setVisible(true);
+    	}
+    	if(debut == 'H'&& fin == 'E' || debut == 'E'&& fin == 'H' ) {
+    		HE.setVisible(true);
+    	}
+    	
+    	
+    }
+    
+    public void ClearItineraire() {
+    	GH.setVisible(false);
+        HD.setVisible(false);
+        CD.setVisible(false);
+        BC.setVisible(false);
+        BG.setVisible(false);
+        CH.setVisible(false);
+        AG.setVisible(false);
+        AB.setVisible(false);
+        FE.setVisible(false);
+        AF.setVisible(false);
+        GF.setVisible(false);
+        HE.setVisible(false);
+        ED.setVisible(false);
+    }
+    
     private void DebuterMouseClicked(java.awt.event.MouseEvent evt) {
-        JFrame frame = new JFrame();
-        JOptionPane.showMessageDialog(frame, "Eggs are not supposed to be Débuter.");
+    	Depart = jTextField1.getText().charAt(0);
+    	Arrive = jTextField2.getText().charAt(0);
+        
+    	System.out.println( Depart + " " + Arrive );
+    	int d = conversionNoeudEntier(Depart);
+    	int f = conversionNoeudEntier(Arrive);
+    	
+    	System.out.println(d + " " +f);
+    	
+    	
+    	control.demarrer(conversionNoeudEntier(Depart), conversionNoeudEntier(Arrive));
+    	ClearItineraire();
+    	ArrayList <Route> itineraire = control.getItineraire();
+    	for(int i=0; i < itineraire.size(); i++  ) {
+    	dessinerChemin(conversionNoeudCaractere(itineraire.get(i).getNoeud(0)), conversionNoeudCaractere(itineraire.get(i).getNoeud(1)));
+    	}
     }
 
     private void RedemarrerMouseClicked(java.awt.event.MouseEvent evt) {
-        JFrame frame = new JFrame();
-        JOptionPane.showMessageDialog(frame, "Eggs are not supposed to be Redémarrer.");
+        /*JFrame frame = new JFrame();
+        JOptionPane.showMessageDialog(frame, "Eggs are not supposed to be RedÃ©marrer.");*/
+    	
+    	System.out.println(conversionNoeudCaractere(52));
     }
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
-        String Depart = jTextField1.getText();
+         Depart = jTextField1.getText().charAt(0);
+        
     }
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {
-        String Arrivée = jTextField2.getText();
+         Arrive = jTextField2.getText().charAt(0);
     }
 
     private void FluideMouseClicked(java.awt.event.MouseEvent evt) {
@@ -228,7 +342,10 @@ public class MainUI extends JFrame {
             }
         });
     }
-
+    
+    Controleur control;
+    char Depart;
+    char Arrive;
     // Variables declaration - do not modify
     private javax.swing.JLabel AB;
     private javax.swing.JLabel AF;
@@ -249,5 +366,6 @@ public class MainUI extends JFrame {
     private javax.swing.JLabel Redemarrer;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+     
     // End of variables declaration                   
 }
