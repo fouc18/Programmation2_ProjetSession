@@ -32,7 +32,6 @@ public class VoitureTest {
 		System.out.println("la distance: " +v2.getDistance());
 
 		v2.avancer();
-		
 		v2.avancer();
 		v2.avancer();
 		v2.avancer();

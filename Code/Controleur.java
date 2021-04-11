@@ -49,7 +49,7 @@ public class Controleur {
 		
 		//System.out.println("Ceci est la position actuelle: "+voitureActuelle.getPositionActuelle());
 		
-		System.out.println("Ceci est le resultat de avance: " +resultatAvance);
+		//System.out.println("Ceci est le resultat de avance: " +resultatAvance);
 		
 		return resultatAvance;
 	}

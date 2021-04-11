@@ -61,7 +61,7 @@ public class Voiture extends Gps{
 			super.calculeItineraire(positionActuelle);
 		} catch (ArrayIndexOutOfBoundsException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Dans le constructeur");
+			//System.out.println("Dans le constructeur");
 
 			super.reinitialiserTraffic();
 			trouverItineraire();
@@ -80,7 +80,7 @@ public class Voiture extends Gps{
 
 		if(positionActuelle == super.getNoeudFin() ) {
 			
-			System.out.println("Arrive !" + positionActuelle);
+			//System.out.println("Arrive !" + positionActuelle);
 			
 			return 2;
 
@@ -90,7 +90,7 @@ public class Voiture extends Gps{
 
 			super.calculeItineraire(positionActuelle);
 
-			System.out.println("chemin route TEST: " +super.getCheminRoute());
+			//System.out.println("chemin route TEST: " +super.getCheminRoute());
 			
 			Route routeActuelle = super.getCheminRoute().get(0);
 			//Route routeActuelle = super.getCheminRoute().get(positionActuelle);
@@ -110,9 +110,9 @@ public class Voiture extends Gps{
 
 		} catch(IndexOutOfBoundsException e) {
 
-			System.out.println("catch: avancer");
+			//System.out.println("catch: avancer");
 			
-			System.out.println("ceci est la position actuelle " +positionActuelle);
+			//System.out.println("ceci est la position actuelle " +positionActuelle);
 
 			super.reinitialiserTraffic();
 			

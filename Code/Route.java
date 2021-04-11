@@ -131,6 +131,10 @@ public class Route {
 		return this.etat;
 	}
 
+    public void setEtat(EtatRoute etat) {
+        this.etat = etat;
+    }
+    
 	public int getNoeud(int n) {
 
 		if ( n<noeuds.length ) {

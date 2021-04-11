@@ -13,10 +13,10 @@ public class ControleurTest {
 
 		Controleur c = new Controleur();
 
-		c.demarrer(2, 5);
+		c.demarrer(0, 1);
 		
 		
-		System.out.println("chemin route " +c.getVoiture().getCheminRoute());
+		//System.out.println("chemin route " +c.getVoiture().getCheminRoute());
 		
 		//c.getVoiture().getListeRoute()[0].setTrafic(10);
 		//c.getVoiture().getListeRoute()[1].setTrafic(4);
@@ -46,15 +46,15 @@ public class ControleurTest {
 		c.deplacement();
 		*/
 	//	System.out.println("position initiale: "+c.getVoiture().getPositionActuelle());
-		System.out.println("position: "+c.getVoiture().getPositionActuelle());
+		System.out.println("position intiale: "+c.getVoiture().getPositionActuelle());
+		System.out.println("distance initiale => "+c.getVoiture().getDistance());
 		
 		while(c.deplacement()!=2) {
-			
-			System.out.println("position: "+c.getVoiture().getPositionActuelle());
-		
-			
-			
+		    System.out.println("Mon itineraire => "+c.getVoiture().getCheminRoute());
+			System.out.println("J'ai avancé, ma position => "+c.getVoiture().getPositionActuelle());
 		}
+		
+		System.out.println("distance => "+c.getVoiture().getDistance());
 
 	}
 }
