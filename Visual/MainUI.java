@@ -8,8 +8,10 @@ package Visual;
 
 import java.awt.FlowLayout;
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 
 import Code.Controleur;
+import Code.EtatRoute;
 import Code.Route;
 
 import java.io.IOException;
@@ -52,33 +54,41 @@ public class MainUI extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        Debuter = new javax.swing.JLabel();
-        Redemarrer = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        Congestion = new javax.swing.JLabel();
-        Fluide = new javax.swing.JLabel();
-        GH = new javax.swing.JLabel();
-        HD = new javax.swing.JLabel();
-        CD = new javax.swing.JLabel();
-        BC = new javax.swing.JLabel();
-        BG = new javax.swing.JLabel();
-        CH = new javax.swing.JLabel();
-        AG = new javax.swing.JLabel();
-        AB = new javax.swing.JLabel();
-        FE = new javax.swing.JLabel();
-        AF = new javax.swing.JLabel();
-        GF = new javax.swing.JLabel();
-        HE = new javax.swing.JLabel();
-        ED = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Debuter = new JLabel();
+        Redemarrer = new JLabel();
+        jTextField1 = new JTextField();
+        jTextField2 = new JTextField();
+        Congestion = new JLabel();
+        Fluide = new JLabel();
+        GH = new JLabel();
+        HD = new JLabel();
+        CD = new JLabel();
+        BC = new JLabel();
+        BG = new JLabel();
+        CH = new JLabel();
+        AG = new JLabel();
+        AB = new JLabel();
+        FE = new JLabel();
+        AF = new JLabel();
+        GF = new JLabel();
+        HE = new JLabel();
+        ED = new JLabel();
+        face_BG = new JLabel();
+        face_AG = new JLabel();
+        face_AG1 = new JLabel();
+        face_BG1 = new JLabel();
+        face_AB = new JLabel();
+        face_AB1 = new JLabel();
+        face_AF1 = new JLabel();
+        face_AF = new JLabel();
+        
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Debuter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Debuter.setHorizontalAlignment(SwingConstants.CENTER);
         Debuter.setText("DÃ©buter");
         Debuter.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Debuter.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Debuter.setHorizontalTextPosition(SwingConstants.CENTER);
         Debuter.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DebuterMouseClicked(evt);
@@ -86,9 +96,9 @@ public class MainUI extends JFrame {
         });
         getContentPane().add(Debuter, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 193, 110, 31));
 
-        Redemarrer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Redemarrer.setHorizontalAlignment(SwingConstants.CENTER);
         Redemarrer.setText("RedÃ©marrer");
-        Redemarrer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Redemarrer.setHorizontalTextPosition(SwingConstants.CENTER);
         Redemarrer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 RedemarrerMouseClicked(evt);
@@ -112,7 +122,7 @@ public class MainUI extends JFrame {
         });
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 130, 36, -1));
 
-        Congestion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Congestion.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
         Congestion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CongestionMouseClicked(evt);
@@ -120,7 +130,7 @@ public class MainUI extends JFrame {
         });
         getContentPane().add(Congestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 550, 270, 40));
 
-        Fluide.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Fluide.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
         Fluide.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 FluideMouseClicked(evt);
@@ -129,46 +139,70 @@ public class MainUI extends JFrame {
         getContentPane().add(Fluide, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 270, 40));
 
         GH.setForeground(new java.awt.Color(255, 255, 255));
-        GH.setIcon(new javax.swing.ImageIcon("Visual/Images/GH.png")); // NOI18N
+        GH.setIcon(new ImageIcon("Visual/Images/GH.png")); // NOI18N
         getContentPane().add(GH, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 434, -1, 20));
 
-        HD.setIcon(new javax.swing.ImageIcon("Visual/Images/HD.png")); // NOI18N
+        HD.setIcon(new ImageIcon("Visual/Images/HD.png")); // NOI18N
         getContentPane().add(HD, new org.netbeans.lib.awtextra.AbsoluteConstraints(855, 434, -1, 20));
 
-        CD.setIcon(new javax.swing.ImageIcon("Visual/Images/CD.png")); // NOI18N
+        CD.setIcon(new ImageIcon("Visual/Images/CD.png")); // NOI18N
         getContentPane().add(CD, new org.netbeans.lib.awtextra.AbsoluteConstraints(847, 363, -1, 75));
 
-        BC.setIcon(new javax.swing.ImageIcon("Visual/Images/BC.png")); // NOI18N
+        BC.setIcon(new ImageIcon("Visual/Images/BC.png")); // NOI18N
         getContentPane().add(BC, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 357, -1, 10));
 
-        BG.setIcon(new javax.swing.ImageIcon("Visual/Images/BG.png")); // NOI18N
+        BG.setIcon(new ImageIcon("Visual/Images/BG.png")); // NOI18N
         getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(742, 370, -1, -1));
 
-        CH.setIcon(new javax.swing.ImageIcon("Visual/Images/CH.png")); // NOI18N
+        CH.setIcon(new ImageIcon("Visual/Images/CH.png")); // NOI18N
         getContentPane().add(CH, new org.netbeans.lib.awtextra.AbsoluteConstraints(743, 368, -1, -1));
 
-        AG.setIcon(new javax.swing.ImageIcon("Visual/Images/AG.png")); // NOI18N
+        AG.setIcon(new ImageIcon("Visual/Images/AG.png")); // NOI18N
         getContentPane().add(AG, new org.netbeans.lib.awtextra.AbsoluteConstraints(684, 437, -1, -1));
 
-        AB.setIcon(new javax.swing.ImageIcon("Visual/Images/AB.png")); // NOI18N
+        AB.setIcon(new ImageIcon("Visual/Images/AB.png")); // NOI18N
         getContentPane().add(AB, new org.netbeans.lib.awtextra.AbsoluteConstraints(672, 360, -1, -1));
 
-        FE.setIcon(new javax.swing.ImageIcon("Visual/Images/FE.png")); // NOI18N
+        FE.setIcon(new ImageIcon("Visual/Images/FE.png")); // NOI18N
         getContentPane().add(FE, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 535, -1, -1));
 
-        AF.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        AF.setIcon(new javax.swing.ImageIcon("Visual/Images/AF.png")); // NOI18N
+        AF.setHorizontalAlignment(SwingConstants.RIGHT);
+        AF.setIcon(new ImageIcon("Visual/Images/AF.png")); // NOI18N
         getContentPane().add(AF, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 448, 110, -1));
 
-        GF.setIcon(new javax.swing.ImageIcon("Visual/Images/GF.png")); // NOI18N
+        GF.setIcon(new ImageIcon("Visual/Images/GF.png")); // NOI18N
         getContentPane().add(GF, new org.netbeans.lib.awtextra.AbsoluteConstraints(739, 449, -1, -1));
 
-        HE.setIcon(new javax.swing.ImageIcon("Visual/Images/HE.png")); // NOI18N
+        HE.setIcon(new ImageIcon("Visual/Images/HE.png")); // NOI18N
         getContentPane().add(HE, new org.netbeans.lib.awtextra.AbsoluteConstraints(838, 450, -1, -1));
 
-        ED.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        ED.setIcon(new javax.swing.ImageIcon("Visual/Images/ED.png")); // NOI18N
+        ED.setHorizontalAlignment(SwingConstants.RIGHT);
+        ED.setIcon(new ImageIcon("Visual/Images/ED.png")); // NOI18N
         getContentPane().add(ED, new org.netbeans.lib.awtextra.AbsoluteConstraints(832, 438, 90, -1));
+        
+        face_BG.setIcon(new ImageIcon("Visual/Images/Interface/BG.png")); // NOI18N
+        getContentPane().add(face_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 107, -1, -1));
+
+        face_AG.setIcon(new ImageIcon("Visual/Images/Interface/AG.png")); // NOI18N
+        getContentPane().add(face_AG, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 258, 130, -1));
+
+        face_AG1.setIcon(new ImageIcon("Visual/Images/Interface/AG1.png")); // NOI18N
+        getContentPane().add(face_AG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 248, -1, -1));
+
+        face_BG1.setIcon(new ImageIcon("Visual/Images/Interface/BG1.png")); // NOI18N
+        getContentPane().add(face_BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 100, -1, -1));
+
+        face_AB.setIcon(new ImageIcon("Visual/Images/Interface/AB.png")); // NOI18N
+        getContentPane().add(face_AB, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 89, -1, -1));
+
+        face_AB1.setIcon(new ImageIcon("Visual/Images/Interface/AB1.png")); // NOI18N
+        getContentPane().add(face_AB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 81, -1, -1));
+
+        face_AF1.setIcon(new ImageIcon("Visual/Images/Interface/AF1.png")); // NOI18N
+        getContentPane().add(face_AF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
+
+        face_AF.setIcon(new ImageIcon("Visual/Images/Interface/AF.png")); // NOI18N
+        getContentPane().add(face_AF, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
         GH.setVisible(false);
         HD.setVisible(false);
@@ -183,6 +217,16 @@ public class MainUI extends JFrame {
         GF.setVisible(false);
         HE.setVisible(false);
         ED.setVisible(false);
+        
+        face_BG.setVisible(false);
+        face_AG.setVisible(false);
+        face_AG1.setVisible(false);
+        face_BG1.setVisible(false);
+        face_AB.setVisible(false);
+        face_AB1.setVisible(false);
+        face_AF1.setVisible(false);
+        face_AF.setVisible(false);
+        
         
         control = new Controleur();
         pack();
@@ -242,8 +286,7 @@ public class MainUI extends JFrame {
     	}
     	if(debut == 'H'&& fin == 'E' || debut == 'E'&& fin == 'H' ) {
     		HE.setVisible(true);
-    	}
-    	
+    	}	
     	
     }
     
@@ -263,19 +306,37 @@ public class MainUI extends JFrame {
         ED.setVisible(false);
     }
     
+    public void dessinerTraffic(EtatRoute[] listeEtat) {
+    	System.out.println(listeEtat[0]);
+    	switch(listeEtat[0]) {
+    	  case FLUIDE:
+    	    face_AB.setVisible(false);
+    	    //System.out.println("Fluide");
+    	    break;
+    	  case CONGESTION:
+    		  face_AB.setVisible(true);
+    		  //face_AB.setText("Congestion").setForeground (Color.white);
+    		  System.out.println("Congestion");
+    	    break;
+    	  case ACCIDENT:
+    		  face_AB.setVisible(true);
+    		  //face_AB.setText("Accident").setForeground (Color.red);
+    		  System.out.println("Accident");
+    		break;
+    		  
+    	}
+
+    }
+    
     private void DebuterMouseClicked(java.awt.event.MouseEvent evt) {
     	Depart = jTextField1.getText().charAt(0);
     	Arrive = jTextField2.getText().charAt(0);
         
-    	System.out.println( Depart + " " + Arrive );
-    	int d = conversionNoeudEntier(Depart);
-    	int f = conversionNoeudEntier(Arrive);
-    	
-    	System.out.println(d + " " +f);
     	
     	
     	control.demarrer(conversionNoeudEntier(Depart), conversionNoeudEntier(Arrive));
     	ClearItineraire();
+    	dessinerTraffic(control.getEtatRoutes());
     	ArrayList <Route> itineraire = control.getItineraire();
     	for(int i=0; i < itineraire.size(); i++  ) {
     	dessinerChemin(conversionNoeudCaractere(itineraire.get(i).getNoeud(0)), conversionNoeudCaractere(itineraire.get(i).getNoeud(1)));
@@ -318,9 +379,9 @@ public class MainUI extends JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -330,7 +391,7 @@ public class MainUI extends JFrame {
             java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -347,25 +408,33 @@ public class MainUI extends JFrame {
     char Depart;
     char Arrive;
     // Variables declaration - do not modify
-    private javax.swing.JLabel AB;
-    private javax.swing.JLabel AF;
-    private javax.swing.JLabel AG;
-    private javax.swing.JLabel BC;
-    private javax.swing.JLabel BG;
-    private javax.swing.JLabel CD;
-    private javax.swing.JLabel CH;
-    private javax.swing.JLabel Congestion;
-    private javax.swing.JLabel Debuter;
-    private javax.swing.JLabel ED;
-    private javax.swing.JLabel FE;
-    private javax.swing.JLabel Fluide;
-    private javax.swing.JLabel GF;
-    private javax.swing.JLabel GH;
-    private javax.swing.JLabel HD;
-    private javax.swing.JLabel HE;
-    private javax.swing.JLabel Redemarrer;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private JLabel AB;
+    private JLabel AF;
+    private JLabel AG;
+    private JLabel BC;
+    private JLabel BG;
+    private JLabel CD;
+    private JLabel CH;
+    private JLabel Congestion;
+    private JLabel Debuter;
+    private JLabel ED;
+    private JLabel FE;
+    private JLabel Fluide;
+    private JLabel GF;
+    private JLabel GH;
+    private JLabel HD;
+    private JLabel HE;
+    private JLabel Redemarrer;
+    private JLabel face_AB;
+    private JLabel face_AB1;
+    private JLabel face_AF;
+    private JLabel face_AF1;
+    private JLabel face_AG;
+    private JLabel face_AG1;
+    private JLabel face_BG;
+    private JLabel face_BG1;
+    private JTextField jTextField1;
+    private JTextField jTextField2;
      
     // End of variables declaration                   
 }
