@@ -206,82 +206,82 @@ public class MainUI extends JFrame {
 		});
 		getContentPane().add(nextStep, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 110, 30));
 
-		face_BG.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\BG.png")); // NOI18N
+		face_BG.setIcon(new ImageIcon("Visual/Images/Interface/BG.png")); // NOI18N
 		getContentPane().add(face_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 107, -1, -1));
 
-		face_AG.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\AG.png")); // NOI18N
+		face_AG.setIcon(new ImageIcon("Visual/Images/Interface/AG.png")); // NOI18N
 		getContentPane().add(face_AG, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 257, 130, -1));
 
-		face_AG1.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\AG1.png")); // NOI18N
+		face_AG1.setIcon(new ImageIcon("Visual/Images/Interface/AG1.png")); // NOI18N
 		getContentPane().add(face_AG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 247, -1, -1));
 
-		face_BG1.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\BG1.png")); // NOI18N
+		face_BG1.setIcon(new ImageIcon("Visual/Images/Interface/BG1.png")); // NOI18N
 		getContentPane().add(face_BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 100, -1, -1));
 
-		face_AB.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\AB.png")); // NOI18N
+		face_AB.setIcon(new ImageIcon("Visual/Images/Interface/AB.png")); // NOI18N
 		getContentPane().add(face_AB, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 88, 150, 150));
 
-		face_AB1.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\AB1.png")); // NOI18N
+		face_AB1.setIcon(new ImageIcon("Visual/Images/Interface/AB1.png")); // NOI18N
 		getContentPane().add(face_AB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 79, 160, 170));
 
-		face_AF1.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\AF1.png")); // NOI18N
+		face_AF1.setIcon(new ImageIcon("Visual/Images/Interface/AF1.png")); // NOI18N
 		getContentPane().add(face_AF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 268, -1, -1));
 
-		face_AF.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\AF.png")); // NOI18N
+		face_AF.setIcon(new ImageIcon("Visual/Images/Interface/AF.png")); // NOI18N
 		getContentPane().add(face_AF, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 272, -1, -1));
 
-		face_BC.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\BC.png")); // NOI18N
+		face_BC.setIcon(new ImageIcon("Visual/Images/Interface/BC.png")); // NOI18N
 		getContentPane().add(face_BC, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 81, -1, -1));
 
-		face_BC1.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\BC1.png")); // NOI18N
+		face_BC1.setIcon(new ImageIcon("Visual/Images/Interface/BC1.png")); // NOI18N
 		getContentPane().add(face_BC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 65, -1, 20));
 
-		face_GH1.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\GH1.png")); // NOI18N
+		face_GH1.setIcon(new ImageIcon("Visual/Images/Interface/GH1.png")); // NOI18N
 		getContentPane().add(face_GH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 246, -1, -1));
 
-		face_GH.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\GH.png")); // NOI18N
+		face_GH.setIcon(new ImageIcon("Visual/Images/Interface/GH.png")); // NOI18N
 		getContentPane().add(face_GH, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 258, -1, -1));
 
-		face_CD.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\CD.png")); // NOI18N
+		face_CD.setIcon(new ImageIcon("Visual/Images/Interface/CD.png")); // NOI18N
 		getContentPane().add(face_CD, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 92, -1, -1));
 
-		face_CD1.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\CD1.png")); // NOI18N
+		face_CD1.setIcon(new ImageIcon("Visual/Images/Interface/CD1.png")); // NOI18N
 		getContentPane().add(face_CD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 84, -1, -1));
 
-		face_HD1.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\HD1.png")); // NOI18N
+		face_HD1.setIcon(new ImageIcon("Visual/Images/Interface/HD1.png")); // NOI18N
 		getContentPane().add(face_HD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 241, -1, 20));
 
-		face_HD.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\HD.png")); // NOI18N
+		face_HD.setIcon(new ImageIcon("Visual/Images/Interface/HD.png")); // NOI18N
 		getContentPane().add(face_HD, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 254, -1, 20));
 
-		face_FE1.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\FE1.png")); // NOI18N
+		face_FE1.setIcon(new ImageIcon("Visual/Images/Interface/FE1.png")); // NOI18N
 		getContentPane().add(face_FE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 451, -1, -1));
 
-		face_FE.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\FE.png")); // NOI18N
+		face_FE.setIcon(new ImageIcon("Visual/Images/Interface/FE.png")); // NOI18N
 		getContentPane().add(face_FE, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 461, -1, 20));
 
-		face_CH1.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\CH1.png")); // NOI18N
+		face_CH1.setIcon(new ImageIcon("Visual/Images/Interface/CH1.png")); // NOI18N
 		getContentPane().add(face_CH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 101, -1, -1));
 
-		face_ED1.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\DE1.png")); // NOI18N
+		face_ED1.setIcon(new ImageIcon("Visual/Images/Interface/DE1.png")); // NOI18N
 		getContentPane().add(face_ED1, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 244, -1, -1));
 
-		face_ED.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\DE.png")); // NOI18N
+		face_ED.setIcon(new ImageIcon("Visual/Images/Interface/DE.png")); // NOI18N
 		getContentPane().add(face_ED, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 236, -1, -1));
 
-		face_CH.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\CH.png")); // NOI18N
+		face_CH.setIcon(new ImageIcon("Visual/Images/Interface/CH.png")); // NOI18N
 		getContentPane().add(face_CH, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 101, 60, -1));
 
-		face_HE.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\HE.png")); // NOI18N
+		face_HE.setIcon(new ImageIcon("Visual/Images/Interface/HE.png")); // NOI18N
 		getContentPane().add(face_HE, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 276, -1, -1));
 
-		face_HE1.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\HE1.png")); // NOI18N
+		face_HE1.setIcon(new ImageIcon("Visual/Images/Interface/HE1.png")); // NOI18N
 		getContentPane().add(face_HE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 275, -1, -1));
 
-		face_GF.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\GF.png")); // NOI18N
+		face_GF.setIcon(new ImageIcon("Visual/Images/Interface/GF.png")); // NOI18N
 		getContentPane().add(face_GF, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 276, -1, -1));
 
-		face_GF1.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\Interface\\GF1.png")); // NOI18N
+		face_GF1.setIcon(new ImageIcon("Visual/Images/Interface/GF1.png")); // NOI18N
 		getContentPane().add(face_GF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 274, -1, -1));
 
 		GH.setVisible(false);
