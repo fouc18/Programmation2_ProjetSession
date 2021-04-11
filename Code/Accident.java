@@ -8,7 +8,7 @@ package Code;
 
 import java.util.Random;
 
-/* Cette classe permet de definir si un accident a lieu sur une route */
+/* Permet de definir si un accident a lieu sur une route */
 public class Accident {
     
     private static int probabilite = 5; //Probabilite d'avoir un accident en %
