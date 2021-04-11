@@ -31,7 +31,7 @@ public class MainUI extends JFrame {
 		super("App");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		try {
-			setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("C:\\Users\\lsfez\\Downloads\\Branches\\interface.jpg")))));
+			setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("Visual/Images/interface.jpg")))));
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -156,45 +156,45 @@ public class MainUI extends JFrame {
 		getContentPane().add(Fluide, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 270, 40));
 
 		GH.setForeground(new java.awt.Color(255, 255, 255));
-		GH.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\GPS\\GH.png")); // NOI18N
+		GH.setIcon(new ImageIcon("Visual/Images/GH.png")); // NOI18N
 		getContentPane().add(GH, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 434, -1, 20));
 
-		HD.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\GPS\\HD.png")); // NOI18N
+		HD.setIcon(new ImageIcon("Visual/Images/HD.png")); // NOI18N
 		getContentPane().add(HD, new org.netbeans.lib.awtextra.AbsoluteConstraints(856, 440, -1, 10));
 
-		CD.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\GPS\\CD.png")); // NOI18N
+		CD.setIcon(new ImageIcon("Visual/Images/CD.png")); // NOI18N
 		getContentPane().add(CD, new org.netbeans.lib.awtextra.AbsoluteConstraints(847, 363, -1, 75));
 
-		BC.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\GPS\\BC.png")); // NOI18N
+		BC.setIcon(new ImageIcon("Visual/Images/BC.png")); // NOI18N
 		getContentPane().add(BC, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 357, -1, 10));
 
-		CH.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\GPS\\BG.png")); // NOI18N
+		CH.setIcon(new ImageIcon("Visual/Images/BG.png")); // NOI18N
 		getContentPane().add(CH, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 370, -1, -1));
 
-		BG.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\GPS\\CH.png")); // NOI18N
+		BG.setIcon(new ImageIcon("Visual/Images/CH.png")); // NOI18N
 		getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(743, 368, -1, -1));
 
-		AG.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\GPS\\AG.png")); // NOI18N
+		AG.setIcon(new ImageIcon("Visual/Images/AG.png")); // NOI18N
 		getContentPane().add(AG, new org.netbeans.lib.awtextra.AbsoluteConstraints(684, 437, -1, -1));
 
-		AB.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\GPS\\AB.png")); // NOI18N
+		AB.setIcon(new ImageIcon("Visual/Images/AB.png")); // NOI18N
 		getContentPane().add(AB, new org.netbeans.lib.awtextra.AbsoluteConstraints(672, 360, -1, -1));
 
-		FE.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\GPS\\FE.png")); // NOI18N
+		FE.setIcon(new ImageIcon("Visual/Images/FE.png")); // NOI18N
 		getContentPane().add(FE, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 535, -1, -1));
 
 		AF.setHorizontalAlignment(SwingConstants.RIGHT);
-		AF.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\GPS\\AF.png")); // NOI18N
+		AF.setIcon(new ImageIcon("Visual/Images/AF.png")); // NOI18N
 		getContentPane().add(AF, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 448, 110, -1));
 
-		GF.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\GPS\\GF.png")); // NOI18N
+		GF.setIcon(new ImageIcon("Visual/Images/GF.png")); // NOI18N
 		getContentPane().add(GF, new org.netbeans.lib.awtextra.AbsoluteConstraints(739, 449, -1, -1));
 
-		HE.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\GPS\\HE.png")); // NOI18N
+		HE.setIcon(new ImageIcon("Visual/Images/HE.png")); // NOI18N
 		getContentPane().add(HE, new org.netbeans.lib.awtextra.AbsoluteConstraints(838, 450, -1, -1));
 
 		ED.setHorizontalAlignment(SwingConstants.RIGHT);
-		ED.setIcon(new ImageIcon("C:\\Users\\lsfez\\Downloads\\Branches\\GPS\\ED.png")); // NOI18N
+		ED.setIcon(new ImageIcon("Visual/Images/ED.png")); // NOI18N
 		getContentPane().add(ED, new org.netbeans.lib.awtextra.AbsoluteConstraints(832, 438, 90, -1));
 
 		nextStep.setHorizontalAlignment(SwingConstants.CENTER);
