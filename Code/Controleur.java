@@ -38,9 +38,14 @@ public class Controleur {
 		
 		} */
 		
-		voitureActuelle.reinitialiserTraffic();
 		
-		int resultatAvance = voitureActuelle.avancer();
+		voitureActuelle.reinitialiserTraffic();
+		int resultatAvance;
+		do {
+	
+		 resultatAvance = voitureActuelle.avancer();
+		 
+		}while(resultatAvance == 1);
 		
 		//System.out.println("Ceci est la position actuelle: "+voitureActuelle.getPositionActuelle());
 		
