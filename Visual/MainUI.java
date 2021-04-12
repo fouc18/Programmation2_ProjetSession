@@ -175,10 +175,10 @@ public class MainUI extends JFrame {
 		BC.setIcon(new ImageIcon("Visual/Images/BC.png")); // NOI18N
 		getContentPane().add(BC, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 357, -1, 10));
 
-		CH.setIcon(new ImageIcon("Visual/Images/BG.png")); // NOI18N
+		CH.setIcon(new ImageIcon("Visual/Images/CH.png")); // NOI18N
 		getContentPane().add(CH, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 370, -1, -1));
 
-		BG.setIcon(new ImageIcon("Visual/Images/CH.png")); // NOI18N
+		BG.setIcon(new ImageIcon("Visual/Images/BG.png")); // NOI18N
 		getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(743, 368, -1, -1));
 
 		AG.setIcon(new ImageIcon("Visual/Images/AG.png")); // NOI18N
