@@ -1,6 +1,5 @@
 package Visual;
 
-import java.awt.Color;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,8 +9,6 @@ import java.awt.Color;
 
 import java.awt.FlowLayout;
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
-
 import Code.Controleur;
 import Code.EtatRoute;
 import Code.Route;
@@ -74,8 +71,6 @@ public class MainUI extends JFrame {
 		reinitialiser = new JLabel();
 		jTextField1 = new JTextField();
 		jTextField2 = new JTextField();
-		Congestion = new JLabel();
-		Fluide = new JLabel();
 		GH = new JLabel();
 		HD = new JLabel();
 		CD = new JLabel();
@@ -126,7 +121,7 @@ public class MainUI extends JFrame {
 		getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
 		Debuter.setHorizontalAlignment(SwingConstants.CENTER);
-		Debuter.setText("Débuter");
+		Debuter.setText("Debuter");
 		Debuter.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 		Debuter.setHorizontalTextPosition(SwingConstants.CENTER);
 		Debuter.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -160,22 +155,6 @@ public class MainUI extends JFrame {
 			}
 		});
 		getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 130, 36, -1));
-
-		Congestion.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
-		Congestion.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				CongestionMouseClicked(evt);
-			}
-		});
-		getContentPane().add(Congestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 550, 270, 40));
-
-		Fluide.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
-		Fluide.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				FluideMouseClicked(evt);
-			}
-		});
-		getContentPane().add(Fluide, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 270, 40));
 
 		GH.setForeground(new java.awt.Color(255, 255, 255));
 		GH.setIcon(new ImageIcon("Visual/Images/GH.png")); // NOI18N
@@ -435,7 +414,7 @@ public class MainUI extends JFrame {
 		HE.setVisible(false);
 		ED.setVisible(false);
 	}
-	
+
 	public void clearTraffic() {
 		face_BG.setVisible(false);
 		face_AG.setVisible(false);
@@ -496,7 +475,7 @@ public class MainUI extends JFrame {
 		carDessin.setVisible(true);
 
 	}
-	
+
 	public void afficherErreur(String msg) {
 		JFrame frame = new JFrame();
 		JOptionPane.showMessageDialog(frame, msg);
@@ -504,19 +483,19 @@ public class MainUI extends JFrame {
 
 	private void DebuterMouseClicked(java.awt.event.MouseEvent evt) {
 		try {
-		Depart = jTextField1.getText().toUpperCase().charAt(0);
-		Arrive = jTextField2.getText().toUpperCase().charAt(0);
+			Depart = jTextField1.getText().toUpperCase().charAt(0);
+			Arrive = jTextField2.getText().toUpperCase().charAt(0);
 
-		control.demarrer(conversionNoeudEntier(Depart), conversionNoeudEntier(Arrive));
-		ClearItineraire();
-		dessinerTraffic(control.getEtatRoutes());
-		dessinerItineraire();
-		afficherVoiture();
-		
-		} catch(StringIndexOutOfBoundsException | NullPointerException e){
+			control.demarrer(conversionNoeudEntier(Depart), conversionNoeudEntier(Arrive));
+			ClearItineraire();
+			dessinerTraffic(control.getEtatRoutes());
+			dessinerItineraire();
+			afficherVoiture();
+
+		} catch (StringIndexOutOfBoundsException | NullPointerException e) {
 			afficherErreur("Veuillez Rentrer des Valeurs Valides !!!");
 		}
-		
+
 	}
 
 	private void reinitialiserMouseClicked(java.awt.event.MouseEvent evt) {
@@ -525,7 +504,6 @@ public class MainUI extends JFrame {
 		clearTraffic();
 		jTextField1.setText("");
 		jTextField2.setText("");
-		
 
 	}
 
@@ -538,30 +516,22 @@ public class MainUI extends JFrame {
 		Arrive = jTextField2.getText().charAt(0);
 	}
 
-	private void FluideMouseClicked(java.awt.event.MouseEvent evt) {
-		afficherErreur("Eggs are not supposed to be Circulation Fluide.");
-	}
-
-	private void CongestionMouseClicked(java.awt.event.MouseEvent evt) {
-		afficherErreur("Eggs are not supposed to be Circulation Congestion.");
-	}
-
 	private void nextStepMouseClicked(java.awt.event.MouseEvent evt) {
 		try {
-			
-		if(control.deplacement() == 2) {
-		afficherErreur("La Voiture a atteint sa destination !");
-		} else {
-		ClearItineraire();
-		dessinerItineraire();
-		dessinerTraffic(control.getEtatRoutes());
-		afficherVoiture();
+			dessinerItineraire();
+			if (control.deplacement() == 2) {
+				afficherErreur("La voiture a atteint sa destination !");
+			} else {
+				ClearItineraire();
+				dessinerItineraire();
+				dessinerTraffic(control.getEtatRoutes());
+				afficherVoiture();
+			}
+
+		} catch (NullPointerException e) {
+			afficherErreur("Pour avancer la voiture, il faut debuter !!");
 		}
-		
-		} catch (NullPointerException e){
-			afficherErreur("Pour Avancer La Voiture, Il faut Débuter !!");
-		}
-		
+
 	}
 
 	/**
@@ -614,11 +584,9 @@ public class MainUI extends JFrame {
 	private JLabel BG;
 	private JLabel CD;
 	private JLabel CH;
-	private JLabel Congestion;
 	private JLabel Debuter;
 	private JLabel ED;
 	private JLabel FE;
-	private JLabel Fluide;
 	private JLabel GF;
 	private JLabel GH;
 	private JLabel HD;

@@ -88,7 +88,7 @@ public class Voiture extends Gps{
 
 		try {
 
-			super.calculeItineraire(positionActuelle);
+			//super.calculeItineraire(positionActuelle);
 
 			//System.out.println("chemin route TEST: " +super.getCheminRoute());
 			
