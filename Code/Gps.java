@@ -174,17 +174,20 @@ public class Gps extends Route {
 
 		}catch(ArrayIndexOutOfBoundsException e) {
 
-			System.out.println("dans l'erreur");
+			System.out.println("Zone Erreur, toute fluide!!!");
 
-			reinitialiserTraffic();
+			//reinitialiserTraffic();
 
-			System.out.println("apres reinitialiser");
+			//System.out.println("apres reinitialiser");
 
-
+			for(Route route : listeRoutes) {
+			    route.setEtat(EtatRoute.FLUIDE);
+			}
+			
 			cheminNoeud = Dijkstra.cheminASuivre(DISTNOEUD, positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
 
-			System.out.println("Apres chemin noeud");
-		} 
+			//System.out.println("Apres chemin noeud");
+		}
 
 		/*
 		int sommeCongestion = 0;
@@ -206,12 +209,12 @@ public class Gps extends Route {
 		}while(sommeCongestion == 0);
 		 */
 
-		System.out.println("copie graphe " +Arrays.deepToString(copieGraphe));
-		System.out.println("DISTNOEUD " +Arrays.deepToString(DISTNOEUD));
+		/*System.out.println("copie graphe " +Arrays.deepToString(copieGraphe));
+		System.out.println("DISTNOEUD " +Arrays.deepToString(DISTNOEUD));*/
 
 		//	int [] cheminNoeud = Dijkstra.cheminASuivre(copieGraphe, positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
 
-		System.out.println("cheminNoeud: "+Arrays.toString(cheminNoeud));
+		//System.out.println("cheminNoeud: "+Arrays.toString(cheminNoeud));
 
 		//	System.out.println(Arrays.toString(listeRoutes));
 

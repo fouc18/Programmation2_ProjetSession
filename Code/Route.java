@@ -8,7 +8,7 @@ package Code;
 
 import java.util.Random;
 
-/* Cette class permet de representer le comportement d'une route */
+/* Permet de representer le comportement d'une route */
 public class Route {
 
 	private int maxVoiture;
@@ -19,9 +19,9 @@ public class Route {
 
 	public Route() {
 		
-		noeuds[0] = 0;
-		noeuds[1] = 1;
-		maxVoiture = 10;
+	    setNoeud(0,1);
+		
+	    setMaxVoiture(10);
 		genererTrafic();
 		setLongueur(20);
 		updateEtat();
@@ -29,9 +29,8 @@ public class Route {
 
 	public Route(int maxVoiture, int longueur, int noeudDepart, int noeudArrive) {
 		
-		noeuds[0] = noeudDepart;
-		noeuds[1] = noeudArrive;
-
+	    setNoeud(noeudDepart,noeudArrive);
+	    
 		setMaxVoiture(maxVoiture);
 		genererTrafic();
 		setLongueur(longueur);
@@ -40,8 +39,6 @@ public class Route {
 
 	/*
 	 * Permet de generer le nombre de voitures sur la route
-	 * 
-	 * @return nombre de voitures sur la route
 	 */
 	public void genererTrafic() {
 		Random random = new Random();
@@ -52,24 +49,23 @@ public class Route {
 	/*
 	 * Permet d'inserer un nombre de voitures precis sur la route
 	 * 
-	 * @param nVoiture le nombre de voitures sur la rout
+	 * @param nVoiture le nombre de voitures sur la route
 	 */
 	public void setTrafic(int nVoiture) {
 		if (nVoiture <= maxVoiture) {
 			this.nbreVoiture = nVoiture;
 
 			updateEtat(); // Mettre a jour l'etat de la route
-		} else {
-			this.nbreVoiture = 0;
 		}
 	}
 
+	/*
+     * Permet d'inserer le nombre de maximum de voitures sur la route
+     * 
+     * @param maxVoiture le nombre de maximum de voitures sur la route
+     */
 	public void setMaxVoiture(int maxVoiture) {
-		if (maxVoiture <= 100) {
-			this.maxVoiture = maxVoiture;
-		} else {
-			this.maxVoiture = 10;
-		}
+		this.maxVoiture = maxVoiture;
 	}
 
 	/*
@@ -79,10 +75,8 @@ public class Route {
 	public void updateEtat() {
 		if (Accident.causeAccident() == true) {
 			this.etat = EtatRoute.ACCIDENT;
-			//this.etat = EtatRoute.FLUIDE;
 		} else if (this.nbreVoiture == this.maxVoiture) {
 			this.etat = EtatRoute.CONGESTION;
-			//this.etat = EtatRoute.FLUIDE;
 		} else {
 			this.etat = EtatRoute.FLUIDE;
 		}
@@ -131,6 +125,19 @@ public class Route {
 		return this.etat;
 	}
 
+	/*
+     * Set l'etat de la route
+     */
+    public void setEtat(EtatRoute etat) {
+        this.etat = etat;
+    }
+    
+    /*
+     * Permet d'obtenir les noeuds relies a la route
+     *
+     * @return le noeud de la route
+     * @return -1 si le noeud n'existe pas
+     */
 	public int getNoeud(int n) {
 
 		if ( n<noeuds.length ) {
@@ -140,6 +147,16 @@ public class Route {
 
 			return -1 ;
 		}
+	}
+	
+	/*
+     * Set les noeuds de depart et d'arrive de la route
+     */
+	public void setNoeud(int noeudDepart, int noeudArrive) {
+	    if( (noeudDepart <=7 && noeudDepart >= 0) && (noeudArrive<=7 && noeudArrive >= 0) ) {
+	        this.noeuds[0] = noeudDepart;
+            this.noeuds[1] = noeudArrive;
+	    }
 	}
 
 	/*

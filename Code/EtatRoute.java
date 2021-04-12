@@ -6,7 +6,7 @@
  * */
 package Code;
 
-/* Contient tous les etats possible a une route */
+/* Contient tous les etats possible d'une route */
 public enum EtatRoute {
     FLUIDE, 
     CONGESTION,
