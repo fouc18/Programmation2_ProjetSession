@@ -15,7 +15,7 @@ import java. util.ArrayList;
 import Code.Dijkstra;
 
 
-public class Gps extends Route {
+public class Gps {
 
 	/**
 	 * Attributs de la classe
@@ -188,35 +188,6 @@ public class Gps extends Route {
 
 			//System.out.println("Apres chemin noeud");
 		}
-
-		/*
-		int sommeCongestion = 0;
-
-		do {
-
-			for(int y = 0; y < copieGraphe[positionActuelle].length; y++) {
-
-				sommeCongestion += copieGraphe[positionActuelle][y];
-
-			}
-
-			if (sommeCongestion == 0) {
-
-				reinitialiserTraffic();
-
-				modifierGraphe();
-			}
-		}while(sommeCongestion == 0);
-		 */
-
-		/*System.out.println("copie graphe " +Arrays.deepToString(copieGraphe));
-		System.out.println("DISTNOEUD " +Arrays.deepToString(DISTNOEUD));*/
-
-		//	int [] cheminNoeud = Dijkstra.cheminASuivre(copieGraphe, positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
-
-		//System.out.println("cheminNoeud: "+Arrays.toString(cheminNoeud));
-
-		//	System.out.println(Arrays.toString(listeRoutes));
 
 		if (!this.cheminRoute.isEmpty()) {
 

@@ -9,7 +9,7 @@ import exception.NoeudIntrouvableException;
 
 public class ControleurTest {
 
-	public static void main( String[] args ) throws ArrayIndexOutOfBoundsException {
+	/*public static void main( String[] args ) throws ArrayIndexOutOfBoundsException {
 
 		Controleur c = new Controleur();
 
@@ -25,5 +25,5 @@ public class ControleurTest {
 		
 		System.out.println("distance => "+c.getVoiture().getDistance());
 
-	}
+	}*/
 }

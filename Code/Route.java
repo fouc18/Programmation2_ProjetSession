@@ -2,13 +2,15 @@
  * Version: 1.0
  * Date: 03/26/2021
  * Auteur: Membres de l'equipe 4
+ * 
+ * Description : Permet de representer le comportement d'une route.
+ * 
  * Copyright 2021 equipe 4
  * */
 package Code;
 
 import java.util.Random;
 
-/* Permet de representer le comportement d'une route */
 public class Route {
 
 	private int maxVoiture;
