@@ -496,16 +496,27 @@ public class MainUI extends JFrame {
 		carDessin.setVisible(true);
 
 	}
+	
+	public void afficherErreur(String msg) {
+		JFrame frame = new JFrame();
+		JOptionPane.showMessageDialog(frame, msg);
+	}
 
 	private void DebuterMouseClicked(java.awt.event.MouseEvent evt) {
-		Depart = jTextField1.getText().charAt(0);
-		Arrive = jTextField2.getText().charAt(0);
+		try {
+		Depart = jTextField1.getText().toUpperCase().charAt(0);
+		Arrive = jTextField2.getText().toUpperCase().charAt(0);
 
 		control.demarrer(conversionNoeudEntier(Depart), conversionNoeudEntier(Arrive));
 		ClearItineraire();
 		dessinerTraffic(control.getEtatRoutes());
 		dessinerItineraire();
 		afficherVoiture();
+		
+		} catch(StringIndexOutOfBoundsException | NullPointerException e){
+			afficherErreur("Veuillez Rentrer des Valeurs Valides !!!");
+		}
+		
 	}
 
 	private void reinitialiserMouseClicked(java.awt.event.MouseEvent evt) {
@@ -528,27 +539,29 @@ public class MainUI extends JFrame {
 	}
 
 	private void FluideMouseClicked(java.awt.event.MouseEvent evt) {
-		JFrame frame = new JFrame();
-		JOptionPane.showMessageDialog(frame, "Eggs are not supposed to be Circulation Fluide.");
+		afficherErreur("Eggs are not supposed to be Circulation Fluide.");
 	}
 
 	private void CongestionMouseClicked(java.awt.event.MouseEvent evt) {
-		JFrame frame = new JFrame();
-		JOptionPane.showMessageDialog(frame, "Eggs are not supposed to be Circulation Fluide.");
+		afficherErreur("Eggs are not supposed to be Circulation Congestion.");
 	}
 
 	private void nextStepMouseClicked(java.awt.event.MouseEvent evt) {
-		
+		try {
+			
+		if(control.deplacement() == 2) {
+		afficherErreur("La Voiture a atteint sa destination !");
+		} else {
 		ClearItineraire();
 		dessinerItineraire();
 		dessinerTraffic(control.getEtatRoutes());
-		control.deplacement();
 		afficherVoiture();
-
-		/*
-		 * JFrame frame = new JFrame(); JOptionPane.showMessageDialog(frame,
-		 * "Next Step // Prochaine Étape");
-		 */
+		}
+		
+		} catch (NullPointerException e){
+			afficherErreur("Pour Avancer La Voiture, Il faut Débuter !!");
+		}
+		
 	}
 
 	/**
