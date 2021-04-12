@@ -1,4 +1,5 @@
-/* Nom: Controleur
+/** 
+ * Nom: Controleur
  * Version: 1.0
  * Date: 04/10/2021
  * Auteur: Membres de l'equipe 4
@@ -7,7 +8,8 @@
  * entre l'interface et le reste du code.
  * 
  * Copyright 2021 equipe 4
- * */
+ */
+
 package Code;
 
 import java.util.ArrayList;

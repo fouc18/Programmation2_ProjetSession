@@ -1,4 +1,5 @@
-/* Nom: Accident
+/**
+ * Nom: Accident
  * Version: 1.0
  * Date: 03/26/2021
  * Auteur: Membres de l'equipe 4
@@ -7,7 +8,8 @@
  * un pourcentage de probabilites
  * 
  * Copyright 2021 equipe 4
- * */
+ */
+
 package Code;
 
 import java.util.Random;

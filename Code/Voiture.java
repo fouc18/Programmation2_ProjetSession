@@ -1,15 +1,15 @@
-/*
+/**
  * Nom: Voiture
  * Version: 1.0
  * Date: 03/28/2021
  * Auteur: Membres de l'equipe 4
- * Copyright 2021 equipe 4
  * 
- * */
+ * Description : 
+ * 
+ * Copyright 2021 equipe 4
+ */
+
 package Code;
-
-import java.util.Arrays;
-
 
 /* Cette classe permet de representer le comportement d'une voiture */
 public class Voiture extends Gps{
