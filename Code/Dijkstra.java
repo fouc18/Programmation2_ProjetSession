@@ -1,5 +1,3 @@
-package Code;
-
 /**
  * Nom: Dijkstra
  * Version: 1.0
@@ -14,10 +12,10 @@ package Code;
  * Copyright 2021 equipe 4
  */
 
+package Code;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-
-
 
 public class Dijkstra {
 
@@ -183,25 +181,6 @@ public class Dijkstra {
     	 
     }
 
-    
-    // Main pour tester
-    public static void main(String[] args) 
-    {
-        int[][] adjacencyMatrix = { { 0, 5, 0, 0, 0, 1, 2, 0},
-                { 5, 0, 1, 0, 0, 0, 3, 0},
-                { 0, 1, 0, 6, 0, 0, 0, 3},
-                { 0, 0, 6, 0, 12, 0, 0, 6},
-                { 0, 0, 0, 12, 0, 3, 0, 4},
-                { 1, 0, 0, 0, 3, 0, 1, 0},
-                { 2, 3, 0, 0, 0, 1, 0, 10},
-                { 0, 0, 3, 6, 4, 0, 10, 0}};
-
-        //dijkstra(adjacencyMatrix, 0);
-        int distance0_3 = distanceMin(adjacencyMatrix, 0, 7);
-        System.out.println(distance0_3);
-        int[] chemin0_3 = cheminASuivre(adjacencyMatrix, 0, 7);
-        System.out.println(Arrays.toString(chemin0_3));
-    }
 }
 
 // Ce code a ete inspire de Harikrishnan Rajan

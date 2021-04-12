@@ -15,7 +15,7 @@ import java. util.ArrayList;
 import Code.Dijkstra;
 
 
-public class Gps extends Route {
+public class Gps {
 
 	/**
 	 * Attributs de la classe
