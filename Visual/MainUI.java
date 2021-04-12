@@ -1,5 +1,7 @@
 package Visual;
 
+import java.awt.Color;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -31,7 +33,8 @@ public class MainUI extends JFrame {
 		super("App");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		try {
-			setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("Visual/Images/interface.jpg")))));
+			setContentPane(new JLabel(
+					new ImageIcon(ImageIO.read(new File("Visual/Images/interface.jpg")))));
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -99,6 +102,10 @@ public class MainUI extends JFrame {
 		face_HE1 = new JLabel();
 		face_GF = new JLabel();
 		face_GF1 = new JLabel();
+
+		listeFaceRoute = new JLabel[] { face_AB1, face_AG, face_AF, face_AB, face_BC, face_BG, face_BC1, face_CH,
+				face_CD, face_CD1, face_HD1, face_ED, face_FE1, face_HE1, face_ED1, face_AF1, face_GF1, face_FE,
+				face_AG1, face_BG1, face_GF, face_GH, face_CH1, face_HD, face_HE, face_GH1 };
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -343,7 +350,7 @@ public class MainUI extends JFrame {
 		return 'Z';
 	}
 
-	private void dessinerChemin(char debut, char fin) {
+	private void dessinerChemin(char debut, char fin) { // Pour GPS
 
 		if (debut == 'A' && fin == 'B' || debut == 'B' && fin == 'A') {
 			AB.setVisible(true);
@@ -403,499 +410,24 @@ public class MainUI extends JFrame {
 		ED.setVisible(false);
 	}
 
-	public void dessinerTraffic(EtatRoute[] listeEtat) {
-		System.out.println("Route 0: "+listeEtat[0]);
-		switch (listeEtat[0]) {
-		case FLUIDE:
-			face_AB1.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_AB1.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_AB1.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
+	public void dessinerTraffic(EtatRoute[] listeEtat) { // Pour Interface
+		for (int i = 0; i < listeFaceRoute.length; i++) {
+			System.out.println("Route " + i + " : " + listeEtat[i]);
+			switch (listeEtat[i]) {
+			case FLUIDE:
+				listeFaceRoute[i].setVisible(false);
 
-		}
-		System.out.println();
-		System.out.println("Route 1: "+listeEtat[1]);
-		switch (listeEtat[1]) {
-		case FLUIDE:
-			face_AG.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_AG.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_AG.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
+				break;
+			case CONGESTION:
+				listeFaceRoute[i].setVisible(true);
 
-		}
-		System.out.println();
-		System.out.println("Route 2: "+listeEtat[2]);
-		switch (listeEtat[2]) {
-		case FLUIDE:
-			face_AF.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_AF.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_AF.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
+				break;
+			case ACCIDENT:
+				listeFaceRoute[i].setVisible(true);
 
-		}
-		System.out.println();
-		System.out.println("Route 3: "+listeEtat[3]);
-		switch (listeEtat[3]) {
-		case FLUIDE:
-			face_AB.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_AB.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_AB.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
+				break;
 
-		}
-		System.out.println();
-		System.out.println("Route 4: "+listeEtat[4]);
-		switch (listeEtat[4]) {
-		case FLUIDE:
-			face_BC.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_BC.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_BC.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 5: "+listeEtat[5]);
-		switch (listeEtat[5]) {
-		case FLUIDE:
-			face_BG.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_BG.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_BG.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 6: "+listeEtat[6]);
-		switch (listeEtat[6]) {
-		case FLUIDE:
-			face_BC1.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_BC1.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_BC1.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 7: "+listeEtat[7]);
-		switch (listeEtat[7]) {
-		case FLUIDE:
-			face_CH.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_CH.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_CH.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 8: "+listeEtat[8]);
-		switch (listeEtat[8]) {
-		case FLUIDE:
-			face_CD.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_CD.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_CD.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 9: "+listeEtat[9]);
-		switch (listeEtat[9]) {
-		case FLUIDE:
-			face_CD1.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_CD1.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_CD1.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 10: "+listeEtat[10]);
-		switch (listeEtat[10]) {
-		case FLUIDE:
-			face_HD1.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_HD1.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_HD1.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 11: "+listeEtat[11]);
-		switch (listeEtat[11]) {
-		case FLUIDE:
-			face_ED.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_ED.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_ED.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 12: "+listeEtat[12]);
-		switch (listeEtat[12]) {
-		case FLUIDE:
-			face_FE1.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_FE1.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_FE1.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 13: "+listeEtat[13]);
-		switch (listeEtat[13]) {
-		case FLUIDE:
-			face_HE1.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_HE1.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_HE1.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 14: "+listeEtat[14]);
-		switch (listeEtat[14]) {
-		case FLUIDE:
-			face_ED1.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_ED1.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_ED1.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 15: "+listeEtat[15]);
-		switch (listeEtat[15]) {
-		case FLUIDE:
-			face_AF1.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_AF1.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_AF1.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 16: "+listeEtat[16]);
-		switch (listeEtat[16]) {
-		case FLUIDE:
-			face_GF1.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_GF1.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_GF1.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 17: "+listeEtat[17]);
-		switch (listeEtat[17]) {
-		case FLUIDE:
-			face_FE.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_FE.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_FE.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 18: "+listeEtat[18]);
-		switch (listeEtat[18]) {
-		case FLUIDE:
-			face_AG1.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_AG1.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_AG1.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 19: "+listeEtat[19]);
-		switch (listeEtat[19]) {
-		case FLUIDE:
-			face_BG1.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_BG1.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_BG1.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 20: "+listeEtat[20]);
-		switch (listeEtat[20]) {
-		case FLUIDE:
-			face_GF.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_GF.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_GF.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 21: "+listeEtat[21]);
-		switch (listeEtat[21]) {
-		case FLUIDE:
-			face_GH.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_GH.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_GH.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 22: "+listeEtat[22]);
-		switch (listeEtat[22]) {
-		case FLUIDE:
-			face_CH1.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_CH1.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_CH1.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 23: "+listeEtat[23]);
-		switch (listeEtat[23]) {
-		case FLUIDE:
-			face_HD.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_HD.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_HD.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 24: "+listeEtat[24]);
-		switch (listeEtat[24]) {
-		case FLUIDE:
-			face_HE.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_HE.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_HE.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
-		}
-		System.out.println();
-		System.out.println("Route 25: "+listeEtat[25]);
-		switch (listeEtat[25]) {
-		case FLUIDE:
-			face_GH1.setVisible(false);
-			// System.out.println("Fluide");
-			break;
-		case CONGESTION:
-			face_GH1.setVisible(true);
-			// face_AB.setText("Congestion");
-			System.out.println("Congestion");
-			break;
-		case ACCIDENT:
-			face_GH1.setVisible(true);
-			// face_AB.setText("Accident");
-			System.out.println("Accident");
-			break;
-
+			}
 		}
 
 	}
@@ -988,6 +520,7 @@ public class MainUI extends JFrame {
 	Controleur control;
 	char Depart;
 	char Arrive;
+
 	// Variables declaration - do not modify
 	private JLabel AB;
 	private JLabel AF;
@@ -1035,6 +568,6 @@ public class MainUI extends JFrame {
 	private JTextField jTextField1;
 	private JTextField jTextField2;
 	private JLabel nextStep;
-
+	JLabel[] listeFaceRoute;
 	// End of variables declaration
 }
