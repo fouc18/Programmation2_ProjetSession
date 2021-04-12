@@ -20,8 +20,8 @@
   Cliquer seulement sur le fichier exécutable enigma.exe pour démarer le programme.
 
 ## Fabriqué avec
-   Intellij
-   *Interface graphique: 
+   Intellij et Eclipse
+   *Interface graphique: NetBeans
 
 ## Versions
   Version stable 1.0 
