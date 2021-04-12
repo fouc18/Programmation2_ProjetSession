@@ -2,7 +2,7 @@
  * Nom: Dijkstra
  * Version: 1.0
  * Date: 03/29/2021
- * Auteur: Membres de l'équipe 4
+ * Auteur: Membres de l'equipe 4
  * 
  * Description :La classe Dijkstra implemente l'algorithme du
  * même nom permettant de trouver le chemin le plus cours entre

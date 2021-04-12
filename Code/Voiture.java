@@ -1,5 +1,5 @@
 /*
- *  Nom: Voiture
+ * Nom: Voiture
  * Version: 1.0
  * Date: 03/28/2021
  * Auteur: Membres de l'equipe 4
