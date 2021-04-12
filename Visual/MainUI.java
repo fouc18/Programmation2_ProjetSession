@@ -18,6 +18,8 @@ import Code.Route;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.io.*;
 import javax.imageio.*;
 
@@ -55,7 +57,18 @@ public class MainUI extends JFrame {
 
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">
 	private void initComponents() {
-
+		
+		positionImgVoiture = new HashMap<Character,int[]>(){{
+			put('A', new int[] {20, 210});
+			put('B', new int[] {180, 40});
+			put('C', new int[] {390, 30});
+			put('D', new int[] {540, 210});
+			put('E', new int[] {390, 410});
+			put('F', new int[] {180, 410});
+			put('G', new int[] {180, 210});
+			put('H', new int[] {400, 210});
+		}};
+		
 		Debuter = new JLabel();
 		Redemarrer = new JLabel();
 		jTextField1 = new JTextField();
@@ -102,6 +115,7 @@ public class MainUI extends JFrame {
 		face_HE1 = new JLabel();
 		face_GF = new JLabel();
 		face_GF1 = new JLabel();
+		carDessin = new JLabel();
 
 		listeFaceRoute = new JLabel[] { face_AB1, face_AG, face_AF, face_AB, face_BC, face_BG, face_BC1, face_CH,
 				face_CD, face_CD1, face_HD1, face_ED, face_FE1, face_HE1, face_ED1, face_AF1, face_GF1, face_FE,
@@ -290,6 +304,9 @@ public class MainUI extends JFrame {
 
 		face_GF1.setIcon(new ImageIcon("Visual/Images/Interface/GF1.png")); // NOI18N
 		getContentPane().add(face_GF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 274, -1, -1));
+		
+		carDessin.setIcon(new javax.swing.ImageIcon("Visual/Images/mcqueen.png")); // NOI18N
+        getContentPane().add(carDessin, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 70, 80));
 
 		GH.setVisible(false);
 		HD.setVisible(false);
@@ -304,7 +321,7 @@ public class MainUI extends JFrame {
 		GF.setVisible(false);
 		HE.setVisible(false);
 		ED.setVisible(false);
-
+		carDessin.setVisible(false);
 		face_BG.setVisible(false);
 		face_AG.setVisible(false);
 		face_AG1.setVisible(false);
@@ -431,6 +448,14 @@ public class MainUI extends JFrame {
 		}
 
 	}
+	
+	private void afficherVoiture() {
+		
+		char noeudActuel =  conversionNoeudCaractere(control.getPositionVoiture());
+		getContentPane().add(carDessin, new org.netbeans.lib.awtextra.AbsoluteConstraints(positionImgVoiture.get(noeudActuel)[0], positionImgVoiture.get(noeudActuel)[1], 70, 80));
+		carDessin.setVisible(true);
+		
+	}
 
 	private void DebuterMouseClicked(java.awt.event.MouseEvent evt) {
 		Depart = jTextField1.getText().charAt(0);
@@ -444,15 +469,13 @@ public class MainUI extends JFrame {
 			dessinerChemin(conversionNoeudCaractere(itineraire.get(i).getNoeud(0)),
 					conversionNoeudCaractere(itineraire.get(i).getNoeud(1)));
 		}
+		afficherVoiture();
 	}
 
 	private void RedemarrerMouseClicked(java.awt.event.MouseEvent evt) {
-		/*
-		 * JFrame frame = new JFrame(); JOptionPane.showMessageDialog(frame,
-		 * "Eggs are not supposed to be RedÃ©marrer.");
-		 */
-
-		System.out.println(conversionNoeudCaractere(52));
+		
+				System.out.println(conversionNoeudCaractere(52));
+				
 	}
 
 	private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -520,7 +543,7 @@ public class MainUI extends JFrame {
 	Controleur control;
 	char Depart;
 	char Arrive;
-
+	Map<Character,int[]> positionImgVoiture;
 	// Variables declaration - do not modify
 	private JLabel AB;
 	private JLabel AF;
@@ -568,6 +591,8 @@ public class MainUI extends JFrame {
 	private JTextField jTextField1;
 	private JTextField jTextField2;
 	private JLabel nextStep;
+	private JLabel carDessin;
 	JLabel[] listeFaceRoute;
+	
 	// End of variables declaration
 }
