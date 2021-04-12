@@ -31,13 +31,13 @@ public class Controleur {
 	public int deplacement() {
 		
 	    //Avoir un trafic different a chaque deplacement
-		voitureActuelle.reinitialiserTraffic();
+		
 		
 		int resultatAvance;
 		do {
 	
 		 resultatAvance = voitureActuelle.avancer();
-		 
+		 voitureActuelle.reinitialiserTraffic();
 		
 		}while(resultatAvance == 1); //Reessayer d'avancer tant que la voiture rencontre des problemes de trajet
 		
