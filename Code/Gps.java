@@ -15,7 +15,7 @@ import java. util.ArrayList;
 import Code.Dijkstra;
 
 
-public class Gps {
+public class Gps extends Route {
 
 	/**
 	 * Attributs de la classe
@@ -77,32 +77,32 @@ public class Gps {
 	public void creationRoute() {
 
 		listeRoutes = new Route[26]; // Creer les routes
-		listeRoutes[0]  = new Route( 100, 5, 0, 1);  //maxVoiture, longueur, noeudDepart, noeudArrive
-		listeRoutes[1]  = new Route( 100, 2, 0, 6); 
-		listeRoutes[2]  = new Route( 20, 1, 0, 5); 
-		listeRoutes[3]  = new Route( 100, 5, 1, 0);
-		listeRoutes[4]  = new Route( 20, 1, 1, 2);
-		listeRoutes[5]  = new Route( 60, 3, 1, 6);
-		listeRoutes[6]  = new Route( 20, 1, 2, 1);
-		listeRoutes[7]  = new Route( 60, 3, 2, 7);
-		listeRoutes[8]  = new Route( 12, 6, 2, 3);
-		listeRoutes[9]  = new Route( 12, 6, 3, 2);
-		listeRoutes[10] = new Route( 12, 6, 3, 7);
-		listeRoutes[11] = new Route( 24, 12, 3, 4);
-		listeRoutes[12] = new Route( 60, 3, 4, 5);
-		listeRoutes[13] = new Route( 80, 4, 4, 7);
-		listeRoutes[14] = new Route( 24, 12, 4, 3);
-		listeRoutes[15] = new Route( 20, 1, 5, 0);
-		listeRoutes[16] = new Route( 20, 1, 5, 6);
-		listeRoutes[17] = new Route( 6, 3, 5, 4);
-		listeRoutes[18] = new Route( 40, 2, 6, 0);
-		listeRoutes[19] = new Route( 60, 3, 6, 1);
-		listeRoutes[20] = new Route( 20, 1, 6, 5);
-		listeRoutes[21] = new Route( 20, 10, 6, 7);
-		listeRoutes[22] = new Route( 60, 3, 7, 2);
-		listeRoutes[23] = new Route( 12, 6, 7, 3);
-		listeRoutes[24] = new Route( 80, 4, 7, 4);
-		listeRoutes[25] = new Route( 20, 10, 7, 6);
+		listeRoutes[0]  = new Route( 13, 5, 0, 1);  //maxVoiture, longueur, noeudDepart, noeudArrive
+		listeRoutes[1]  = new Route( 5, 2, 0, 6); 
+		listeRoutes[2]  = new Route( 3, 1, 0, 5); 
+		listeRoutes[3]  = new Route( 13, 5, 1, 0);
+		listeRoutes[4]  = new Route( 3, 1, 1, 2);
+		listeRoutes[5]  = new Route( 8, 3, 1, 6);
+		listeRoutes[6]  = new Route( 3, 1, 2, 1);
+		listeRoutes[7]  = new Route( 8, 3, 2, 7);
+		listeRoutes[8]  = new Route( 15, 6, 2, 3);
+		listeRoutes[9]  = new Route( 15, 6, 3, 2);
+		listeRoutes[10] = new Route( 15, 6, 3, 7);
+		listeRoutes[11] = new Route( 30, 12, 3, 4);
+		listeRoutes[12] = new Route( 8, 3, 4, 5);
+		listeRoutes[13] = new Route( 10, 4, 4, 7);
+		listeRoutes[14] = new Route( 30, 12, 4, 3);
+		listeRoutes[15] = new Route( 3, 1, 5, 0);
+		listeRoutes[16] = new Route( 3, 1, 5, 6);
+		listeRoutes[17] = new Route( 8, 3, 5, 4);
+		listeRoutes[18] = new Route( 5, 2, 6, 0);
+		listeRoutes[19] = new Route( 8, 3, 6, 1);
+		listeRoutes[20] = new Route( 3, 1, 6, 5);
+		listeRoutes[21] = new Route( 25, 10, 6, 7);
+		listeRoutes[22] = new Route( 8, 3, 7, 2);
+		listeRoutes[23] = new Route( 15, 6, 7, 3);
+		listeRoutes[24] = new Route( 10, 4, 7, 4);
+		listeRoutes[25] = new Route( 25, 10, 7, 6);
 
 	}
 
@@ -188,6 +188,35 @@ public class Gps {
 
 			//System.out.println("Apres chemin noeud");
 		}
+
+		/*
+		int sommeCongestion = 0;
+
+		do {
+
+			for(int y = 0; y < copieGraphe[positionActuelle].length; y++) {
+
+				sommeCongestion += copieGraphe[positionActuelle][y];
+
+			}
+
+			if (sommeCongestion == 0) {
+
+				reinitialiserTraffic();
+
+				modifierGraphe();
+			}
+		}while(sommeCongestion == 0);
+		 */
+
+		/*System.out.println("copie graphe " +Arrays.deepToString(copieGraphe));
+		System.out.println("DISTNOEUD " +Arrays.deepToString(DISTNOEUD));*/
+
+		//	int [] cheminNoeud = Dijkstra.cheminASuivre(copieGraphe, positionActuelle, noeudFin ); //Graphe, Depart, Arrivee
+
+		//System.out.println("cheminNoeud: "+Arrays.toString(cheminNoeud));
+
+		//	System.out.println(Arrays.toString(listeRoutes));
 
 		if (!this.cheminRoute.isEmpty()) {
 
