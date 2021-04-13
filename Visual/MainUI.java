@@ -1,6 +1,8 @@
 package Visual;
 
 
+import java.awt.Color;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -66,7 +68,8 @@ public class MainUI extends JFrame {
 				put('H', new int[] { 400, 210 });
 			}
 		};
-
+		
+		distParc = new JLabel();
 		Debuter = new JLabel();
 		reinitialiser = new JLabel();
 		jTextField1 = new JTextField();
@@ -119,7 +122,14 @@ public class MainUI extends JFrame {
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
+		
+		distParc.setHorizontalAlignment(SwingConstants.CENTER);
+		distParc.setForeground(Color.white);
+		distParc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+		distParc.setHorizontalTextPosition(SwingConstants.CENTER);
+		
+		getContentPane().add(distParc, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 574, 110, 31));
+		
 		Debuter.setHorizontalAlignment(SwingConstants.CENTER);
 		Debuter.setText("Debuter");
 		Debuter.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -390,6 +400,16 @@ public class MainUI extends JFrame {
 		}
 
 	}
+	
+	private void calculDistParc() {
+		
+		double dstdoble = control.getVoitureDistance();
+		String dst = String.valueOf(dstdoble);
+		
+		distParc.setText(dst);
+		distParc.setVisible(true);
+		
+	}
 
 	private void dessinerItineraire() {
 		ArrayList<Route> itineraire = control.getItineraire();
@@ -490,6 +510,7 @@ public class MainUI extends JFrame {
 			ClearItineraire();
 			dessinerTraffic(control.getEtatRoutes());
 			dessinerItineraire();
+			calculDistParc();
 			afficherVoiture();
 
 		} catch (StringIndexOutOfBoundsException | NullPointerException e) {
@@ -525,6 +546,7 @@ public class MainUI extends JFrame {
 				ClearItineraire();
 				dessinerItineraire();
 				dessinerTraffic(control.getEtatRoutes());
+				calculDistParc();
 				afficherVoiture();
 			}
 
@@ -585,6 +607,7 @@ public class MainUI extends JFrame {
 	private JLabel CD;
 	private JLabel CH;
 	private JLabel Debuter;
+	private JLabel distParc;
 	private JLabel ED;
 	private JLabel FE;
 	private JLabel GF;
