@@ -1,36 +1,45 @@
-/* Nom: Controleur
+/** 
+ * Nom: Controleur
  * Version: 1.0
  * Date: 04/10/2021
  * Auteur: Membres de l'equipe 4
+ * 
+ * Description : La classe Controleur sert de d'intermediaire
+ * entre l'interface et le reste du code.
+ * 
  * Copyright 2021 equipe 4
- * */
+ */
+
 package Code;
 
 import java.util.ArrayList;
 
-/*Intermediaire entre l'interface graphique et le code Backend*/
 public class Controleur {
-
+	
+	/**
+	 * Attribut
+	 */
 	private Voiture voitureActuelle;
 
-	/** Permet de demarrer un trajet
+	/** 
+	 * Permet de demarrer un trajet
 	 * 
 	 * @param noeudDepart
 	 * @param noeudFin
 	 */
 	public void demarrer(int noeudDepart, int noeudFin) {
 
+		//Définition d'un d'une position de départ et d'une destination pour la voiture
 		voitureActuelle = new Voiture(noeudDepart, noeudFin);
 
 	}
 	
-	/** Permet d'effectuer un deplacement de la voiture
+	/** 
+	 * Permet d'effectuer un deplacement de la voiture
 	 * 
 	 * @return possibilite d'avancer
 	 */
 	public int deplacement() {
-
-		//Avoir un trafic different a chaque deplacement
 
 		int resultatAvance;
 		do {
@@ -38,7 +47,7 @@ public class Controleur {
 			resultatAvance = voitureActuelle.avancer();
 			voitureActuelle.reinitialiserTraffic();
 
-		}while(resultatAvance == 1); //Reessayer d'avancer tant que la voiture rencontre des problemes de trajet
+		} while(resultatAvance == 1); //Reessayer d'avancer tant que la voiture rencontre des problemes de trajet
 
 		return resultatAvance;
 	}
@@ -51,6 +60,7 @@ public class Controleur {
 		EtatRoute[] etat = new EtatRoute[26];
 
 		for(int i = 0; i < etat.length; i++) {
+			//Pour toutes les routes obtenir leur état
 			etat[i] = voitureActuelle.getListeRoute()[i].getEtat();
 		}
 

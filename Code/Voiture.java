@@ -1,15 +1,15 @@
-/*
- *  Nom: Voiture
+/**
+ * Nom: Voiture
  * Version: 1.0
  * Date: 03/28/2021
  * Auteur: Membres de l'equipe 4
- * Copyright 2021 equipe 4
  * 
- * */
+ * Description : 
+ * 
+ * Copyright 2021 equipe 4
+ */
+
 package Code;
-
-import java.util.Arrays;
-
 
 /* Cette classe permet de representer le comportement d'une voiture */
 public class Voiture extends Gps{
@@ -19,6 +19,12 @@ public class Voiture extends Gps{
 	private int positionFin;
 
 	private int compteur;
+	
+	/**
+	 * Constructeur par defaut qui cree une voiture 
+	 * entre les noeuds 0 et 3 comme point d'arrive et de départ
+	 * cré un itineraire unique a cette voiture
+	 */
 
 	public Voiture(){
 
@@ -37,7 +43,13 @@ public class Voiture extends Gps{
 		}
 
 	}
-
+	
+	/**
+	 * Constructeur avec parametre, 
+	 * les noeud de depart et d'arrive ne sont pas defini
+	 * @param depart
+	 * @param fin
+	 */
 	public Voiture(int depart, int fin){
 
 		super(depart, fin);
@@ -49,26 +61,29 @@ public class Voiture extends Gps{
 		this.positionActuelle = super.getNoeudDepart();
 
 		try {
+			//Calcul l'itineraire le plus court en fonction du noeud actuel et de la destination finale
 			super.calculeItineraire(positionActuelle);
 		}catch(IndexOutOfBoundsException e) {
+			//Si la voiture est entoure de routes bloque, reinitialiser le traffic
 			super.reinitialiserTraffic();
 		}
 	}
 
+	/**
+	 * Calcul l'itinéraire le plus court entre la position actuelle et la destination finale
+	 */
 	public void trouverItineraire() {
 
 		try {
+			//Si la voiture n'est pas isolé, faire le calcul de l'itinéraire
 			super.calculeItineraire(positionActuelle);
 		} catch (ArrayIndexOutOfBoundsException e) {
-			// TODO Auto-generated catch block
-			//System.out.println("Dans le constructeur");
-
+			//Si toutes les routes entourant la voiture sont bloqués, regénérer l'état des routes
 			super.reinitialiserTraffic();
 			trouverItineraire();
 		}
 
 	}
-
 
 	/**
 	 * 
@@ -79,41 +94,24 @@ public class Voiture extends Gps{
 	public int avancer(){
 
 		if(positionActuelle == super.getNoeudFin() ) {
-			
-			//System.out.println("Arrive !" + positionActuelle);
-			
+			//La voiture est arrivé à la destination finale
 			return 2;
 
 		}
 
 		try {
-
-			//super.calculeItineraire(positionActuelle);
-
-			//System.out.println("chemin route TEST: " +super.getCheminRoute());
-			
+			//La voiture avance à la prochaine intersection
 			Route routeActuelle = super.getCheminRoute().get(0);
-			//Route routeActuelle = super.getCheminRoute().get(positionActuelle);
-
-			//compteur ++;
-			
-		//	System.out.println("compteur " + compteur);
-
+	
 			this.positionActuelle = routeActuelle.getNoeud(1);
 
 			super.ajouterDistance(routeActuelle.getLongueur());
 			
-			//System.out.println("ceci est la position actuelle " +positionActuelle);
-		
-			
 			return 0;
 
 		} catch(IndexOutOfBoundsException e) {
-
-			//System.out.println("catch: avancer");
-			
-			//System.out.println("ceci est la position actuelle " +positionActuelle);
-
+			//Toutes les routes entourant la voiture sont bloques
+			//le traffic est regenere et un nouvel itineraire est trouve
 			super.reinitialiserTraffic();
 			
 			super.calculeItineraire(positionActuelle);
