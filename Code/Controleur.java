@@ -29,6 +29,7 @@ public class Controleur {
 	 */
 	public void demarrer(int noeudDepart, int noeudFin) {
 
+		//Définition d'un d'une position de départ et d'une destination pour la voiture
 		voitureActuelle = new Voiture(noeudDepart, noeudFin);
 
 	}
@@ -59,6 +60,7 @@ public class Controleur {
 		EtatRoute[] etat = new EtatRoute[26];
 
 		for(int i = 0; i < etat.length; i++) {
+			//Pour toutes les routes obtenir leur état
 			etat[i] = voitureActuelle.getListeRoute()[i].getEtat();
 		}
 

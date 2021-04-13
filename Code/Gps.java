@@ -279,9 +279,9 @@ public class Gps {
 		this.copieGraphe = copieGraphe(Gps.DISTNOEUD);
 
 		for (int i = 0 ; i< listeRoutes.length; i++) {
-
-			if((listeRoutes[i].getEtat() == EtatRoute.CONGESTION) || ( listeRoutes[i].getEtat() == EtatRoute.ACCIDENT)){	// Si une route est fermee
-
+			
+			if((listeRoutes[i].getEtat() == EtatRoute.CONGESTION) || ( listeRoutes[i].getEtat() == EtatRoute.ACCIDENT)){	
+				// Si une route est fermee
 				copieGraphe[listeRoutes[i].getNoeud(0) ][listeRoutes[i].getNoeud(1)] = 0 ;
 			}
 		}

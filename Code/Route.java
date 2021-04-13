@@ -91,10 +91,13 @@ public class Route {
 	 * Permet de changer l'etat de la route selon le trafic et les accidents
 	 */
 	public void updateEtat() {
+		//Si une route est accidenté, changer son état à accidenté
 		if (Accident.causeAccident() == true) {
 			this.etat = EtatRoute.ACCIDENT;
+		//Si la route a atteint son nombre maximal de voiture, changer son état à congestionné	
 		} else if (this.nbreVoiture == this.maxVoiture) {
 			this.etat = EtatRoute.CONGESTION;
+		//Si une route n'est pas congestionné ou accidenté, elle est fluide	
 		} else {
 			this.etat = EtatRoute.FLUIDE;
 		}
@@ -176,6 +179,7 @@ public class Route {
 	 */
 	public void setNoeud(int noeudDepart, int noeudArrive) {
 	    if( (noeudDepart <=7 && noeudDepart >= 0) && (noeudArrive<=7 && noeudArrive >= 0) ) {
+	    	
 	        this.noeuds[0] = noeudDepart;
             this.noeuds[1] = noeudArrive;
 	    }
