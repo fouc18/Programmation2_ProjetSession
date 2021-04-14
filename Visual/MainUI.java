@@ -1,3 +1,14 @@
+/** 
+ * Nom: MainUI
+ * Version: 1.0
+ * Date: 04/10/2021
+ * Auteur: Membres de l'equipe 4
+ * 
+ * Description : Afficher la fenetre principale
+ * 
+ * Copyright 2021 equipe 4
+ */
+
 package Visual;
 
 
@@ -23,9 +34,7 @@ import java.util.Map;
 import java.io.*;
 import javax.imageio.*;
 
-/**
- * @author lsfez
- */
+
 public class MainUI extends JFrame {
 
 	/**
@@ -57,6 +66,7 @@ public class MainUI extends JFrame {
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">
 	private void initComponents() {
 
+	    //Contient toutes les positions possible de la voiture
 		positionImgVoiture = new HashMap<Character, int[]>() {
 			{
 				put('A', new int[] { 20, 210 });
@@ -344,20 +354,37 @@ public class MainUI extends JFrame {
 		pack();
 	}// </editor-fold>
 
+	/**
+	 * Permet de convertir le noeud de caractère en nombre
+	 * @param c le noeud sous forme de caracteres
+	 * @return le noeud sous forme de nombre
+	 * @return -1 si le noeud n'existe pas
+	 */
 	private int conversionNoeudEntier(char c) {
 		if (c >= 'A' && c <= 'H') {
-			return c - 65;
+			return c - 65; //Enlever le code ASCII du caractere
 		}
 		return -1;
 	}
 
+	/**
+	 * Permet de convertir le noeud de nombre en caractere
+	 * @param b  le noeud sous forme de nombre  
+	 * @return le noeud sous forme de caracteres
+	 * @return '*' si le noeud n'existe pas
+	 */
 	private char conversionNoeudCaractere(int b) {
 		if (b >= 0 && b <= 7) {
-			return (char) (b + 65);
+			return (char) (b + 65); //envoye le code ASCII du caractere
 		}
-		return 'Z';
+		return '*';
 	}
 
+	/**
+	 * Permet de dessiner une route sur le chemin sur le GPS
+	 * @param debut le premier noeud de l'itineraire
+	 * @param fin le dernier noeud de l'itineraire
+	 */
 	private void dessinerChemin(char debut, char fin) { // Pour GPS
 
 		if (debut == 'A' && fin == 'B' || debut == 'B' && fin == 'A') {
@@ -402,6 +429,10 @@ public class MainUI extends JFrame {
 
 	}
 	
+
+    /**
+     * Permet d'afficher la distance parcourue
+     */
 	private void calculDistParc() {
 		
 		double dstdoble = control.getVoitureDistance();
@@ -411,7 +442,9 @@ public class MainUI extends JFrame {
 		distParc.setVisible(true);
 		
 	}
-
+	/**
+	 * Permet de dessiner le GPS
+	 */
 	private void dessinerItineraire() {
 		ArrayList<Route> itineraire = control.getItineraire();
 		for (int i = 0; i < itineraire.size(); i++) {
@@ -420,6 +453,9 @@ public class MainUI extends JFrame {
 		}
 	}
 
+	/**
+     * Permet d'effacer le GPS sur la carte
+     */
 	public void ClearItineraire() {
 		GH.setVisible(false);
 		HD.setVisible(false);
@@ -436,6 +472,9 @@ public class MainUI extends JFrame {
 		ED.setVisible(false);
 	}
 
+	/**
+     * Permet d'effacer le trafic sur la carte
+     */
 	public void clearTraffic() {
 		face_BG.setVisible(false);
 		face_AG.setVisible(false);
@@ -466,6 +505,10 @@ public class MainUI extends JFrame {
 		carDessin.setVisible(false);
 	}
 
+	/**
+	 * Permet de dessiner le traffic sur la carte
+	 * @param listeEtat l'etat de chaque route
+	 */
 	public void dessinerTraffic(EtatRoute[] listeEtat) { // Pour Interface
 		for (int i = 0; i < listeFaceRoute.length; i++) {
 			System.out.println("Route " + i + " : " + listeEtat[i]);
@@ -488,6 +531,9 @@ public class MainUI extends JFrame {
 
 	}
 
+	/**
+     * Permet d'afficher la voiture sur son noeud
+     */
 	private void afficherVoiture() {
 
 		char noeudActuel = conversionNoeudCaractere(control.getPositionVoiture());
@@ -497,17 +543,25 @@ public class MainUI extends JFrame {
 
 	}
 
+	/**
+     * Permet d'afficher une fenetre d'erreur
+     */
 	public void afficherErreur(String msg) {
 		JFrame frame = new JFrame();
 		JOptionPane.showMessageDialog(frame, msg);
 	}
 
+	/**
+	 * Bouton pour commencer le chemin de la voiture
+	 * @param evt
+	 */
 	private void DebuterMouseClicked(java.awt.event.MouseEvent evt) {
 		try {
-			Depart = jTextField1.getText().toUpperCase().charAt(0);
+			Depart = jTextField1.getText().toUpperCase().charAt(0); //Recuperer les noeuds a l'utilisateur
 			Arrive = jTextField2.getText().toUpperCase().charAt(0);
 
 			control.demarrer(conversionNoeudEntier(Depart), conversionNoeudEntier(Arrive));
+			
 			ClearItineraire();
 			dessinerTraffic(control.getEtatRoutes());
 			dessinerItineraire();
@@ -519,14 +573,17 @@ public class MainUI extends JFrame {
 		}
 
 	}
-
+	/**
+	 * Bouton pour reinitialiser toute la fenetre
+	 * @param evt
+	 */
 	private void reinitialiserMouseClicked(java.awt.event.MouseEvent evt) {
 
 		ClearItineraire();
 		clearTraffic();
 		jTextField1.setText("");
 		jTextField2.setText("");
-		control.arreter();
+		control.arreter(); //Enlever la voiture
 	}
 
 	private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -537,7 +594,11 @@ public class MainUI extends JFrame {
 	private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {
 		Arrive = jTextField2.getText().charAt(0);
 	}
-
+	
+	/**
+	 * Permet d'avancer la voiture
+	 * @param evt
+	 */
 	private void nextStepMouseClicked(java.awt.event.MouseEvent evt) {
 		try {
 			dessinerItineraire();
