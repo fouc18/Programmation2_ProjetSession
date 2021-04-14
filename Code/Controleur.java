@@ -14,6 +14,8 @@ package Code;
 
 import java.util.ArrayList;
 
+import exception.NoeudInexistantException;
+
 public class Controleur {
 	
 	/**
@@ -26,12 +28,26 @@ public class Controleur {
 	 * 
 	 * @param noeudDepart
 	 * @param noeudFin
+	 * @throws NoeudInexistantException 
 	 */
-	public void demarrer(int noeudDepart, int noeudFin) {
+	public void demarrer(int noeudDepart, int noeudFin) throws NoeudInexistantException {
+	    
+	    if( (noeudDepart >=0 && noeudDepart <=7) && (noeudFin >=0 && noeudFin <=7) ) {
+	        
+	        //Dï¿½finition d'un d'une position de dï¿½part et d'une destination pour la voiture
+	        voitureActuelle = new Voiture(noeudDepart, noeudFin);
+	    
+	    }else {
+	        throw new NoeudInexistantException();
+	    }
 
-		//Définition d'un d'une position de départ et d'une destination pour la voiture
-		voitureActuelle = new Voiture(noeudDepart, noeudFin);
 
+	}
+	/**
+	 * Permet d'enlever la voiture du programme
+	 */
+	public void arreter() {
+	    voitureActuelle = null;
 	}
 	
 	/** 
@@ -60,7 +76,7 @@ public class Controleur {
 		EtatRoute[] etat = new EtatRoute[26];
 
 		for(int i = 0; i < etat.length; i++) {
-			//Pour toutes les routes obtenir leur état
+			//Pour toutes les routes obtenir leur ï¿½tat
 			etat[i] = voitureActuelle.getListeRoute()[i].getEtat();
 		}
 

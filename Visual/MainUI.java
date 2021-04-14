@@ -14,6 +14,7 @@ import javax.swing.*;
 import Code.Controleur;
 import Code.EtatRoute;
 import Code.Route;
+import exception.NoeudInexistantException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -513,7 +514,7 @@ public class MainUI extends JFrame {
 			calculDistParc();
 			afficherVoiture();
 
-		} catch (StringIndexOutOfBoundsException | NullPointerException e) {
+		} catch (StringIndexOutOfBoundsException | NullPointerException | NoeudInexistantException e) {
 			afficherErreur("Veuillez Rentrer des Valeurs Valides !!!");
 		}
 
@@ -525,7 +526,7 @@ public class MainUI extends JFrame {
 		clearTraffic();
 		jTextField1.setText("");
 		jTextField2.setText("");
-
+		control.arreter();
 	}
 
 	private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
