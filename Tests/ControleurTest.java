@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import Code.Controleur;
 import Code.Gps;
-import exception.NoeudIntrouvableException;
+import exception.NoeudInexistantException;
 
 public class ControleurTest {
 
