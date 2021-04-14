@@ -229,14 +229,13 @@ public class MainUI extends JFrame {
 		getContentPane().add(nextStep, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 110, 30));
 
 		face_BG.setIcon(new ImageIcon("Visual/Images/Interface/BG.png")); // NOI18N
-		face_BG.setForeground(Color.white);
 		getContentPane().add(face_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 107, -1, -1));
 
 		face_AG.setIcon(new ImageIcon("Visual/Images/Interface/AG.png")); // NOI18N
 		getContentPane().add(face_AG, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 257, 130, -1));
 
 		face_AG1.setIcon(new ImageIcon("Visual/Images/Interface/AG1.png")); // NOI18N
-		getContentPane().add(face_AG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 247, -1, -1));
+		getContentPane().add(face_AG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 244, -1, -1));
 
 		face_BG1.setIcon(new ImageIcon("Visual/Images/Interface/BG1.png")); // NOI18N
 		getContentPane().add(face_BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 100, -1, -1));
@@ -254,13 +253,13 @@ public class MainUI extends JFrame {
 		getContentPane().add(face_AF, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 272, -1, -1));
 
 		face_BC.setIcon(new ImageIcon("Visual/Images/Interface/BC.png")); // NOI18N
-		getContentPane().add(face_BC, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 81, -1, -1));
+		getContentPane().add(face_BC, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 80, -1, -1));
 
 		face_BC1.setIcon(new ImageIcon("Visual/Images/Interface/BC1.png")); // NOI18N
 		getContentPane().add(face_BC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 65, -1, 20));
 
 		face_GH1.setIcon(new ImageIcon("Visual/Images/Interface/GH1.png")); // NOI18N
-		getContentPane().add(face_GH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 246, -1, -1));
+		getContentPane().add(face_GH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 244, -1, -1));
 
 		face_GH.setIcon(new ImageIcon("Visual/Images/Interface/GH.png")); // NOI18N
 		getContentPane().add(face_GH, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 258, -1, -1));
@@ -356,7 +355,7 @@ public class MainUI extends JFrame {
 	}// </editor-fold>
 
 	/**
-	 * Permet de convertir le noeud de caractère en nombre
+	 * Permet de convertir le noeud de caractÃ¨re en nombre
 	 * @param c le noeud sous forme de caracteres
 	 * @return le noeud sous forme de nombre
 	 * @return -1 si le noeud n'existe pas
@@ -517,15 +516,16 @@ public class MainUI extends JFrame {
 			switch (listeEtat[i]) {
 			case FLUIDE:
 				listeFaceRoute[i].setVisible(false);
-
 				break;
 			case CONGESTION:
 				listeFaceRoute[i].setVisible(true);
-
+				listeFaceRoute[i].setText("Congestion");
+				listeFaceRoute[i].setForeground(Color.cyan);
 				break;
 			case ACCIDENT:
 				listeFaceRoute[i].setVisible(true);
-
+				listeFaceRoute[i].setText("Accident");
+				listeFaceRoute[i].setForeground(Color.red);
 				break;
 
 			}
