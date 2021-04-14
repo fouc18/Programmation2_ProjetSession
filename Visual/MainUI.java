@@ -229,6 +229,7 @@ public class MainUI extends JFrame {
 		getContentPane().add(nextStep, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 110, 30));
 
 		face_BG.setIcon(new ImageIcon("Visual/Images/Interface/BG.png")); // NOI18N
+		face_BG.setForeground(Color.white);
 		getContentPane().add(face_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 107, -1, -1));
 
 		face_AG.setIcon(new ImageIcon("Visual/Images/Interface/AG.png")); // NOI18N
@@ -470,6 +471,7 @@ public class MainUI extends JFrame {
 		GF.setVisible(false);
 		HE.setVisible(false);
 		ED.setVisible(false);
+		distParc.setVisible(false);
 	}
 
 	/**
