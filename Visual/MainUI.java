@@ -1,16 +1,15 @@
 /** 
  * Nom: MainUI
- * Version: 1.0
- * Date: 04/10/2021
- * Auteur: Membres de l'equipe 4
+ * Version: 2.0
+ * Date: 23/04/2021
+ * Auteur: Membres de l'équipe 4
  * 
  * Description : Afficher la fenetre principale
  * 
- * Copyright 2021 equipe 4
+ * Copyright 2021 équipe 4
  */
 
 package Visual;
-
 
 import java.awt.Color;
 
@@ -22,6 +21,7 @@ import java.awt.Color;
 
 import java.awt.FlowLayout;
 import javax.swing.*;
+//import javax.swing.border.*;
 import Code.Controleur;
 import Code.EtatRoute;
 import Code.Route;
@@ -34,9 +34,12 @@ import java.util.Map;
 import java.io.*;
 import javax.imageio.*;
 
-
 public class MainUI extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Creates new form
 	 */
@@ -66,8 +69,13 @@ public class MainUI extends JFrame {
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">
 	private void initComponents() {
 
-	    //Contient toutes les positions possible de la voiture
+		// Contient toutes les positions possible de la voiture
 		positionImgVoiture = new HashMap<Character, int[]>() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -1209548773217661700L;
+
 			{
 				put('A', new int[] { 20, 210 });
 				put('B', new int[] { 180, 40 });
@@ -79,7 +87,7 @@ public class MainUI extends JFrame {
 				put('H', new int[] { 400, 210 });
 			}
 		};
-		
+
 		distParc = new JLabel();
 		Debuter = new JLabel();
 		reinitialiser = new JLabel();
@@ -127,24 +135,57 @@ public class MainUI extends JFrame {
 		face_GF1 = new JLabel();
 		carDessin = new JLabel();
 
+		signface_BG = new JLabel();
+		signface_AG = new JLabel();
+		signface_AG1 = new JLabel();
+		signface_BG1 = new JLabel();
+		signface_AB = new JLabel();
+		signface_AB1 = new JLabel();
+		signface_AF1 = new JLabel();
+		signface_AF = new JLabel();
+		signface_BC = new JLabel();
+		signface_BC1 = new JLabel();
+		signface_GH1 = new JLabel();
+		signface_GH = new JLabel();
+		signface_CD = new JLabel();
+		signface_CD1 = new JLabel();
+		signface_HD1 = new JLabel();
+		signface_HD = new JLabel();
+		signface_FE1 = new JLabel();
+		signface_FE = new JLabel();
+		signface_CH1 = new JLabel();
+		signface_ED1 = new JLabel();
+		signface_ED = new JLabel();
+		signface_CH = new JLabel();
+		signface_HE = new JLabel();
+		signface_HE1 = new JLabel();
+		signface_GF = new JLabel();
+		signface_GF1 = new JLabel();
+
 		listeFaceRoute = new JLabel[] { face_AB1, face_AG, face_AF, face_AB, face_BC, face_BG, face_BC1, face_CH,
 				face_CD, face_CD1, face_HD1, face_ED, face_FE1, face_HE1, face_ED1, face_AF1, face_GF1, face_FE,
 				face_AG1, face_BG1, face_GF, face_GH, face_CH1, face_HD, face_HE, face_GH1 };
 
+		listeSignFaceRoute = new JLabel[] { signface_AB1, signface_AG, signface_AF, signface_AB, signface_BC,
+				signface_BG, signface_BC1, signface_CH, signface_CD, signface_CD1, signface_HD1, signface_ED,
+				signface_FE1, signface_HE1, signface_ED1, signface_AF1, signface_GF1, signface_FE, signface_AG1,
+				signface_BG1, signface_GF, signface_GH, signface_CH1, signface_HD, signface_HE, signface_GH1 };
+
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-		
+
 		distParc.setHorizontalAlignment(SwingConstants.CENTER);
 		distParc.setForeground(Color.white);
 		distParc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 		distParc.setHorizontalTextPosition(SwingConstants.CENTER);
-		
+
 		getContentPane().add(distParc, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 574, 110, 31));
-		
+
 		Debuter.setHorizontalAlignment(SwingConstants.CENTER);
 		Debuter.setText("Debuter");
 		Debuter.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 		Debuter.setHorizontalTextPosition(SwingConstants.CENTER);
+		
 		Debuter.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				DebuterMouseClicked(evt);
@@ -155,6 +196,7 @@ public class MainUI extends JFrame {
 		reinitialiser.setHorizontalAlignment(SwingConstants.CENTER);
 		reinitialiser.setText("Reinitialiser");
 		reinitialiser.setHorizontalTextPosition(SwingConstants.CENTER);
+		
 		reinitialiser.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				reinitialiserMouseClicked(evt);
@@ -221,6 +263,7 @@ public class MainUI extends JFrame {
 
 		nextStep.setHorizontalAlignment(SwingConstants.CENTER);
 		nextStep.setText("Avancer");
+		
 		nextStep.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				nextStepMouseClicked(evt);
@@ -235,7 +278,7 @@ public class MainUI extends JFrame {
 		getContentPane().add(face_AG, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 257, 130, -1));
 
 		face_AG1.setIcon(new ImageIcon("Visual/Images/Interface/AG1.png")); // NOI18N
-		getContentPane().add(face_AG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 244, -1, -1));
+		getContentPane().add(face_AG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 247, -1, -1));
 
 		face_BG1.setIcon(new ImageIcon("Visual/Images/Interface/BG1.png")); // NOI18N
 		getContentPane().add(face_BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 100, -1, -1));
@@ -259,7 +302,7 @@ public class MainUI extends JFrame {
 		getContentPane().add(face_BC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 65, -1, 20));
 
 		face_GH1.setIcon(new ImageIcon("Visual/Images/Interface/GH1.png")); // NOI18N
-		getContentPane().add(face_GH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 244, -1, -1));
+		getContentPane().add(face_GH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 246, -1, -1));
 
 		face_GH.setIcon(new ImageIcon("Visual/Images/Interface/GH.png")); // NOI18N
 		getContentPane().add(face_GH, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 258, -1, -1));
@@ -306,49 +349,64 @@ public class MainUI extends JFrame {
 		face_GF1.setIcon(new ImageIcon("Visual/Images/Interface/GF1.png")); // NOI18N
 		getContentPane().add(face_GF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 274, -1, -1));
 
-		carDessin.setIcon(new javax.swing.ImageIcon("Visual/Images/mcqueen.png")); // NOI18N
-		getContentPane().add(carDessin, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 70, 80));
+		getContentPane().add(signface_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, -1));
 
-		GH.setVisible(false);
-		HD.setVisible(false);
-		CD.setVisible(false);
-		BC.setVisible(false);
-		BG.setVisible(false);
-		CH.setVisible(false);
-		AG.setVisible(false);
-		AB.setVisible(false);
-		FE.setVisible(false);
-		AF.setVisible(false);
-		GF.setVisible(false);
-		HE.setVisible(false);
-		ED.setVisible(false);
-		carDessin.setVisible(false);
-		face_BG.setVisible(false);
-		face_AG.setVisible(false);
-		face_AG1.setVisible(false);
-		face_BG1.setVisible(false);
-		face_AB.setVisible(false);
-		face_AB1.setVisible(false);
-		face_AF1.setVisible(false);
-		face_AF.setVisible(false);
-		face_BC.setVisible(false);
-		face_BC1.setVisible(false);
-		face_GH1.setVisible(false);
-		face_GH.setVisible(false);
-		face_CD.setVisible(false);
-		face_CD1.setVisible(false);
-		face_HD1.setVisible(false);
-		face_HD.setVisible(false);
-		face_FE1.setVisible(false);
-		face_FE.setVisible(false);
-		face_CH1.setVisible(false);
-		face_ED1.setVisible(false);
-		face_ED.setVisible(false);
-		face_CH.setVisible(false);
-		face_HE.setVisible(false);
-		face_HE1.setVisible(false);
-		face_GF.setVisible(false);
-		face_GF1.setVisible(false);
+		getContentPane().add(signface_AG, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 275, -1, -1));
+
+		getContentPane().add(signface_AG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 200, -1, -1));
+
+		getContentPane().add(signface_BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 150, -1, -1));
+
+		getContentPane().add(signface_AB, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 129, -1, -1));
+
+		getContentPane().add(signface_AB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 150, -1, -1));
+
+		getContentPane().add(signface_AF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 314, -1, -1));
+
+		getContentPane().add(signface_AF, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 314, -1, -1));
+
+		getContentPane().add(signface_BC, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 100, -1, -1));
+
+		getContentPane().add(signface_BC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 25, -1, -1));
+
+		getContentPane().add(signface_GH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 200, -1, -1));
+
+		getContentPane().add(signface_GH, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 275, -1, -1));
+
+		getContentPane().add(signface_CD, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 170, -1, -1));
+
+		getContentPane().add(signface_CD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 124, -1, -1));
+
+		getContentPane().add(signface_HD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 200, -1, -1));
+
+		getContentPane().add(signface_HD, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 275, -1, -1));
+
+		getContentPane().add(signface_FE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 401, -1, -1));
+
+		getContentPane().add(signface_FE, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 481, -1, -1));
+
+		getContentPane().add(signface_CH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 150, -1, -1));
+
+		getContentPane().add(signface_ED1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, -1, -1));
+
+		getContentPane().add(signface_ED, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 304, -1, -1));
+
+		getContentPane().add(signface_CH, new org.netbeans.lib.awtextra.AbsoluteConstraints(360 , 150, -1, -1));
+
+		getContentPane().add(signface_HE, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 316, -1, -1));
+
+		getContentPane().add(signface_HE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 316, -1, -1));
+
+		getContentPane().add(signface_GF, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 314, -1, -1));
+
+		getContentPane().add(signface_GF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 314, -1, -1));
+
+		carDessin.setIcon(new ImageIcon("Visual/Images/mcqueen.png")); // NOI18N
+		getContentPane().add(carDessin, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 70, 80));
+		
+		
+		clearTraffic();
+		ClearItineraire();
 
 		control = new Controleur();
 		pack();
@@ -356,34 +414,37 @@ public class MainUI extends JFrame {
 
 	/**
 	 * Permet de convertir le noeud de caractÃ¨re en nombre
+	 * 
 	 * @param c le noeud sous forme de caracteres
 	 * @return le noeud sous forme de nombre
 	 * @return -1 si le noeud n'existe pas
 	 */
 	private int conversionNoeudEntier(char c) {
 		if (c >= 'A' && c <= 'H') {
-			return c - 65; //Enlever le code ASCII du caractere
+			return c - 65; // Enlever le code ASCII du caractere
 		}
 		return -1;
 	}
 
 	/**
 	 * Permet de convertir le noeud de nombre en caractere
-	 * @param b  le noeud sous forme de nombre  
+	 * 
+	 * @param b le noeud sous forme de nombre
 	 * @return le noeud sous forme de caracteres
 	 * @return '*' si le noeud n'existe pas
 	 */
 	private char conversionNoeudCaractere(int b) {
 		if (b >= 0 && b <= 7) {
-			return (char) (b + 65); //envoye le code ASCII du caractere
+			return (char) (b + 65); // envoye le code ASCII du caractere
 		}
 		return '*';
 	}
 
 	/**
 	 * Permet de dessiner une route sur le chemin sur le GPS
+	 * 
 	 * @param debut le premier noeud de l'itineraire
-	 * @param fin le dernier noeud de l'itineraire
+	 * @param fin   le dernier noeud de l'itineraire
 	 */
 	private void dessinerChemin(char debut, char fin) { // Pour GPS
 
@@ -428,20 +489,20 @@ public class MainUI extends JFrame {
 		}
 
 	}
-	
 
-    /**
-     * Permet d'afficher la distance parcourue
-     */
+	/**
+	 * Permet d'afficher la distance parcourue
+	 */
 	private void calculDistParc() {
-		
+
 		double dstdoble = control.getVoitureDistance();
 		String dst = String.valueOf(dstdoble);
-		
+
 		distParc.setText(dst);
 		distParc.setVisible(true);
-		
+
 	}
+
 	/**
 	 * Permet de dessiner le GPS
 	 */
@@ -454,8 +515,8 @@ public class MainUI extends JFrame {
 	}
 
 	/**
-     * Permet d'effacer le GPS sur la carte
-     */
+	 * Permet d'effacer le GPS sur la carte
+	 */
 	public void ClearItineraire() {
 		GH.setVisible(false);
 		HD.setVisible(false);
@@ -474,8 +535,8 @@ public class MainUI extends JFrame {
 	}
 
 	/**
-     * Permet d'effacer le trafic sur la carte
-     */
+	 * Permet d'effacer le trafic sur la carte
+	 */
 	public void clearTraffic() {
 		face_BG.setVisible(false);
 		face_AG.setVisible(false);
@@ -504,10 +565,39 @@ public class MainUI extends JFrame {
 		face_GF.setVisible(false);
 		face_GF1.setVisible(false);
 		carDessin.setVisible(false);
+		signface_BG.setVisible(false);
+		signface_AG.setVisible(false);
+		signface_AG1.setVisible(false);
+		signface_BG1.setVisible(false);
+		signface_AB.setVisible(false);
+		signface_AB1.setVisible(false);
+		signface_AF1.setVisible(false);
+		signface_AF.setVisible(false);
+		signface_BC.setVisible(false);
+		signface_BC1.setVisible(false);
+		signface_GH1.setVisible(false);
+		signface_GH.setVisible(false);
+		signface_CD.setVisible(false);
+		signface_CD1.setVisible(false);
+		signface_HD1.setVisible(false);
+		signface_HD.setVisible(false);
+		signface_FE1.setVisible(false);
+		signface_FE.setVisible(false);
+		signface_CH1.setVisible(false);
+		signface_ED1.setVisible(false);
+		signface_ED.setVisible(false);
+		signface_CH.setVisible(false);
+		signface_HE.setVisible(false);
+		signface_HE1.setVisible(false);
+		signface_GF.setVisible(false);
+		signface_GF1.setVisible(false);
+		
+		
 	}
 
 	/**
 	 * Permet de dessiner le traffic sur la carte
+	 * 
 	 * @param listeEtat l'etat de chaque route
 	 */
 	public void dessinerTraffic(EtatRoute[] listeEtat) { // Pour Interface
@@ -519,13 +609,13 @@ public class MainUI extends JFrame {
 				break;
 			case CONGESTION:
 				listeFaceRoute[i].setVisible(true);
-				listeFaceRoute[i].setText("Congestion");
-				listeFaceRoute[i].setForeground(Color.cyan);
+				listeSignFaceRoute[i].setIcon(new ImageIcon("Visual/Images/Congestion.png"));
+				listeSignFaceRoute[i].setVisible(true);
 				break;
 			case ACCIDENT:
 				listeFaceRoute[i].setVisible(true);
-				listeFaceRoute[i].setText("Accident");
-				listeFaceRoute[i].setForeground(Color.red);
+				listeSignFaceRoute[i].setIcon(new ImageIcon("Visual/Images/Accident.png"));
+				listeSignFaceRoute[i].setVisible(true);
 				break;
 
 			}
@@ -534,8 +624,8 @@ public class MainUI extends JFrame {
 	}
 
 	/**
-     * Permet d'afficher la voiture sur son noeud
-     */
+	 * Permet d'afficher la voiture sur son noeud
+	 */
 	private void afficherVoiture() {
 
 		char noeudActuel = conversionNoeudCaractere(control.getPositionVoiture());
@@ -546,8 +636,8 @@ public class MainUI extends JFrame {
 	}
 
 	/**
-     * Permet d'afficher une fenetre d'erreur
-     */
+	 * Permet d'afficher une fenetre d'erreur
+	 */
 	public void afficherErreur(String msg) {
 		JFrame frame = new JFrame();
 		JOptionPane.showMessageDialog(frame, msg);
@@ -555,15 +645,16 @@ public class MainUI extends JFrame {
 
 	/**
 	 * Bouton pour commencer le chemin de la voiture
+	 * 
 	 * @param evt
 	 */
 	private void DebuterMouseClicked(java.awt.event.MouseEvent evt) {
 		try {
-			Depart = jTextField1.getText().toUpperCase().charAt(0); //Recuperer les noeuds a l'utilisateur
+			Depart = jTextField1.getText().toUpperCase().charAt(0); // Recuperer les noeuds a l'utilisateur
 			Arrive = jTextField2.getText().toUpperCase().charAt(0);
 
 			control.demarrer(conversionNoeudEntier(Depart), conversionNoeudEntier(Arrive));
-			
+			clearTraffic();
 			ClearItineraire();
 			dessinerTraffic(control.getEtatRoutes());
 			dessinerItineraire();
@@ -575,8 +666,10 @@ public class MainUI extends JFrame {
 		}
 
 	}
+
 	/**
 	 * Bouton pour reinitialiser toute la fenetre
+	 * 
 	 * @param evt
 	 */
 	private void reinitialiserMouseClicked(java.awt.event.MouseEvent evt) {
@@ -585,7 +678,7 @@ public class MainUI extends JFrame {
 		clearTraffic();
 		jTextField1.setText("");
 		jTextField2.setText("");
-		control.arreter(); //Enlever la voiture
+		control.arreter(); // Enlever la voiture
 	}
 
 	private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -596,9 +689,10 @@ public class MainUI extends JFrame {
 	private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {
 		Arrive = jTextField2.getText().charAt(0);
 	}
-	
+
 	/**
 	 * Permet d'avancer la voiture
+	 * 
 	 * @param evt
 	 */
 	private void nextStepMouseClicked(java.awt.event.MouseEvent evt) {
@@ -607,6 +701,7 @@ public class MainUI extends JFrame {
 			if (control.deplacement() == 2) {
 				afficherErreur("La voiture a atteint sa destination !");
 			} else {
+				clearTraffic();
 				ClearItineraire();
 				dessinerItineraire();
 				dessinerTraffic(control.getEtatRoutes());
@@ -705,11 +800,40 @@ public class MainUI extends JFrame {
 	private JLabel face_HD1;
 	private JLabel face_HE;
 	private JLabel face_HE1;
+
+	private JLabel signface_AB;
+	private JLabel signface_AB1;
+	private JLabel signface_AF;
+	private JLabel signface_AF1;
+	private JLabel signface_AG;
+	private JLabel signface_AG1;
+	private JLabel signface_BC;
+	private JLabel signface_BC1;
+	private JLabel signface_BG;
+	private JLabel signface_BG1;
+	private JLabel signface_CD;
+	private JLabel signface_CD1;
+	private JLabel signface_CH;
+	private JLabel signface_CH1;
+	private JLabel signface_ED;
+	private JLabel signface_ED1;
+	private JLabel signface_FE;
+	private JLabel signface_FE1;
+	private JLabel signface_GF;
+	private JLabel signface_GF1;
+	private JLabel signface_GH;
+	private JLabel signface_GH1;
+	private JLabel signface_HD;
+	private JLabel signface_HD1;
+	private JLabel signface_HE;
+	private JLabel signface_HE1;
+
 	private JTextField jTextField1;
 	private JTextField jTextField2;
 	private JLabel nextStep;
 	private JLabel carDessin;
 	JLabel[] listeFaceRoute;
+	JLabel[] listeSignFaceRoute;
 
 	// End of variables declaration
 }
