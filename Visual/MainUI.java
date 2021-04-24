@@ -2,11 +2,11 @@
  * Nom: MainUI
  * Version: 2.0
  * Date: 23/04/2021
- * Auteur: Membres de l'équipe 4
+ * Auteur: Membres de l'Ã©quipe 4
  * 
  * Description : Afficher la fenetre principale
  * 
- * Copyright 2021 équipe 4
+ * Copyright 2021 Ã©quipe 4
  */
 
 package Visual;
@@ -21,18 +21,15 @@ import java.awt.Color;
 
 import java.awt.FlowLayout;
 import javax.swing.*;
-//import javax.swing.border.*;
+
 import Code.Controleur;
 import Code.EtatRoute;
 import Code.Route;
 import exception.NoeudInexistantException;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.io.*;
-import javax.imageio.*;
 
 public class MainUI extends JFrame {
 
@@ -47,7 +44,7 @@ public class MainUI extends JFrame {
 		super("App");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-			setContentPane(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("interface.jpg"))));
+			setContentPane(new JLabel(new ImageIcon("Visual/Images/interface.jpg")));
 
 		
 		this.setLayout(new FlowLayout());
@@ -217,45 +214,45 @@ public class MainUI extends JFrame {
 		getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 130, 36, -1));
 
 		GH.setForeground(new java.awt.Color(255, 255, 255));
-		GH.setIcon(new ImageIcon(getClass().getClassLoader().getResource("gps_GH.png"))); // NOI18N
+		GH.setIcon(new ImageIcon("Visual/Images/gps_GH.png")); // NOI18N
 		getContentPane().add(GH, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 434, -1, 20));
 
-		HD.setIcon(new ImageIcon(getClass().getClassLoader().getResource("gps_HD.png"))); // NOI18N
+		HD.setIcon(new ImageIcon("Visual/Images/gps_HD.png")); // NOI18N
 		getContentPane().add(HD, new org.netbeans.lib.awtextra.AbsoluteConstraints(856, 440, -1, 10));
 
-		CD.setIcon(new ImageIcon(getClass().getClassLoader().getResource("gps_CD.png"))); // NOI18N
+		CD.setIcon(new ImageIcon("Visual/Images/gps_CD.png")); // NOI18N
 		getContentPane().add(CD, new org.netbeans.lib.awtextra.AbsoluteConstraints(847, 363, -1, 75));
 
-		BC.setIcon(new ImageIcon(getClass().getClassLoader().getResource("gps_BC.png"))); // NOI18N
+		BC.setIcon(new ImageIcon("Visual/Images/gps_BC.png")); // NOI18N
 		getContentPane().add(BC, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 357, -1, 10));
 
-		CH.setIcon(new ImageIcon(getClass().getClassLoader().getResource("gps_CH.png"))); // NOI18N
+		CH.setIcon(new ImageIcon("Visual/Images/gps_CH.png")); // NOI18N
 		getContentPane().add(CH, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 370, -1, -1));
 
-		BG.setIcon(new ImageIcon(getClass().getClassLoader().getResource("gps_BG.png"))); // NOI18N
+		BG.setIcon(new ImageIcon("Visual/Images/gps_BG.png")); // NOI18N
 		getContentPane().add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(743, 368, -1, -1));
 
-		AG.setIcon(new ImageIcon(getClass().getClassLoader().getResource("gps_AG.png"))); // NOI18N
+		AG.setIcon(new ImageIcon("Visual/Images/gps_AG.png")); // NOI18N
 		getContentPane().add(AG, new org.netbeans.lib.awtextra.AbsoluteConstraints(684, 437, -1, -1));
 
-		AB.setIcon(new ImageIcon(getClass().getClassLoader().getResource("gps_AB.png"))); // NOI18N
+		AB.setIcon(new ImageIcon("Visual/Images/gps_AB.png")); // NOI18N
 		getContentPane().add(AB, new org.netbeans.lib.awtextra.AbsoluteConstraints(672, 360, -1, -1));
 
-		FE.setIcon(new ImageIcon(getClass().getClassLoader().getResource("gps_FE.png"))); // NOI18N
+		FE.setIcon(new ImageIcon("Visual/Images/gps_FE.png")); // NOI18N
 		getContentPane().add(FE, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 535, -1, -1));
 
 		AF.setHorizontalAlignment(SwingConstants.RIGHT);
-		AF.setIcon(new ImageIcon(getClass().getClassLoader().getResource("gps_AF.png"))); // NOI18N
+		AF.setIcon(new ImageIcon("Visual/Images/gps_AF.png")); // NOI18N
 		getContentPane().add(AF, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 448, 110, -1));
 
-		GF.setIcon(new ImageIcon(getClass().getClassLoader().getResource("gps_GF.png"))); // NOI18N
+		GF.setIcon(new ImageIcon("Visual/Images/gps_GF.png")); // NOI18N
 		getContentPane().add(GF, new org.netbeans.lib.awtextra.AbsoluteConstraints(739, 449, -1, -1));
 
-		HE.setIcon(new ImageIcon(getClass().getClassLoader().getResource("gps_HE.png"))); // NOI18N
+		HE.setIcon(new ImageIcon("Visual/Images/gps_HE.png")); // NOI18N
 		getContentPane().add(HE, new org.netbeans.lib.awtextra.AbsoluteConstraints(838, 450, -1, -1));
 
 		ED.setHorizontalAlignment(SwingConstants.RIGHT);
-		ED.setIcon(new ImageIcon(getClass().getClassLoader().getResource("gps_ED.png"))); // NOI18N
+		ED.setIcon(new ImageIcon("Visual/Images/gps_ED.png")); // NOI18N
 		getContentPane().add(ED, new org.netbeans.lib.awtextra.AbsoluteConstraints(832, 438, 90, -1));
 
 		nextStep.setHorizontalAlignment(SwingConstants.CENTER);
@@ -268,82 +265,82 @@ public class MainUI extends JFrame {
 		});
 		getContentPane().add(nextStep, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 110, 30));
 
-		face_BG.setIcon(new ImageIcon(getClass().getClassLoader().getResource("BG.png"))); // NOI18N
+		face_BG.setIcon(new ImageIcon("Visual/Images/BG.png")); // NOI18N
 		getContentPane().add(face_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 107, -1, -1));
 
-		face_AG.setIcon(new ImageIcon(getClass().getClassLoader().getResource("AG.png"))); // NOI18N
+		face_AG.setIcon(new ImageIcon("Visual/Images/AG.png")); // NOI18N
 		getContentPane().add(face_AG, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 257, 130, -1));
 
-		face_AG1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("AG1.png"))); // NOI18N
+		face_AG1.setIcon(new ImageIcon("Visual/Images/AG1.png")); // NOI18N
 		getContentPane().add(face_AG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 247, -1, -1));
 
-		face_BG1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("BG1.png"))); // NOI18N
+		face_BG1.setIcon(new ImageIcon("Visual/Images/BG1.png")); // NOI18N
 		getContentPane().add(face_BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 100, -1, -1));
 
-		face_AB.setIcon(new ImageIcon(getClass().getClassLoader().getResource("AB.png"))); // NOI18N
+		face_AB.setIcon(new ImageIcon("Visual/Images/AB.png")); // NOI18N
 		getContentPane().add(face_AB, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 88, 150, 150));
 
-		face_AB1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("AB1.png"))); // NOI18N
+		face_AB1.setIcon(new ImageIcon("Visual/Images/AB1.png")); // NOI18N
 		getContentPane().add(face_AB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 79, 160, 170));
 
-		face_AF1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("AF1.png"))); // NOI18N
+		face_AF1.setIcon(new ImageIcon("Visual/Images/AF1.png")); // NOI18N
 		getContentPane().add(face_AF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 268, -1, -1));
 
-		face_AF.setIcon(new ImageIcon(getClass().getClassLoader().getResource("AF.png"))); // NOI18N
+		face_AF.setIcon(new ImageIcon("Visual/Images/AF.png")); // NOI18N
 		getContentPane().add(face_AF, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 272, -1, -1));
 
-		face_BC.setIcon(new ImageIcon(getClass().getClassLoader().getResource("BC.png"))); // NOI18N
+		face_BC.setIcon(new ImageIcon("Visual/Images/BC.png")); // NOI18N
 		getContentPane().add(face_BC, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 80, -1, -1));
 
-		face_BC1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("BC1.png"))); // NOI18N
+		face_BC1.setIcon(new ImageIcon("Visual/Images/BC1.png")); // NOI18N
 		getContentPane().add(face_BC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 65, -1, 20));
 
-		face_GH1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("GH1.png"))); // NOI18N
+		face_GH1.setIcon(new ImageIcon("Visual/Images/GH1.png")); // NOI18N
 		getContentPane().add(face_GH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 246, -1, -1));
 
-		face_GH.setIcon(new ImageIcon(getClass().getClassLoader().getResource("GH.png"))); // NOI18N
+		face_GH.setIcon(new ImageIcon("Visual/Images/GH.png")); // NOI18N
 		getContentPane().add(face_GH, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 258, -1, -1));
 
-		face_CD.setIcon(new ImageIcon(getClass().getClassLoader().getResource("CD.png"))); // NOI18N
+		face_CD.setIcon(new ImageIcon("Visual/Images/CD.png")); // NOI18N
 		getContentPane().add(face_CD, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 92, -1, -1));
 
-		face_CD1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("CD1.png"))); // NOI18N
+		face_CD1.setIcon(new ImageIcon("Visual/Images/CD1.png")); // NOI18N
 		getContentPane().add(face_CD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 84, -1, -1));
 
-		face_HD1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("HD1.png"))); // NOI18N
+		face_HD1.setIcon(new ImageIcon("Visual/Images/HD1.png")); // NOI18N
 		getContentPane().add(face_HD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 241, -1, 20));
 
-		face_HD.setIcon(new ImageIcon(getClass().getClassLoader().getResource("HD.png"))); // NOI18N
+		face_HD.setIcon(new ImageIcon("Visual/Images/HD.png")); // NOI18N
 		getContentPane().add(face_HD, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 254, -1, 20));
 
-		face_FE1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("FE1.png"))); // NOI18N
+		face_FE1.setIcon(new ImageIcon("Visual/Images/FE1.png")); // NOI18N
 		getContentPane().add(face_FE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 451, -1, -1));
 
-		face_FE.setIcon(new ImageIcon(getClass().getClassLoader().getResource("FE.png"))); // NOI18N
+		face_FE.setIcon(new ImageIcon("Visual/Images/FE.png")); // NOI18N
 		getContentPane().add(face_FE, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 461, -1, 20));
 
-		face_CH1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("CH1.png"))); // NOI18N
+		face_CH1.setIcon(new ImageIcon("Visual/Images/CH1.png")); // NOI18N
 		getContentPane().add(face_CH1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 101, -1, -1));
 
-		face_ED1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("DE1.png"))); // NOI18N
+		face_ED1.setIcon(new ImageIcon("Visual/Images/DE1.png")); // NOI18N
 		getContentPane().add(face_ED1, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 244, -1, -1));
 
-		face_ED.setIcon(new ImageIcon(getClass().getClassLoader().getResource("DE.png"))); // NOI18N
+		face_ED.setIcon(new ImageIcon("Visual/Images/DE.png")); // NOI18N
 		getContentPane().add(face_ED, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 236, -1, -1));
 
-		face_CH.setIcon(new ImageIcon(getClass().getClassLoader().getResource("CH.png"))); // NOI18N
+		face_CH.setIcon(new ImageIcon("Visual/Images/CH.png")); // NOI18N
 		getContentPane().add(face_CH, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 101, 60, -1));
 
-		face_HE.setIcon(new ImageIcon(getClass().getClassLoader().getResource("HE.png"))); // NOI18N
+		face_HE.setIcon(new ImageIcon("Visual/Images/HE.png")); // NOI18N
 		getContentPane().add(face_HE, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 276, -1, -1));
 
-		face_HE1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("HE1.png"))); // NOI18N
+		face_HE1.setIcon(new ImageIcon("Visual/Images/HE1.png")); // NOI18N
 		getContentPane().add(face_HE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 275, -1, -1));
 
-		face_GF.setIcon(new ImageIcon(getClass().getClassLoader().getResource("GF.png"))); // NOI18N
+		face_GF.setIcon(new ImageIcon("Visual/Images/GF.png")); // NOI18N
 		getContentPane().add(face_GF, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 276, -1, -1));
 
-		face_GF1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("GF1.png"))); // NOI18N
+		face_GF1.setIcon(new ImageIcon("Visual/Images/GF1.png")); // NOI18N
 		getContentPane().add(face_GF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 274, -1, -1));
 
 		getContentPane().add(signface_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, -1));
@@ -398,7 +395,7 @@ public class MainUI extends JFrame {
 
 		getContentPane().add(signface_GF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 314, -1, -1));
 
-		carDessin.setIcon(new ImageIcon(getClass().getClassLoader().getResource("mcqueen.png"))); // NOI18N
+		carDessin.setIcon(new ImageIcon("Visual/Images/mcqueen.png")); // NOI18N
 		getContentPane().add(carDessin, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 70, 80));
 		
 		
@@ -410,7 +407,7 @@ public class MainUI extends JFrame {
 	}// </editor-fold>
 
 	/**
-	 * Permet de convertir le noeud de caractÃ¨re en nombre
+	 * Permet de convertir le noeud de caractÃƒÂ¨re en nombre
 	 * 
 	 * @param c le noeud sous forme de caracteres
 	 * @return le noeud sous forme de nombre
@@ -606,12 +603,12 @@ public class MainUI extends JFrame {
 				break;
 			case CONGESTION:
 				listeFaceRoute[i].setVisible(true);
-				listeSignFaceRoute[i].setIcon(new ImageIcon(getClass().getClassLoader().getResource("Congestion.png")));
+				listeSignFaceRoute[i].setIcon(new ImageIcon("Visual/Images/Congestion.png"));
 				listeSignFaceRoute[i].setVisible(true);
 				break;
 			case ACCIDENT:
 				listeFaceRoute[i].setVisible(true);
-				listeSignFaceRoute[i].setIcon(new ImageIcon(getClass().getClassLoader().getResource("Accident.png")));
+				listeSignFaceRoute[i].setIcon(new ImageIcon("Visual/Images/Accident.png"));
 				listeSignFaceRoute[i].setVisible(true);
 				break;
 
