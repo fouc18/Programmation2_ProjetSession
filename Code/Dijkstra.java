@@ -5,7 +5,7 @@
  * Auteur: Membres de l'equipe 4
  * 
  * Description :La classe Dijkstra implemente l'algorithme du
- * même nom permettant de trouver le chemin le plus cours entre
+ * mÃªme nom permettant de trouver le chemin le plus cours entre
  * deux noeuds dans un graphe.
  * Ce programme utilise un graphe sous un format matriciel.
  * 
@@ -76,7 +76,7 @@ public class Dijkstra {
 	}
 	
 	/**
-	 * Permet d'acceder à la distance que represente le chemin le
+	 * Permet d'acceder Ã  la distance que represente le chemin le
 	 * plus court
 	 * @param grapheMatrice : Une matrice en deux dimensions representant un graphe
 	 * @param noeudDepart : Le noeud d'ou commence le chemin
@@ -92,7 +92,7 @@ public class Dijkstra {
 	}
     
     /**
-     * Calcule, a partir d'un point de dée distance qu'il represente. Stocke ces
+     * Calcule, a partir d'un point de dÃ©e distance qu'il represente. Stocke ces
      * resultats dans les variables globales parents et distancesMin respectivement.
      * @param grapheMatrice : Une matrice en deux dimensions representant un graphe
      * @param noeudDepart : Le noeud d'ou commencera le calcul des chemins
@@ -134,9 +134,8 @@ public class Dijkstra {
 
         // Contient l'arbre des plus courts chemins
         parents = new int[nbNoeuds];
-
-        // Le noeud de depart n'a pas de parent
-        parents[noeudDepart] = AUCUN_PARENT;
+	for (int i = 0; i < parents.length; i++)
+            parents[i] = AUCUN_PARENT;
 
         // Trouve le plus court chemin pour chaque noeud d'arrivee
         for (int i = 1; i < nbNoeuds; i++)
@@ -145,7 +144,7 @@ public class Dijkstra {
         	/*
         	 * Choisi le noeud le plus pres parmi les noeuds
         	 * qui n'ont pas encore ete evalue. noeudVoisin est 
-        	 * toujours le noeud de depart à la premiere iteration.
+        	 * toujours le noeud de depart Ã  la premiere iteration.
         	 */
             int noeudVoisin = -1;
             int distanceMin = Integer.MAX_VALUE;
@@ -160,7 +159,8 @@ public class Dijkstra {
 
            
             // Marque le noeud choisi comme evalue
-            ajoute[noeudVoisin] =true ;
+	    if  (noeudVoisin != -1)
+                ajoute[noeudVoisin] = true ;
           
             /*
              * Met a jour la distance des noeuds voisins en
@@ -169,6 +169,9 @@ public class Dijkstra {
             for (int noeudIndex = 0; noeudIndex < nbNoeuds; noeudIndex++)
             {
                 int routeLongueur = grapheMatrice[noeudVoisin][noeudIndex];
+		
+		if(noeudVoisin == -1)
+		    routeLongueur = 0;
 
                 if (routeLongueur > 0 && ((distanceMin + routeLongueur) < distancesMin[noeudIndex]))
                 {
